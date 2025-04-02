@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Gowun Dodum';
+  font-family: "Gowun Dodum";
 }
 
 button {
@@ -37,20 +37,26 @@ main {
 }
 
 .app header h1 {
-  color: #fff;
+  color: #006400;
   font-size: 23px;
   font-weight: 700;
-  background-color: #023202;
-  padding: 15px;
-  border-radius: 50%;
+  border-bottom: 1px solid #006400;
   align-items: center;
 }
 
 .app header button {
-  color: #2e8b57;
+  color: #fff;
   font-size: 18px;
-  border-bottom: 1px solid #006400;
+  background-color: #006400;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 30%;
   text-transform: uppercase;
+  transform: background-color 0.2s;
+}
+
+.app header button:hover {
+  background-color: #7eb77e;
 }
 
 .item {
@@ -68,11 +74,11 @@ main {
   margin-bottom: 0;
 }
 
-.item input[type='checkbox'] {
+.item input[type="checkbox"] {
   margin-right: 1rem;
 }
 
-.item input[type='text'] {
+.item input[type="text"] {
   appearance: none;
   background: none;
   border: none;
@@ -85,15 +91,17 @@ main {
   padding-bottom: 3px;
 }
 
-.item input[type='text']:not(:disabled) {
+.item input[type="text"]:not(:disabled) {
   border-bottom: 1px solid #006400;
 }
 
 .item.complete {
   opacity: 0.7;
+  background-color: #ecece6;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
 }
 
-.item.complete input[type='text'] {
+.item.complete input[type="text"] {
   text-decoration: line-through;
 }
 
@@ -106,7 +114,7 @@ main {
   color: #006400;
   margin-right: 1rem;
   opacity: 0.8;
-  transform: 0.1s;
+  transform: background-color 0.2s;
 }
 
 .actions button.remove-btn {
