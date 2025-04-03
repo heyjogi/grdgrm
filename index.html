@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>자바스크립트를 이용해서 Todo앱 만들기</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -11,13 +11,20 @@
     />
   </head>
   <body>
-    <div class="app">
-      <header>
-        <h1>Todo 앱</h1>
-        <button id="create-btn">새로운 todo 추가하기</button>
-      </header>
-      <div class="todo-list" id="list"></div>
-    </div>
+    <main>
+      <div class="app">
+        <header>
+          <h1>Todo 앱</h1>
+          <div class="header-buttons">
+            <button id="create-btn">새로운 todo 추가하기</button>
+            <button id="trash-btn">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </header>
+        <div class="todo-list" id="list"></div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
