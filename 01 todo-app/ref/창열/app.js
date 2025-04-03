@@ -1,39 +1,42 @@
 // 전역 상태
 let todos = [];
+let deletedTodos = [];
+
 let todoContainer;
-let addTodoTitle;
+let addTodoBtn;
 
 // 앱 초기화
 function initTodoApp() {
   todoContainer = document.getElementById("todoContainer");
-  addTodoTitle = document.querySelector(".add-todo-title");
+  addTodoBtn = document.getElementById("addTodoBtn");
 
   // 이벤트 리스너 등록
-  addTodoTitle.addEventListener("click", (e) => {
-    e.preventDefault();
-    createNewTodoInput();
-  });
+  addTodoBtn.addEventListener("click", createNewTodoInput);
 
   // localStorage에서 데이터 로드
   loadFromLocalStorage();
 
   // 초기 렌더링
   renderTodos();
+  setupTrashModal();
 }
 
 // localStorage에서 todos 로드
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
+  const storedDeleted = localStorage.getItem("deletedTodos");
 
   if (storedTodos) {
     todos = JSON.parse(storedTodos);
   }
+  if (storedDeleted) deletedTodos = JSON.parse(storedDeleted);
 }
 
 // localStorage에 todos 저장
 function saveToLocalStorage() {
   try {
     localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("deletedTodos", JSON.stringify(deletedTodos));
   } catch (error) {
     alert("localStorage에 데이터를 저장하는 중 오류가 발생했습니다.");
     console.error(
@@ -45,20 +48,8 @@ function saveToLocalStorage() {
 
 // 새로운 todo 입력창 생성
 function createNewTodoInput() {
-  // 이미 존재하는 입력창이 있다면 제거
-  const existingInput = document.querySelector(".new-todo-input");
-  if (existingInput) {
-    existingInput.remove();
-    return;
-  }
-
   const todoItemElement = document.createElement("div");
-  todoItemElement.className = "todo-item new-todo-input";
-
-  const checkboxElement = document.createElement("input");
-  checkboxElement.type = "checkbox";
-  checkboxElement.className = "checkbox";
-  checkboxElement.disabled = true;
+  todoItemElement.className = "todo-item";
 
   const inputElement = document.createElement("input");
   inputElement.type = "text";
@@ -67,52 +58,28 @@ function createNewTodoInput() {
 
   const handleInput = () => {
     const value = inputElement.value.trim();
+
     if (value) {
       addTodo(value);
     }
+
     todoItemElement.remove();
   };
 
   inputElement.addEventListener("blur", () => {
-    // blur 이벤트 발생 시 약간의 지연을 주어 클릭 이벤트가 처리될 수 있도록 함
-    setTimeout(() => {
-      if (document.activeElement !== inputElement) {
-        todoItemElement.remove();
-      }
-    }, 200);
+    todoItemElement.remove();
   });
 
   // Enter 키 이벤트
-  inputElement.addEventListener("keydown", (e) => {
+  inputElement.onkeydown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleInput();
-    } else if (e.key === "Escape") {
-      todoItemElement.remove();
     }
-  });
+  };
 
-  const actionsElement = document.createElement("div");
-  actionsElement.className = "actions";
-
-  const editIcon = document.createElement("span");
-  editIcon.className = "material-icons";
-  editIcon.style.visibility = "hidden";
-  editIcon.textContent = "edit";
-
-  const deleteIcon = document.createElement("span");
-  deleteIcon.className = "material-icons";
-  deleteIcon.style.visibility = "hidden";
-  deleteIcon.textContent = "remove_circle";
-
-  actionsElement.appendChild(editIcon);
-  actionsElement.appendChild(deleteIcon);
-
-  todoItemElement.appendChild(checkboxElement);
   todoItemElement.appendChild(inputElement);
-  todoItemElement.appendChild(actionsElement);
-
-  todoContainer.insertBefore(todoItemElement, todoContainer.firstChild);
+  todoContainer.appendChild(todoItemElement);
   inputElement.focus();
 }
 
@@ -132,9 +99,32 @@ function addTodo(text) {
 
 // todo 삭제
 function deleteTodo(id) {
+  const deleted = todos.find((todo) => todo.id === id);
+  if (deleted) {
+    deletedTodos = [...deletedTodos, deleted];
+  }
   todos = todos.filter((todo) => todo.id !== id);
   saveToLocalStorage();
   renderTodos();
+}
+
+// todo 영구 삭제
+function permanentlyDeleteTodo(id) {
+  deletedTodos = deletedTodos.filter((todo) => todo.id !== id);
+  saveToLocalStorage();
+  renderTrashBin();
+}
+
+// todo 복원
+function restoreTodo(id) {
+  const restored = deletedTodos.find((todo) => todo.id === id);
+  if (restored) {
+    todos = [...todos, restored];
+  }
+  deletedTodos = deletedTodos.filter((todo) => todo.id !== id);
+  saveToLocalStorage();
+  renderTodos();
+  renderTrashBin();
 }
 
 // todo 완료 상태 토글
@@ -240,10 +230,7 @@ function renderTodos() {
     // 수정 버튼
     const editButtonElement = document.createElement("button");
     editButtonElement.className = "edit-btn";
-    const editIcon = document.createElement("span");
-    editIcon.className = "material-icons";
-    editIcon.textContent = "edit";
-    editButtonElement.appendChild(editIcon);
+    editButtonElement.textContent = "수정";
     editButtonElement.addEventListener("click", () =>
       startEditMode(todoElement, todo)
     );
@@ -251,10 +238,7 @@ function renderTodos() {
     // 삭제 버튼
     const deleteButtonElement = document.createElement("button");
     deleteButtonElement.className = "delete-btn";
-    const deleteIcon = document.createElement("span");
-    deleteIcon.className = "material-icons";
-    deleteIcon.textContent = "remove_circle";
-    deleteButtonElement.appendChild(deleteIcon);
+    deleteButtonElement.textContent = "삭제";
     deleteButtonElement.addEventListener("click", () => deleteTodo(todo.id));
 
     // 요소들 추가
@@ -267,6 +251,63 @@ function renderTodos() {
 
     todoContainer.appendChild(todoElement);
   }
+}
+
+// 휴지통 렌더링
+function renderTrashBin() {
+  const trashContainer = document.getElementById("trashContainer");
+  trashContainer.innerHTML = "";
+
+  for (const todo of deletedTodos) {
+    const trashItem = document.createElement("div");
+    trashItem.className = "todo-item";
+
+    const text = document.createElement("div");
+    text.className = "todo-text";
+    text.textContent = todo.text;
+
+    const restoreBtn = document.createElement("button");
+    restoreBtn.textContent = "복구";
+    restoreBtn.className = "edit-btn";
+    restoreBtn.addEventListener("click", () => restoreTodo(todo.id));
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "완전 삭제";
+    removeBtn.className = "delete-btn";
+    removeBtn.addEventListener("click", () => permanentlyDeleteTodo(todo.id));
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+    actions.appendChild(restoreBtn);
+    actions.appendChild(removeBtn);
+
+    trashItem.appendChild(text);
+    trashItem.appendChild(actions);
+    trashContainer.appendChild(trashItem);
+  }
+}
+
+// 휴지통 모달 설정
+function setupTrashModal() {
+  const modal = document.getElementById("trashModal");
+  const openBtn = document.getElementById("openTrashBtn");
+  const closeBtn = document.getElementById("closeTrashBtn");
+
+  openBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    renderTrashBin(); // 팝업 열 때 렌더링
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // 모달 바깥 클릭 시 닫기
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 }
 
 // 앱 초기화

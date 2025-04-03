@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>자바스크립트를 이용해서 Todo앱 만들기</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <div class="header">
-      <h1 class="app-title">Todos 앱</h1>
-      <a href="#" class="add-todo-title">새로운 TODO 추가하기</a>
-    </div>
+    <h1 class="title-with-trash">
+      Todo 앱
+      <button class="trash-icon-btn" id="openTrashBtn">🗑️</button>
+    </h1>
 
     <div class="todo-container" id="todoContainer"></div>
 
+    <button class="add-btn" id="addTodoBtn">새로운 Todo 추가하기</button>
+
+    <div class="modal-overlay" id="trashModal">
+      <div class="modal-content">
+        <h2>휴지통</h2>
+        <div id="trashContainer"></div>
+        <button id="closeTrashBtn" class="close-btn">닫기</button>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
