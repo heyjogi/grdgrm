@@ -69,6 +69,13 @@ function createTodoElement(item) {
   });
 
   inputEl.addEventListener("blur", () => {
+    const value = inputEl.value.trim();
+    if (value === "") {
+      todos = todos.filter((t) => t.id !== item.id);
+      itemEl.remove();
+      return;
+    }
+
     inputEl.setAttribute("disabled", "");
     saveToLocalStorage();
   });
