@@ -1,0 +1,110 @@
+.header__theme-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 1.3rem;
+  height: 1.3rem;
+  position: relative;
+  margin-left: auto;
+  margin-top: 0.4rem;
+}
+
+.header__theme-button-sun {
+  display: none !important;
+  color: var(--text-dark);
+}
+
+.header__theme-button-moon {
+  display: unset !important;
+  color: var(--text-light);
+}
+
+/*아이콘 토글 설정*/
+.dark-mode .header__theme-button-sun {
+  display: unset !important; 
+}
+
+.dark-mode .header__theme-button-moon {
+  display: none !important;
+}
+
+/* Dark Mode 1*/
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+
+    --text-dark: #fff;
+    --text-light: black;
+
+    --item-bg-color: #333;
+    --item-text-color: #fff;
+    --border-color: #bbb;
+    --button-text: #e0e0e0;
+    --button-border: #e0e0e0;
+    --remove-btn-color: #e88a99;
+  }
+
+/* Dark Mode 2*/
+/* .dark-mode {
+  --bg-color: #121212; 
+  --text-color: #AAB8C2; 
+
+  --text-dark: #AAB8C2; 
+  --text-light: black; 
+
+  --item-bg-color: #1e3a5f; 
+  --item-text-color: #ffffff; 
+  --border-color: #888; 
+  --button-text: #AAB8C2; 
+  --button-border: #888; 
+  --remove-btn-color: #5fa8ff; 
+} */
+
+/* Dark Mode 3*/
+/* .dark-mode {
+  --bg-color: #2b1d33; 
+  --text-color: #f8c8dc; 
+
+  --text-dark: #fff;   
+  --text-light: black;  
+
+  --item-bg-color: #5a3e6f;     
+  --item-text-color: #ffffff;   
+  --border-color: #c08497;  
+  --button-text: #f8c8dc; 
+  --button-border: #c08497; 
+  --remove-btn-color: #ff5e78; 
+} */
+
+/* Dark Mode 4*/
+/* .dark-mode {
+  --bg-color: #2a2538;
+  --text-color: #d6d1e4;
+
+  --text-dark: #f2effa;
+  --text-light: #bcb5cf;
+
+  --item-bg-color: #3a324c;
+  --item-text-color: #d1cadf;
+  --border-color: #574b6a;
+  --button-text: #d6d1e4;
+  --button-border: #786c92;
+  --remove-btn-color: #e88a99;
+} */
+
+/* Dark Mode 5*/
+/* .dark-mode {
+  --bg-color: #332924;
+  --text-color: #e8d8c4;
+
+  --text-dark: #f0e6da;
+  --text-light: #3a2f2a;
+
+  --item-bg-color: #4a3b35;
+  --item-text-color: #e8d8c4;
+  --border-color: #8c7a6b;
+  --button-text: #e8d8c4;
+  --button-border: #8c7a6b;
+  --remove-btn-color: #b08968;
+} */
