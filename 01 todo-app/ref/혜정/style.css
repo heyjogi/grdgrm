@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gowun Dodum";
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  background: #fafad2;
+  color: #006400;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.app {
+  width: 100%;
+  max-width: 768px;
+}
+
+.app header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.app header h1 {
+  color: #006400;
+  font-size: 23px;
+  font-weight: 700;
+  border-bottom: 1px solid #006400;
+  align-items: center;
+}
+
+.app header button {
+  color: #fff;
+  font-size: 18px;
+  background-color: #006400;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 30%;
+  text-transform: uppercase;
+  transform: background-color 0.2s;
+}
+
+.app header button:hover {
+  background-color: #7eb77e;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.item input[type="checkbox"] {
+  margin-right: 1rem;
+}
+
+.item input[type="text"] {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  color: black;
+  font-size: 17px;
+  flex: 1 1 0%;
+  margin-right: 1rem;
+  padding-bottom: 3px;
+}
+
+.item input[type="text"]:not(:disabled) {
+  border-bottom: 1px solid #006400;
+}
+
+.item.complete {
+  opacity: 0.7;
+  background-color: #ecece6;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.item.complete input[type="text"] {
+  text-decoration: line-through;
+}
+
+.item:hover,
+.item:focus-within {
+  outline: 1px solid #006400;
+}
+
+.actions button {
+  color: #006400;
+  margin-right: 1rem;
+  opacity: 0.8;
+  transform: background-color 0.2s;
+}
+
+.actions button.remove-btn {
+  color: #006400;
+}
+
+.actions button:hover {
+  opacity: 1;
+  color: #7eb77e;
+}
+
+.actions button:last-of-type {
+  margin-right: 0;
+}
