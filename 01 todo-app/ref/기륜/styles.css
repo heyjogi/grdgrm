@@ -27,6 +27,7 @@ main {
   width: 100%;
   max-width: 768px;
 }
+
 .app header {
   display: flex;
   align-items: center;
@@ -77,6 +78,7 @@ main {
   flex: 1 1 0%;
   margin-right: 1rem;
 }
+
 .item input[type="text"]:not(:disabled) {
   border-bottom: 2px solid #fff;
 }
@@ -84,7 +86,6 @@ main {
 .item.complete {
   opacity: 0.7;
 }
-
 .item.complete input[type="text"] {
   text-decoration: line-through;
 }
@@ -111,4 +112,11 @@ main {
 
 .actions button:last-of-type {
   margin-right: 0;
+}
+/* 추가한 부분 */
+.completed {
+  text-decoration: line-through;
+  color: #888;
+  background-color: #f0f0f0;
+  transition: all 0.3s ease;
 }
