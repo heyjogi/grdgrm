@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo 앱</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -16,6 +16,25 @@
         <h1>Todo 앱</h1>
         <button id="create-btn">새로운 todo 추가하기</button>
       </header>
+
+      <!-- 필터링 옵션 -->
+      <div class="filters">
+        <select id="sort-options">
+          <option value="date">날짜순</option>
+          <option value="priority">중요도순</option>
+        </select>
+        <select id="category-filter">
+          <option value="all">전체</option>
+          <option value="work">업무</option>
+          <option value="personal">개인</option>
+        </select>
+        <select id="status-filter">
+          <option value="all">전체</option>
+          <option value="progress">진행 중</option>
+          <option value="completed">완료</option>
+        </select>
+      </div>
+
       <div class="todo-list" id="list"></div>
     </div>
     <script src="script.js"></script>
