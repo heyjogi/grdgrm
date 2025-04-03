@@ -12,9 +12,30 @@
       <button class="trash-icon-btn" id="openTrashBtn">🗑️</button>
     </h1>
 
+    <div class="theme-toggle">
+      <button id="themeToggleBtn">🌙 다크모드</button>
+    </div>
+
+    <div class="filter-section">
+      <input type="text" id="searchInput" placeholder="검색..." />
+
+      <select id="dateSort">
+        <option value="latest">최신순</option>
+        <option value="oldest">오래된순</option>
+      </select>
+
+      <select id="statusFilter">
+        <option value="all">전체</option>
+        <option value="completed">완료</option>
+        <option value="incomplete">미완료</option>
+      </select>
+    </div>
+
     <div class="todo-container" id="todoContainer"></div>
 
     <button class="add-btn" id="addTodoBtn">새로운 Todo 추가하기</button>
+    <canvas id="progressChart"></canvas>
+    <div id="progressText"></div>
 
     <div class="modal-overlay" id="trashModal">
       <div class="modal-content">
@@ -23,6 +44,8 @@
         <button id="closeTrashBtn" class="close-btn">닫기</button>
       </div>
     </div>
-    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

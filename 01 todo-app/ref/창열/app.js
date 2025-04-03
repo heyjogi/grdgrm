@@ -1,9 +1,15 @@
+import { renderChart } from "./chart.js";
+
 // 전역 상태
 let todos = [];
 let deletedTodos = [];
 
 let todoContainer;
 let addTodoBtn;
+
+let filterText = "";
+let filterStatus = "all";
+let sortOrder = "latest";
 
 // 앱 초기화
 function initTodoApp() {
@@ -199,13 +205,100 @@ function startEditMode(todoItemElement, todo) {
   inputElement.focus();
 }
 
+// 드래그 앤 드롭 핸들러
+function attachDragHandlers(todoElement, todo) {
+  todoElement.addEventListener("dragstart", (e) => {
+    e.dataTransfer.setData("text/plain", todo.id);
+    todoElement.classList.add("dragging");
+  });
+
+  todoElement.addEventListener("dragend", () => {
+    todoElement.classList.remove("dragging");
+  });
+
+  todoElement.addEventListener("dragover", (e) => {
+    e.preventDefault();
+
+    const dragging = document.querySelector(".dragging");
+    const bounding = todoElement.getBoundingClientRect();
+    const offset = e.clientY - (bounding.top + bounding.height / 2);
+    console.log(offset, bounding.top, bounding.height);
+
+    todoElement.style.borderTop = offset < 0 ? "2px solid #2196f3" : "";
+    todoElement.style.borderBottom = offset > 0 ? "2px solid #2196f3" : "";
+  });
+
+  todoElement.addEventListener("dragleave", () => {
+    todoElement.style.borderTop = "";
+    todoElement.style.borderBottom = "";
+  });
+
+  todoElement.addEventListener("drop", (e) => {
+    e.preventDefault();
+
+    const draggedId = e.dataTransfer.getData("text/plain");
+    const targetId = todo.id;
+    if (draggedId === targetId) return;
+
+    const draggedIndex = todos.findIndex((t) => t.id === draggedId);
+    const targetIndex = todos.findIndex((t) => t.id === targetId);
+    const draggedItem = todos.splice(draggedIndex, 1)[0];
+
+    const bounding = todoElement.getBoundingClientRect();
+    const offset = e.clientY - (bounding.top + bounding.height / 2);
+
+    // 삽입 위치 결정
+    if (offset > 0) {
+      todos.splice(targetIndex + 1, 0, draggedItem);
+    } else {
+      todos.splice(targetIndex, 0, draggedItem);
+    }
+
+    saveToLocalStorage();
+    renderTodos();
+  });
+}
+
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  filterText = e.target.value.toLowerCase();
+  renderTodos();
+});
+
+document.getElementById("statusFilter").addEventListener("change", (e) => {
+  filterStatus = e.target.value;
+  renderTodos();
+});
+
+document.getElementById("dateSort").addEventListener("change", (e) => {
+  sortOrder = e.target.value;
+  renderTodos();
+});
+
 // 모든 todo 렌더링
 function renderTodos() {
   todoContainer.innerHTML = "";
+  let filteredTodos = todos
+    .filter((todo) => {
+      const matchText = todo.text.toLowerCase().includes(filterText);
+      const matchStatus =
+        filterStatus === "all"
+          ? true
+          : filterStatus === "completed"
+          ? todo.completed
+          : !todo.completed;
 
-  for (const todo of todos) {
+      return matchText && matchStatus;
+    })
+    .sort((a, b) => {
+      const timeA = parseInt(a.id); // id가 timestamp
+      const timeB = parseInt(b.id);
+      return sortOrder === "latest" ? timeB - timeA : timeA - timeB;
+    });
+
+  for (const todo of filteredTodos) {
     const todoElement = document.createElement("div");
     todoElement.className = "todo-item";
+    todoElement.setAttribute("draggable", "true");
 
     if (todo.completed) {
       todoElement.classList.add("completed");
@@ -249,8 +342,11 @@ function renderTodos() {
     todoElement.appendChild(todoTextElement);
     todoElement.appendChild(actionsElement);
 
+    attachDragHandlers(todoElement, todo);
+
     todoContainer.appendChild(todoElement);
   }
+  renderChart(todos);
 }
 
 // 휴지통 렌더링
@@ -312,3 +408,25 @@ function setupTrashModal() {
 
 // 앱 초기화
 document.addEventListener("DOMContentLoaded", initTodoApp);
+const themeToggleBtn = document.getElementById("themeToggleBtn");
+
+function applyTheme(theme) {
+  document.body.classList.remove("light-mode", "dark-mode");
+  document.body.classList.add(theme);
+
+  themeToggleBtn.textContent =
+    theme === "dark-mode" ? "☀️ 라이트모드" : "🌙 다크모드";
+  localStorage.setItem("theme", theme);
+}
+
+themeToggleBtn.addEventListener("click", () => {
+  const currentTheme = document.body.classList.contains("dark-mode")
+    ? "dark-mode"
+    : "light-mode";
+  const newTheme = currentTheme === "dark-mode" ? "light-mode" : "dark-mode";
+  applyTheme(newTheme);
+});
+
+// 초기 테마 적용
+const savedTheme = localStorage.getItem("theme") || "light-mode";
+applyTheme(savedTheme);
