@@ -2,6 +2,7 @@ const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
 
 let todos = [];
+let deletedTodos = [];
 
 createBtn.addEventListener("click", createNewTodo);
 
@@ -82,6 +83,7 @@ function createTodoElement(item) {
   });
 
   removeBtnEl.addEventListener("click", () => {
+    deletedTodos.unshift(item);
     todos = todos.filter((t) => t.id !== item.id);
 
     itemEl.remove();
@@ -100,16 +102,85 @@ function createTodoElement(item) {
 
 function saveToLocalStorage() {
   const data = JSON.stringify(todos);
-
   localStorage.setItem("my-todos", data);
+  localStorage.setItem("deleted-todos", JSON.stringify(deletedTodos));
 }
 
 function loadFromLocalStorage() {
   const data = localStorage.getItem("my-todos");
+  const deleted = localStorage.getItem("deleted-todos");
 
   if (data) {
     todos = JSON.parse(data);
   }
+  if (deleted) {
+    deletedTodos = JSON.parse(deleted);
+  }
+}
+
+// 휴지통 렌더링
+function renderTrashBin() {
+  const trashContainer = document.getElementById("trashContainer");
+  trashContainer.innerHTML = "";
+
+  for (const item of deletedTodos) {
+    const itemEl = document.createElement("div");
+    itemEl.classList.add("item");
+
+    const textEl = document.createElement("span");
+    textEl.textContent = item.text;
+
+    const restoreBtn = document.createElement("button");
+    restoreBtn.classList.add("material-icons");
+    restoreBtn.innerText = "restore";
+    restoreBtn.addEventListener("click", () => {
+      todos.unshift(item);
+      deletedTodos = deletedTodos.filter((t) => t.id !== item.id);
+      saveToLocalStorage();
+      renderTrashBin();
+      displayTodos();
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("material-icons", "remove-btn");
+    deleteBtn.innerText = "delete_forever";
+    deleteBtn.addEventListener("click", () => {
+      deletedTodos = deletedTodos.filter((t) => t.id !== item.id);
+      saveToLocalStorage();
+      renderTrashBin();
+    });
+
+    const actions = document.createElement("div");
+    actions.classList.add("actions");
+    actions.appendChild(restoreBtn);
+    actions.appendChild(deleteBtn);
+
+    itemEl.appendChild(textEl);
+    itemEl.appendChild(actions);
+    trashContainer.appendChild(itemEl);
+  }
+}
+
+// 휴지통 모달 설정
+function setupTrashModal() {
+  const modal = document.getElementById("trashModal");
+  const openBtn = document.getElementById("trash-btn");
+  const closeBtn = document.getElementById("closeTrashBtn");
+
+  openBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    renderTrashBin();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 }
 
 function displayTodos() {
@@ -119,6 +190,7 @@ function displayTodos() {
     const { itemEl } = createTodoElement(item);
     list.append(itemEl);
   }
+  setupTrashModal();
 }
 
 displayTodos();
