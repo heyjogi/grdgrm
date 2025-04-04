@@ -332,3 +332,21 @@ main {
   --button-border: #8c7a6b;
   --remove-btn-color: #b08968;
 } */
+
+/* 필터링 섹션 스타일 추가 */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.filters select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
