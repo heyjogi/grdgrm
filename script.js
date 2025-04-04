@@ -1,6 +1,6 @@
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
-const toggleThemeBtn = document.querySelector('.header__theme-button');
+const toggleThemeBtn = document.querySelector(".header__theme-button");
 
 let todos = [];
 let deletedTodos = [];
@@ -288,7 +288,7 @@ function showNoteTextarea(item, btnEl, editable) {
   const noteEl = document.createElement("textarea");
   noteEl.classList.add("note-textarea");
   noteEl.placeholder = "메모 추가";
-  noteEl.value = item.note;
+  noteEl.value = item.note || "";
   noteEl.readOnly = !editable;
 
   document.body.appendChild(noteEl);
@@ -366,26 +366,26 @@ function displayTodos() {
   setupTrashModal();
 }
 
-window.onload = function() {
-  setInitialTheme(localStorage.getItem('theme'));
-}
+window.onload = function () {
+  setInitialTheme(localStorage.getItem("theme"));
+};
 function setInitialTheme(themeKey) {
-  if(themeKey === 'dark') {
-      document.documentElement.classList.add('dark-mode');
+  if (themeKey === "dark") {
+    document.documentElement.classList.add("dark-mode");
   } else {
-      document.documentElement.classList.remove('dark-mode');
+    document.documentElement.classList.remove("dark-mode");
   }
 }
-      
-toggleThemeBtn.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark-mode');
 
-  if(document.documentElement.classList.contains('dark-mode')) {
-      localStorage.setItem('theme', 'dark');
+toggleThemeBtn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("dark-mode");
+
+  if (document.documentElement.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
   } else {
-      localStorage.setItem('theme', 'light');
+    localStorage.setItem("theme", "light");
   }
   updateThemeIcon();
-})
+});
 
 displayTodos();
