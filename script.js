@@ -2,11 +2,18 @@ const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
 const toggleThemeBtn = document.querySelector(".header__theme-button");
 const todoPercent = document.querySelector(".todo-percent"); // 추가 변수 선언
+const sortOptions = document.getElementById("sort-options");
+const categoryFilter = document.getElementById("category-filter");
+const statusFilter = document.getElementById("status-filter");
 
 let todos = [];
 let deletedTodos = [];
 
+// 이벤트 리스너 추가 (버튼 클릭 또는 필터 변경 시 실행)
 createBtn.addEventListener("click", createNewTodo);
+sortOptions.addEventListener("change", displayTodos);
+categoryFilter.addEventListener("change", displayTodos);
+statusFilter.addEventListener("change", displayTodos);
 
 function createNewTodo() {
   // 새로운 아이템 객체 생성
@@ -15,7 +22,7 @@ function createNewTodo() {
     text: "",
     complete: false,
     createdAt: new Date().toISOString(),
-    priority: 1,
+    priority: 0,
     category: "personal",
     note: "",
   };
@@ -33,13 +40,12 @@ function createNewTodo() {
 
   inputEl.focus();
   saveToLocalStorage();
-  updateCompletionPercent(); // ✅ 추가: 새로운 할 일이 추가될 때 완료율 갱신
+  updateCompletionPercent(); //  추가: 새로운 할 일이 추가될 때 완료율 갱신
 }
 
 function createTodoElement(item) {
   const itemEl = document.createElement("div");
   itemEl.classList.add("item", "todo-item"); // todo-item 클래스 추가
-  itemEl.classList.add("item");
   //id 추가
   itemEl.dataset.id = item.id;
 
@@ -78,42 +84,52 @@ function createTodoElement(item) {
   removeBtnEl.classList.add("material-icons", "remove-btn");
   removeBtnEl.innerText = "remove_circles";
 
-  //  날짜 입력 필드 추가
+  // 날짜 입력 필드
   const dateInputEl = document.createElement("input");
   dateInputEl.type = "date";
-  dateInputEl.value =
-    item.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0];
+  dateInputEl.value = item.createdAt
+    ? item.createdAt.split("T")[0]
+    : new Date().toISOString().split("T")[0]; // 날짜 부분만 사용
   dateInputEl.addEventListener("change", () => {
-    item.createdAt = dateInputEl.value + "T00:00:00.000Z";
+    item.createdAt = dateInputEl.value + "T00:00:00.000Z"; // 시간 초기화
     saveToLocalStorage();
+    displayTodos();
+
+    const existingItemEl = document.querySelector(`[data-id="${item.id}"]`);
+    if (existingItemEl) {
+      const newItemEl = createTodoElement(item).itemEl;
+      existingItemEl.replaceWith(newItemEl);
+    }
   });
 
-  //  중요도 선택 필드 추가
+  // 중요도 선택 (낮음, 중간, 높음)
   const priorityEl = document.createElement("select");
   ["낮음", "중간", "높음"].forEach((level, index) => {
     const option = document.createElement("option");
     option.value = index;
     option.innerText = level;
-    if (item.priority == index) option.selected = true;
-    priorityEl.appendChild(option);
+    if (index == item.priority) option.selected = true;
+    priorityEl.append(option);
   });
   priorityEl.addEventListener("change", () => {
     item.priority = parseInt(priorityEl.value);
     saveToLocalStorage();
+    displayTodos();
   });
 
-  //  카테고리 선택 필드 추가
+  // 카테고리 선택 (업무, 개인)
   const categoryEl = document.createElement("select");
-  ["personal", "work"].forEach((cat) => {
+  ["work", "personal"].forEach((cat) => {
     const option = document.createElement("option");
     option.value = cat;
-    option.innerText = cat === "personal" ? "개인" : "업무";
-    if (item.category === cat) option.selected = true;
-    categoryEl.appendChild(option);
+    option.innerText = cat === "work" ? "업무" : "개인";
+    if (cat === item.category) option.selected = true;
+    categoryEl.append(option);
   });
   categoryEl.addEventListener("change", () => {
     item.category = categoryEl.value;
     saveToLocalStorage();
+    displayTodos();
   });
 
   // 드래그 앤 드롭
@@ -160,18 +176,12 @@ function createTodoElement(item) {
 
     if (item.complete) {
       itemEl.classList.add("complete", "completed");
-
-      if (item.complete) {
-        itemEl.classList.add("complete", "completed");
-        list.appendChild(itemEl); // 완료된 항목을 맨 아래로 이동
-
-        itemEl.classList.add("complete");
-      } else {
-        itemEl.classList.remove("complete");
-      }
-      updateCompletionPercent(); // 완료율 업데이트
-      saveToLocalStorage();
+      list.appendChild(itemEl); // 완료된 항목을 맨 아래로 이동
+    } else {
+      itemEl.classList.remove("complete");
     }
+    updateCompletionPercent(); // 완료율 업데이트
+    saveToLocalStorage();
   });
 
   inputEl.addEventListener("blur", () => {
@@ -181,11 +191,7 @@ function createTodoElement(item) {
       item.text = inputEl.value;
     } else {
       item.text = inputEl.value;
-      todos = todos.filter((t) => t.id !== item.id);
-      itemEl.remove();
-      return;
     }
-
     inputEl.setAttribute("disabled", "");
     saveToLocalStorage();
   });
@@ -256,6 +262,7 @@ function saveToLocalStorage() {
   localStorage.setItem("deleted-todos", JSON.stringify(deletedTodos));
 }
 
+// 로컬 스토리지에서 데이터를 불러오는 함수
 function loadFromLocalStorage() {
   const data = localStorage.getItem("my-todos");
   const deleted = localStorage.getItem("deleted-todos");
@@ -266,6 +273,12 @@ function loadFromLocalStorage() {
   if (deleted) {
     deletedTodos = JSON.parse(deleted);
   }
+
+  todos.forEach((todo) => {
+    if (!todo.createdAt) {
+      todo.createdAt = new Date().toISOString();
+    }
+  });
 }
 
 // 휴지통 렌더링
@@ -413,13 +426,36 @@ function shareTodos() {
 }
 
 function displayTodos() {
-  loadFromLocalStorage();
   list.innerHTML = "";
-  for (let i = 0; i < todos.length; i++) {
-    const item = todos[i];
+  loadFromLocalStorage();
+  let filteredTodos = [...todos];
+  // 상태 필터링 (진행 중, 완료)
+  if (statusFilter.value === "completed") {
+    filteredTodos = filteredTodos.filter((todo) => todo.complete);
+  } else if (statusFilter.value === "progress") {
+    filteredTodos = filteredTodos.filter((todo) => !todo.complete);
+  }
+
+  // 카테고리 필터링 (전체, 업무, 개인)
+  if (categoryFilter.value !== "all") {
+    filteredTodos = filteredTodos.filter(
+      (todo) => todo.category === categoryFilter.value
+    );
+  }
+
+  // 정렬 (날짜순, 중요도순)
+  if (sortOptions.value === "date") {
+    filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else if (sortOptions.value === "priority") {
+    filteredTodos.sort((a, b) => b.priority - a.priority);
+  }
+
+  // 필터링된 할 일 목록 추가
+  filteredTodos.forEach((item) => {
     const { itemEl } = createTodoElement(item);
     list.append(itemEl);
-  }
+  });
+
   updateCompletionPercent(); // 추가
   setupTrashModal();
 }
