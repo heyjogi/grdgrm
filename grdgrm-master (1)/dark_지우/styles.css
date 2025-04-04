@@ -142,7 +142,7 @@ main {
 }
 
 :root {
-  --bg-color: lightcoral;
+  --bg-color: var(--bg-color);
   --text-color: #fff;
 
   --text-dark: black;

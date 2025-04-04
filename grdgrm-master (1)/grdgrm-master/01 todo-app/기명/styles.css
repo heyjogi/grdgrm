@@ -12,7 +12,7 @@ button {
 }
 
 body {
-  background-color: lightcoral;
+  background-color: var(--bg-color);
   color: #fff;
 }
 

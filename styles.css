@@ -20,8 +20,8 @@ button {
 }
 
 body {
-  background-color: lightcoral;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 main {
@@ -44,16 +44,38 @@ main {
 }
 
 .app header h1 {
-  color: #fff;
+  color: var(--text-color);
   font-size: 24px;
   font-weight: 400;
 }
 
 .app header button {
-  color: #fff;
+  color: var(--button-text);
   font-size: 18px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--button-border);
   text-transform: uppercase;
+}
+
+.header__theme-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 1.3rem;
+  height: 1.3rem;
+  position: relative;
+  margin-left: auto;
+  margin-top: 0.4rem;
+}
+
+.header__theme-button-sun {
+  display: none !important;
+  color: var(--text-dark);
+}
+
+.header__theme-button-moon {
+  display: unset !important;
+  color: var(--text-light);
 }
 
 .item {
@@ -62,7 +84,7 @@ main {
   justify-content: space-between;
   padding: 1.5rem;
   border-radius: 1rem;
-  background-color: lightblue;
+  background-color: var(--item-bg-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
 }
@@ -81,14 +103,14 @@ main {
   border: none;
   outline: none;
   font-weight: 400;
-  color: black;
+  color: var(--item-text-color);
   font-size: 20px;
   flex: 1 1 0%;
   margin-right: 1rem;
 }
 
 .item input[type='text']:not(:disabled) {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .item.complete {
@@ -100,18 +122,18 @@ main {
 
 .item:hover,
 .item:focus-within {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--border-color);
 }
 
 .actions button {
-  color: crimson;
+  color: var(--remove-btn-color);
   margin-right: 1rem;
   opacity: 0.8;
   transform: 0.1s;
 }
 
 .actions button.remove-btn {
-  color: crimson;
+  color: var(--remove-btn-color);
 }
 
 .actions button:hover {
@@ -136,18 +158,18 @@ main {
 }
 
 .modal-content {
-  background: white;
+  background: var(--item-bg-color);
   padding: 2rem;
   border-radius: 1rem;
   width: 90%;
   max-width: 500px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  color: black;
+  color: var(--item-text-color);
 }
 
 .modal-close-btn {
-  background-color: crimson;
-  color: white;
+  background-color: var(--remove-btn-color);
+  color: var(--text-light);
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -156,7 +178,7 @@ main {
 
 /* 추가 메모 섹션*/
 .actions button.note-btn {
-  color: crimson;
+  color: var(--remove-btn-color);
 }
 
 .note-textarea {
@@ -164,7 +186,7 @@ main {
   z-index: 1000;
   width: 200px;
   height: 50px;
-  background-color: white;
+  background-color: var(--text-light);
   color: gray;
   padding: 5px;
   border: none;
@@ -180,7 +202,7 @@ main {
   bottom: 20px;
   right: 20px;
   padding: 10px;
-  color: white;
+  color: var(--text-color);
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -192,7 +214,7 @@ main {
 }
 
 .item button {
-  color: crimson;
+  color: var(--remove-btn-color);
   margin-right: 1rem;
   opacity: 0.8;
   transform: 0.1s;
@@ -201,9 +223,112 @@ main {
 }
 
 .item button.share-btn {
-  color: crimson;
+  color: var(--remove-btn-color);
 }
 
 .item button:hover {
   opacity: 1;
 }
+
+:root {
+  --bg-color: lightcoral;
+  --text-color: #fff;
+
+  --text-dark: black;
+  --text-light: #fff;
+  
+  --item-bg-color: lightblue;
+  --item-text-color: black;
+  --border-color: #fff;
+  --button-text: #fff;
+  --button-border: #fff;
+  --remove-btn-color: crimson;
+}
+
+.dark-mode .header__theme-button-sun {
+  display: unset !important; 
+}
+
+.dark-mode .header__theme-button-moon {
+  display: none !important;
+}
+
+/* Dark Mode 1*/
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+
+    --text-dark: #fff;
+    --text-light: black;
+
+    --item-bg-color: #333;
+    --item-text-color: #fff;
+    --border-color: #bbb;
+    --button-text: #e0e0e0;
+    --button-border: #e0e0e0;
+    --remove-btn-color: #e88a99;
+  }
+
+/* Dark Mode 2*/
+/* .dark-mode {
+  --bg-color: #121212; 
+  --text-color: #AAB8C2; 
+
+  --text-dark: #AAB8C2; 
+  --text-light: black; 
+
+  --item-bg-color: #1e3a5f; 
+  --item-text-color: #ffffff; 
+  --border-color: #888; 
+  --button-text: #AAB8C2; 
+  --button-border: #888; 
+  --remove-btn-color: #5fa8ff; 
+} */
+
+/* Dark Mode 3*/
+/* .dark-mode {
+  --bg-color: #2b1d33; 
+  --text-color: #f8c8dc; 
+
+  --text-dark: #fff;   
+  --text-light: black;  
+
+  --item-bg-color: #5a3e6f;     
+  --item-text-color: #ffffff;   
+  --border-color: #c08497;  
+  --button-text: #f8c8dc; 
+  --button-border: #c08497; 
+  --remove-btn-color: #ff5e78; 
+} */
+
+/* Dark Mode 4*/
+/* .dark-mode {
+  --bg-color: #2a2538;
+  --text-color: #d6d1e4;
+
+  --text-dark: #f2effa;
+  --text-light: #bcb5cf;
+
+  --item-bg-color: #3a324c;
+  --item-text-color: #d1cadf;
+  --border-color: #574b6a;
+  --button-text: #d6d1e4;
+  --button-border: #786c92;
+  --remove-btn-color: #e88a99;
+} */
+
+/* Dark Mode 5*/
+/* .dark-mode {
+  --bg-color: #332924;
+  --text-color: #e8d8c4;
+
+  --text-dark: #f0e6da;
+  --text-light: #3a2f2a;
+
+  --item-bg-color: #4a3b35;
+  --item-text-color: #e8d8c4;
+  --border-color: #8c7a6b;
+  --button-text: #e8d8c4;
+  --button-border: #8c7a6b;
+  --remove-btn-color: #b08968;
+} */
