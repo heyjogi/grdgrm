@@ -345,7 +345,6 @@ function showNoteTextarea(item, btnEl, editable) {
   noteEl.classList.add("note-textarea");
   noteEl.placeholder = "메모 추가";
   noteEl.value = item.note || "";
-  noteEl.value = item.note;
   noteEl.readOnly = !editable;
 
   document.body.appendChild(noteEl);
