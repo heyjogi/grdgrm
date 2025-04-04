@@ -4,6 +4,7 @@ const toggleThemeBtn = document.querySelector(".header__theme-button");
 const todoPercent = document.querySelector(".todo-percent"); // 추가 변수 선언
 
 
+
 let todos = [];
 let deletedTodos = [];
 
@@ -40,6 +41,7 @@ function createNewTodo() {
 function createTodoElement(item) {
   const itemEl = document.createElement("div");
   itemEl.classList.add("item", "todo-item"); // todo-item 클래스 추가
+  itemEl.classList.add("item");
   //id 추가
   itemEl.dataset.id = item.id;
 
@@ -116,6 +118,7 @@ function createTodoElement(item) {
     saveToLocalStorage();
   });
 
+
   // 드래그 앤 드롭
   dragBtnEl.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/plain", item.id);
@@ -125,6 +128,16 @@ function createTodoElement(item) {
 
   dragBtnEl.addEventListener("dragover", (e) => {
     e.preventDefault();
+    const draggingEl = document.querySelector(".dragging");
+    if (!draggingEl || draggingEl === itemEl) return;
+
+    const bounding = itemEl.getBoundingClientRect();
+    const offset = e.clientY - bounding.top - bounding.height / 2;
+    if (offset > 0) {
+      list.insertBefore(draggingEl, itemEl.nextSibling);
+    } else {
+      list.insertBefore(draggingEl, itemEl);
+    }
   });
 
   itemEl.addEventListener("drop", (e) => {
@@ -138,6 +151,7 @@ function createTodoElement(item) {
       targetIndex !== -1 &&
       draggedIndex !== targetIndex
     ) {
+    if (draggedIndex !== -1 && targetIndex !== -1) {
       const [draggedItem] = todos.splice(draggedIndex, 1);
       todos.splice(targetIndex, 0, draggedItem);
 
@@ -146,6 +160,7 @@ function createTodoElement(item) {
     }
 
     itemEl.classList.remove("dragging");
+  }
   });
 
   dragBtnEl.addEventListener("dragend", () => {
@@ -153,6 +168,8 @@ function createTodoElement(item) {
     itemEl.style.opacity = "1";
 
     saveToLocalStorage();
+    list.innerHTML = "";
+    displayTodos();
   });
 
   checkboxEl.addEventListener("change", () => {
@@ -160,12 +177,17 @@ function createTodoElement(item) {
 
     if (item.complete) {
       itemEl.classList.add("complete", "completed");
+
+    if (item.complete) {      itemEl.classList.add("complete", "completed");
       list.appendChild(itemEl); // 완료된 항목을 맨 아래로 이동
+
+      itemEl.classList.add("complete");
     } else {
       itemEl.classList.remove("complete");
     }
     updateCompletionPercent(); // 완료율 업데이트
     saveToLocalStorage();
+  }
   });
 
   inputEl.addEventListener("blur", () => {
@@ -175,7 +197,11 @@ function createTodoElement(item) {
       item.text = inputEl.value;
     } else {
       item.text = inputEl.value;
+      todos = todos.filter((t) => t.id !== item.id);
+      itemEl.remove();
+      return;
     }
+
     inputEl.setAttribute("disabled", "");
     saveToLocalStorage();
   });
