@@ -15,25 +15,25 @@
       <div class="app">
         <header>
           <h1>Todo 앱</h1>
-          <!-- 필터링 옵션 -->
           <!-- 완료율 표시 -->
-        <div class="todo-percent">완료율: 0%</div>
-      <div class="filter-container">
-        <select id="sort-options">
-          <option value="date">날짜순</option>
-          <option value="priority">중요도순</option>
-        </select>
-        <select id="category-filter">
-          <option value="all">전체</option>
-          <option value="work">업무</option>
-          <option value="personal">개인</option>
-        </select>
-        <select id="status-filter">
-          <option value="all">전체</option>
-          <option value="progress">진행 중</option>
-          <option value="completed">완료</option>
-        </select>
-      </div>
+          <div class="todo-percent">완료율: 0%</div>
+          <!-- 필터링 옵션 -->
+          <div class="filter-container">
+            <select id="sort-options">
+              <option value="date">날짜순</option>
+              <option value="priority">중요도순</option>
+            </select>
+            <select id="category-filter">
+              <option value="all">전체</option>
+              <option value="work">업무</option>
+              <option value="personal">개인</option>
+            </select>
+            <select id="status-filter">
+              <option value="all">전체</option>
+              <option value="progress">진행 중</option>
+              <option value="completed">완료</option>
+            </select>
+          </div>
           <div class="header-buttons">
             <button class="header__theme-button" title="Toggle Theme">
               <svg
@@ -75,8 +75,7 @@
         </header>
         <div class="todo-list" id="list"></div>
       </div>
-      
-
+    </main>
     <!-- 휴지통 모달 -->
     <div class="modal-overlay" id="trashModal">
       <div class="modal-content">
