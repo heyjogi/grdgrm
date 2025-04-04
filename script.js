@@ -13,6 +13,10 @@ function createNewTodo() {
     id: new Date().getTime(),
     text: "",
     complete: false,
+    createdAt: new Date().toISOString(),
+    priority: 1,
+    category: "personal",
+    note: "",
   };
 
   // 배열 처음에 새로운 아이템을 추가
@@ -70,6 +74,44 @@ function createTodoElement(item) {
   const removeBtnEl = document.createElement("button");
   removeBtnEl.classList.add("material-icons", "remove-btn");
   removeBtnEl.innerText = "remove_circles";
+
+  //  날짜 입력 필드 추가
+  const dateInputEl = document.createElement("input");
+  dateInputEl.type = "date";
+  dateInputEl.value =
+    item.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0];
+  dateInputEl.addEventListener("change", () => {
+    item.createdAt = dateInputEl.value + "T00:00:00.000Z";
+    saveToLocalStorage();
+  });
+
+  //  중요도 선택 필드 추가
+  const priorityEl = document.createElement("select");
+  ["낮음", "중간", "높음"].forEach((level, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.innerText = level;
+    if (item.priority == index) option.selected = true;
+    priorityEl.appendChild(option);
+  });
+  priorityEl.addEventListener("change", () => {
+    item.priority = parseInt(priorityEl.value);
+    saveToLocalStorage();
+  });
+
+  //  카테고리 선택 필드 추가
+  const categoryEl = document.createElement("select");
+  ["personal", "work"].forEach((cat) => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.innerText = cat === "personal" ? "개인" : "업무";
+    if (item.category === cat) option.selected = true;
+    categoryEl.appendChild(option);
+  });
+  categoryEl.addEventListener("change", () => {
+    item.category = categoryEl.value;
+    saveToLocalStorage();
+  });
 
   // 드래그 앤 드롭
   dragBtnEl.addEventListener("dragstart", (e) => {
@@ -129,11 +171,11 @@ function createTodoElement(item) {
   inputEl.addEventListener("blur", () => {
     const value = inputEl.value.trim();
     if (value === "") {
-      todos = todos.filter((t) => t.id !== item.id);
-      itemEl.remove();
-      return;
+      inputEl.value = "할 일을 입력하세요";
+      item.text = inputEl.value;
+    } else {
+      item.text = inputEl.value;
     }
-
     inputEl.setAttribute("disabled", "");
     saveToLocalStorage();
   });
@@ -189,6 +231,9 @@ function createTodoElement(item) {
   itemEl.append(dragBtnEl);
   itemEl.append(checkboxEl);
   itemEl.append(inputEl);
+  itemEl.append(dateInputEl);
+  itemEl.append(priorityEl);
+  itemEl.append(categoryEl);
   itemEl.append(actionsEl);
 
   return { itemEl, inputEl, editBtnEl, noteBtnEl, removeBtnEl };
