@@ -3,6 +3,7 @@ const createBtn = document.getElementById("create-btn");
 const toggleThemeBtn = document.querySelector(".header__theme-button");
 const todoPercent = document.querySelector(".todo-percent"); // 추가 변수 선언
 
+
 let todos = [];
 let deletedTodos = [];
 
@@ -334,6 +335,7 @@ function showNoteTextarea(item, btnEl, editable) {
   noteEl.classList.add("note-textarea");
   noteEl.placeholder = "메모 추가";
   noteEl.value = item.note || "";
+  noteEl.value = item.note;
   noteEl.readOnly = !editable;
 
   document.body.appendChild(noteEl);
