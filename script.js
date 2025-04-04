@@ -91,9 +91,9 @@ function createTodoElement(item) {
     }
   });
 
-  dragBtnEl.addEventListener('drop', (e) => {
+  itemEl.addEventListener('drop', (e) => {
     e.preventDefault();
-    const draggedId = e.dataTransfer.getDate('text/plain');
+    const draggedId = e.dataTransfer.getData('text/plain');
     const draggedIndex = todos.findIndex((t) => t.id == draggedId);
     const targetIndex = todos.findIndex((t) => t.id == item.id);
 
@@ -109,6 +109,9 @@ function createTodoElement(item) {
   dragBtnEl.addEventListener('dragend', () => {
     itemEl.classList.remove('dragging');
     itemEl.style.opacity = '1';
+
+    list.innerHTML = '';
+    displayTodos();
   });
 
   checkboxEl.addEventListener('change', () => {
