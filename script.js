@@ -512,7 +512,6 @@ toggleThemeBtn.addEventListener("click", () => {
   } else {
     localStorage.setItem("theme", "light");
   }
-  updateThemeIcon();
 });
 
 // 완료율 계산 및 표시 함수
