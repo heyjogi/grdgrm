@@ -8,6 +8,8 @@ const statusFilter = document.getElementById("status-filter");
 
 let todos = [];
 let deletedTodos = [];
+let lastFilteredTodos = [];
+let filteredTodos = [];
 
 // 이벤트 리스너 추가 (버튼 클릭 또는 필터 변경 시 실행)
 createBtn.addEventListener("click", createNewTodo);
@@ -146,18 +148,22 @@ function createTodoElement(item) {
   itemEl.addEventListener("drop", (e) => {
     e.preventDefault();
     const draggedId = e.dataTransfer.getData("text/plain");
-    const draggedIndex = todos.findIndex((t) => t.id == draggedId);
-    const targetIndex = todos.findIndex((t) => t.id == item.id);
+    const draggedIndex = filteredTodos.findIndex((t) => t.id == draggedId);
+    const targetIndex = filteredTodos.findIndex((t) => t.id == item.id);
 
     if (
       draggedIndex !== -1 &&
       targetIndex !== -1 &&
       draggedIndex !== targetIndex
     ) {
-      const [draggedItem] = todos.splice(draggedIndex, 1);
-      todos.splice(targetIndex, 0, draggedItem);
+      const [draggedItem] = filteredTodos.splice(draggedIndex, 1);
+      filteredTodos.splice(targetIndex, 0, draggedItem);
 
-      sortOptions.value = "custom"; // 사용자 정렬로 설정
+      todos = filteredTodos.concat(
+        todos.filter((t) => !filteredTodos.some((ft) => ft.id === t.id))
+      );
+
+      sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
 
       saveToLocalStorage();
       displayTodos();
@@ -453,7 +459,7 @@ function shareTodos() {
 function displayTodos() {
   list.innerHTML = "";
   loadFromLocalStorage();
-  let filteredTodos = [...todos];
+  filteredTodos = [...todos];
   // 상태 필터링 (진행 중, 완료)
   if (statusFilter.value === "completed") {
     filteredTodos = filteredTodos.filter((todo) => todo.complete);
@@ -473,10 +479,10 @@ function displayTodos() {
     filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } else if (sortOptions.value === "priority") {
     filteredTodos.sort((a, b) => b.priority - a.priority);
+  } else if (sortOptions.value === "custom") {
   }
-
-  //  완료된 항목을 항상 아래로
-  if (statusFilter.value === "all") {
+  //  완료된 항목을 항상 아래로 + 사용자 정렬 추가
+  if (sortOptions.value !== "custom" && statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
       if (a.complete === b.complete) return 0;
       return a.complete ? 1 : -1;
