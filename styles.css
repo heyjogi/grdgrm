@@ -1,0 +1,143 @@
+body {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.profile-container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profilePic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+  transition: opacity 0.3s ease;
+  display: block;
+  background-color: #ddd;
+}
+
+#profilePic[src=""], #profilePic:not([src]) {
+  content: url('default-profile.jpg');
+  background-image: url('default-profile.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#usernameInput {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  width: 200px;
+}
+
+#profileLabel {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.hover-text {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#profileLabel:hover .hover-text {
+  opacity: 1;
+}
+
+#profileLabel:hover #profilePic {
+  opacity: 0.7;
+}
+
+#uploadProfilePic {
+  display: none;
+}
+
+#profileLabel:hover #uploadProfilePic {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+}
+
+.posts-container, .todo-container {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#newPostText, #todoInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#postButton, #addTodoButton {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post, .todo-item {
+  padding: 12px;
+  font-size: 16px;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.deleteTodo, .deletePost {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: auto;
+}
