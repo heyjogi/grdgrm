@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTodos();
 });
 
-/* Profile Picture Upload */
+/* 프로필 사진 올리기 */
 function setupProfileUpload() {
   const profilePic = document.getElementById("profilePic");
   const uploadProfilePic = document.getElementById("uploadProfilePic");
@@ -24,35 +24,19 @@ function setupProfileUpload() {
   });
 }
 
-/* Fixing Todo & Posts Functionality */
-function setupTodos() {
-  const addTodoButton = document.getElementById("addTodoButton");
-  const todoInput = document.getElementById("todoInput");
-  const todoList = document.getElementById("todoList");
+/* 이름 변경하기 */
+function setupUsername() {
+  const usernameInput = document.getElementById("usernameInput");
 
-  addTodoButton.addEventListener("click", () => {
-    const todoContent = todoInput.value.trim();
-    if (todoContent) {
-      const listItem = document.createElement("li");
-      listItem.textContent = todoContent;
-      todoList.appendChild(listItem);
-      todoInput.value = "";
-    }
+  usernameInput.addEventListener("input", function () {
+    localStorage.setItem("username", this.value);
   });
+
+  window.onload = function () {
+    usernameInput.value = localStorage.getItem("username") || "사용자 이름";
+  };
 }
 
-function setupPosts() {
-  const postButton = document.getElementById("postButton");
-  const newPostText = document.getElementById("newPostText");
-  const postsList = document.getElementById("postsList");
-
-  postButton.addEventListener("click", () => {
-    const postContent = newPostText.value.trim();
-    if (postContent) {
-      const postItem = document.createElement("div");
-      postItem.textContent = postContent;
-      postsList.appendChild(postItem);
-      newPostText.value = "";
-    }
-  });
-}
+/* 게시물/리스트 포스트 */
+setupPosts();
+setupTodos();

@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 body {
   max-width: 600px;
   margin: auto;
@@ -7,6 +8,7 @@ body {
   color: #333;
 }
 
+/* 프로필 위치 */
 .profile-container {
   text-align: center;
   padding: 20px;
@@ -17,6 +19,7 @@ body {
   align-items: center;
 }
 
+/* 프로필 사진 */
 #profilePic {
   width: 140px;
   height: 140px;
@@ -28,6 +31,7 @@ body {
   background-color: #ddd;
 }
 
+/* 디폴드 사진 */
 #profilePic[src=""], #profilePic:not([src]) {
   content: url('default-profile.jpg');
   background-image: url('default-profile.jpg');
@@ -35,6 +39,7 @@ body {
   background-position: center;
 }
 
+/* 사용자 이름 입력 */
 #usernameInput {
   margin-top: 10px;
   font-size: 18px;
@@ -46,12 +51,14 @@ body {
   width: 200px;
 }
 
+/* Hover 효과 */
 #profileLabel {
   display: inline-block;
   position: relative;
   cursor: pointer;
 }
 
+/* Edit 글씨 사진쪽에 Hover 하면 나오기 */
 .hover-text {
   position: absolute;
   top: 75%;
@@ -66,18 +73,22 @@ body {
   transition: opacity 0.3s ease;
 }
 
+/* Hover Effect */
 #profileLabel:hover .hover-text {
   opacity: 1;
 }
 
+/* hover 할때 살짝 나오는 효과 */
 #profileLabel:hover #profilePic {
   opacity: 0.7;
 }
 
+/* 사진 파일 이름 숨기기 */
 #uploadProfilePic {
   display: none;
 }
 
+/* Edit 글씨 사진쪽 hover할때 살짝 나오는 효과 */
 #profileLabel:hover #uploadProfilePic {
   display: block;
   position: absolute;
@@ -90,6 +101,7 @@ body {
   cursor: pointer;
 }
 
+/* 레이아웃 게시물/할일 */
 .posts-container, .todo-container {
   width: 100%;
   margin-top: 20px;
@@ -99,6 +111,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* 글씨 하고 인풋 일치하게 */
 #newPostText, #todoInput {
   width: 100%;
   padding: 10px;
@@ -107,6 +120,7 @@ body {
   border-radius: 5px;
 }
 
+/* 버튼 위치 */
 #postButton, #addTodoButton {
   display: block;
   margin-top: 10px;
@@ -119,6 +133,7 @@ body {
   cursor: pointer;
 }
 
+/* 리스트 */
 .post, .todo-item {
   padding: 12px;
   font-size: 16px;
@@ -131,6 +146,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* 삭제 버튼 공간 spacing */
 .deleteTodo, .deletePost {
   background: #f44336;
   color: white;
