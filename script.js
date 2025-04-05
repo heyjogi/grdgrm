@@ -324,7 +324,6 @@ function renderTrashBin() {
   }
 }
 
-/* Profile Upload */
 function setupProfileUpload() {
   const profilePic = document.getElementById("profilePic");
   const uploadProfilePic = document.getElementById("uploadProfilePic");
@@ -347,6 +346,7 @@ function setupProfileUpload() {
     }
   });
 }
+
 
 // 휴지통 모달 설정
 function setupTrashModal() {
@@ -483,7 +483,7 @@ function displayTodos() {
   updateCompletionPercent(); // 추가
   setupTrashModal();
   setupProfileUpload();
-  setupPosts();
+
 }
 
 window.onload = function () {
