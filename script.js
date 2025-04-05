@@ -324,6 +324,36 @@ function renderTrashBin() {
   }
 }
 
+/* Profile Upload */
+function setupProfileUpload() {
+  const profilePic = document.getElementById("profilePic");
+  const uploadProfilePic = document.getElementById("uploadProfilePic");
+
+  uploadProfilePic.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profilePic.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+/* Username Setup */
+function setupUsername() {
+  const usernameInput = document.getElementById("usernameInput");
+
+  usernameInput.addEventListener("input", function () {
+    localStorage.setItem("username", this.value);
+  });
+
+  window.onload = function () {
+    usernameInput.value = localStorage.getItem("username") || "사용자 이름";
+  };
+}
+
 // 휴지통 모달 설정
 function setupTrashModal() {
   const modal = document.getElementById("trashModal");
@@ -458,6 +488,9 @@ function displayTodos() {
 
   updateCompletionPercent(); // 추가
   setupTrashModal();
+  setupProfileUpload();
+  setupUsername();
+  setupPosts();
 }
 
 window.onload = function () {
