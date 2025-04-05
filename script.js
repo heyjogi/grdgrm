@@ -324,10 +324,15 @@ function renderTrashBin() {
   }
 }
 
-/* Profile Upload */
 function setupProfileUpload() {
   const profilePic = document.getElementById("profilePic");
   const uploadProfilePic = document.getElementById("uploadProfilePic");
+
+  // Load saved profile picture from localStorage when page loads
+  const savedProfilePic = localStorage.getItem("profilePic");
+  if (savedProfilePic) {
+    profilePic.src = savedProfilePic;
+  }
 
   uploadProfilePic.addEventListener("change", function () {
     const file = this.files[0];
@@ -335,11 +340,13 @@ function setupProfileUpload() {
       const reader = new FileReader();
       reader.onload = function (e) {
         profilePic.src = e.target.result;
+        localStorage.setItem("profilePic", e.target.result); // Save to localStorage
       };
       reader.readAsDataURL(file);
     }
   });
 }
+
 
 // 휴지통 모달 설정
 function setupTrashModal() {
@@ -476,7 +483,6 @@ function displayTodos() {
   updateCompletionPercent(); // 추가
   setupTrashModal();
   setupProfileUpload();
-  setupPosts();
 }
 
 window.onload = function () {
