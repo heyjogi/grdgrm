@@ -12,11 +12,13 @@ button {
 }
 
 #trash-btn {
+  display: flex;
   color: #fff;
   font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
+  transform: translateY(2px);
 }
 
 body {
@@ -56,8 +58,14 @@ main {
   text-transform: uppercase;
 }
 
-.header__theme-button {
+.header-buttons {
   display: flex;
+  align-items: center;
+  gap: 0.5rem
+}
+
+.header__theme-button {
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -65,7 +73,9 @@ main {
   height: 1.3rem;
   position: relative;
   margin-left: auto;
-  margin-top: 0.4rem;
+  border: none !important;
+  display: block;
+  
 }
 
 .header__theme-button-sun {
