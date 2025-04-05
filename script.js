@@ -474,6 +474,14 @@ function displayTodos() {
     filteredTodos.sort((a, b) => b.priority - a.priority);
   }
 
+  //  완료된 항목을 항상 아래로
+  if (statusFilter.value === "all") {
+    filteredTodos.sort((a, b) => {
+      if (a.complete === b.complete) return 0;
+      return a.complete ? 1 : -1;
+    });
+  }
+
   // 필터링된 할 일 목록 추가
   filteredTodos.forEach((item) => {
     const { itemEl } = createTodoElement(item);
