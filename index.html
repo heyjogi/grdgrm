@@ -11,7 +11,35 @@
     />
   </head>
   <body>
+
     <main>
+
+      <!-- 프로필 공간 -->
+      <div class="profile-container">
+        <label for="uploadProfilePic" id="profileLabel">
+          <img id="profilePic" src="default-profile.jpg">
+          <span class="hover-text">Edit</span>
+        </label>
+        <input type="file" id="uploadProfilePic" accept="image/*">
+        <input type="text" id="usernameInput" placeholder="사용자 이름">
+      </div>
+        <!-- 투두 공간 -->
+  <div class="todo-container">
+    <h2>작성했던 할일 목록</h2>
+    <input type="text" id="todoInput" placeholder="할 일을 입력하세요...">
+    <button id="addTodoButton">추가하기</button>
+    <ul id="todoList"></ul>
+  </div>
+
+  <!-- 게시물 공간 -->
+  <div class="posts-container">
+    <h2>게시물</h2>
+    <textarea id="newPostText" placeholder="게시물을 작성하세요..."></textarea>
+    <button id="postButton">게시하기</button>
+    <div id="postsList"></div>
+  </div>
+
+      <!-- 투두 공간 -->    
       <div class="app">
         <header>
           <h1>Todo 앱</h1>
