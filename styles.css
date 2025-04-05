@@ -223,6 +223,53 @@ main {
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header__theme-button {
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 1.3rem;
+  height: 1.3rem;
+  position: relative;
+  margin-left: auto;
+  border: none !important;
+  display: block;
+}
+
+.header__theme-button-sun {
+  display: none !important;
+  color: var(--text-dark);
+}
+
+.header__theme-button-moon {
+  display: unset !important;
+  color: var(--text-light);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--item-bg-color);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.item input[type="checkbox"] {
+  margin-right: 1rem;
+}
+
 .hover-text {
   position: absolute;
   top: 75%;
