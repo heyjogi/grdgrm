@@ -341,8 +341,6 @@ function setupProfileUpload() {
   });
 }
 
-
-
 // 휴지통 모달 설정
 function setupTrashModal() {
   const modal = document.getElementById("trashModal");
