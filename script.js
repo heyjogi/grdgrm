@@ -25,6 +25,7 @@ function createNewTodo() {
     priority: 0,
     category: "personal",
     note: "",
+    originalIndex: todos.length
   };
 
   // 배열 처음에 새로운 아이템을 추가
@@ -178,10 +179,11 @@ function createTodoElement(item) {
       itemEl.classList.add("complete", "completed");
       list.appendChild(itemEl); // 완료된 항목을 맨 아래로 이동
     } else {
-      itemEl.classList.remove("complete");
+      itemEl.classList.remove("complete", "completed");
     }
     updateCompletionPercent(); // 완료율 업데이트
     saveToLocalStorage();
+    displayTodos();
   });
 
   inputEl.addEventListener("blur", () => {
@@ -274,9 +276,12 @@ function loadFromLocalStorage() {
     deletedTodos = JSON.parse(deleted);
   }
 
-  todos.forEach((todo) => {
+  todos.forEach((todo, index) => {
     if (!todo.createdAt) {
       todo.createdAt = new Date().toISOString();
+    }
+    if (!todo.hasOwnProperty('originalIndex')) {
+      todo.originalIndex = index;
     }
   });
 }
@@ -477,7 +482,9 @@ function displayTodos() {
   //  완료된 항목을 항상 아래로
   if (statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
-      if (a.complete === b.complete) return 0;
+      if (a.complete === b.complete){
+        return a.originalIndex - b.originalIndex;
+      }
       return a.complete ? 1 : -1;
     });
   }
