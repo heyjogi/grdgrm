@@ -61,7 +61,7 @@ main {
 .header-buttons {
   display: flex;
   align-items: center;
-  gap: 0.5rem
+  gap: 0.5rem;
 }
 
 .header__theme-button {
@@ -75,7 +75,6 @@ main {
   margin-left: auto;
   border: none !important;
   display: block;
-  
 }
 
 .header__theme-button-sun {
@@ -196,14 +195,14 @@ main {
   background: var(--profile-bg-light);
   color: var(--text-color-light);
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   margin-bottom: 25px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Profile Section에 추가할 스타일 */
@@ -276,7 +275,7 @@ main {
 #profilePic:hover {
   transform: scale(1.05);
   border-color: var(--button-text);
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .hover-text {
@@ -301,7 +300,6 @@ main {
   transform: translate(-50%, -50%) translateY(5px);
 }
 
-
 .profile-overlay {
   position: absolute;
   top: 0;
@@ -321,12 +319,12 @@ main {
   .profile-container {
     padding: 15px;
   }
-  
+
   #profilePic {
     width: 120px;
     height: 120px;
   }
-  
+
   .hover-text {
     font-size: 11px;
     padding: 4px 8px;
