@@ -329,19 +329,24 @@ function setupProfileUpload() {
   const profilePic = document.getElementById("profilePic");
   const uploadProfilePic = document.getElementById("uploadProfilePic");
 
+  // Load saved profile picture from localStorage when page loads
+  const savedProfilePic = localStorage.getItem("profilePic");
+  if (savedProfilePic) {
+    profilePic.src = savedProfilePic;
+  }
+
   uploadProfilePic.addEventListener("change", function () {
     const file = this.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
         profilePic.src = e.target.result;
+        localStorage.setItem("profilePic", e.target.result); // Save to localStorage
       };
       reader.readAsDataURL(file);
     }
   });
 }
-
-
 
 // 휴지통 모달 설정
 function setupTrashModal() {
