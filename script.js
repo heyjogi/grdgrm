@@ -157,6 +157,8 @@ function createTodoElement(item) {
       const [draggedItem] = todos.splice(draggedIndex, 1);
       todos.splice(targetIndex, 0, draggedItem);
 
+      sortOptions.value = "custom"; // 사용자 정렬로 설정
+
       saveToLocalStorage();
       displayTodos();
     }
@@ -204,9 +206,9 @@ function createTodoElement(item) {
   inputEl.addEventListener("keydown", (event) => {
     // input 요소에서 키를 눌렀을 때 이벤트 처리
     if (event.key === "Enter") {
-      // 누른 키가 Enter인 경우
-      inputEl.setAttribute("readonly", "readonly"); // input 요소를 읽기 전용으로 설정
+      inputEl.setAttribute("disable", ""); // input 요소를 읽기 전용으로 설정
       inputEl.blur(); // input 요소에서 포커스 제거
+      saveToLocalStorage(); // 로컬 스토리지에 저장
     }
   });
 
@@ -347,7 +349,6 @@ function setupProfileUpload() {
   });
 }
 
-
 // 휴지통 모달 설정
 function setupTrashModal() {
   const modal = document.getElementById("trashModal");
@@ -467,7 +468,7 @@ function displayTodos() {
     );
   }
 
-  // 정렬 (날짜순, 중요도순)
+  // 정렬 (날짜순, 중요도순) + 사용자 정렬 추가
   if (sortOptions.value === "date") {
     filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } else if (sortOptions.value === "priority") {
