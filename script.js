@@ -48,6 +48,7 @@ function createNewTodo() {
   inputEl.focus();
   saveToLocalStorage();
   updateCompletionPercent(); //  추가: 새로운 할 일이 추가될 때 완료율 갱신
+  displayTodos(); // 새 할 일 추가 후 정렬된 목록 다시 표시
 }
 
 function createTodoElement(item) {
