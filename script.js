@@ -141,7 +141,7 @@ function createTodoElement(item) {
     itemEl.style.opacity = "0.7";
   });
 
-  dragBtnEl.addEventListener("dragover", (e) => {
+  itemEl.addEventListener("dragover", (e) => {
     e.preventDefault();
   });
 
