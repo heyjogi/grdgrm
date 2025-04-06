@@ -292,6 +292,9 @@ function loadFromLocalStorage() {
     if (!todo.hasOwnProperty("originalIndex")) {
       todo.originalIndex = index;
     }
+    // if (!todo.hasOwnProperty("priority")) {
+    //   todo.priority = 0; // 기본값 설정
+    // }
   });
 }
 
@@ -495,11 +498,9 @@ function displayTodos() {
   } else if (sortOptions.value === "custom") {
   }
   //  완료된 항목을 항상 아래로 + 사용자 정렬 추가
-  if (sortOptions.value !== "custom" && statusFilter.value === "all") {
+  if (statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
-      if (a.complete === b.complete) {
-        return a.originalIndex - b.originalIndex;
-      }
+      if (a.complete === b.complete) return 0;
       return a.complete ? 1 : -1;
     });
   }
@@ -509,6 +510,8 @@ function displayTodos() {
     const { itemEl } = createTodoElement(item);
     list.append(itemEl);
   });
+
+  console.log("현재 정렬 기준:", sortOptions.value);
 
   updateCompletionPercent(); // 추가
   setupTrashModal();
