@@ -437,22 +437,16 @@ function shareTodos() {
   }
 
   const todoData = JSON.stringify(todos, null, 2);
-
-  if (navigator.canShare && navigator.canShare({ text: todoData })) {
-    navigator
-      .share({
-        title: "내 TODO 리스트",
-        text: todoData,
-      })
-      .then(() => alert("TODO 리스트가 공유되었습니다!"))
-      .catch((err) => console.error("공유 실패:", err));
-  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+  //클립보드 복사
+  if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard
       .writeText(todoData)
-      .then(() => alert("TODO 리스트가 클립보드에 복사되었습니다!"))
-      .catch((err) => console.error("클립보드 복사 실패:", err));
+      .then(() => alert("TODO가 클립보드에 복사되었습니다!"))
+      .catch((err) =>
+        console.error("클립보드에 복사하는 데 실패했습니다:", err)
+      );
   } else {
-    alert("공유 기능이 지원되지 않는 환경입니다.");
+    alert("클립보드 복사 기능이 지원되지 않습니다.");
   }
 }
 
