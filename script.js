@@ -5,6 +5,7 @@ const todoPercent = document.querySelector(".todo-percent"); // 추가 변수 �
 const sortOptions = document.getElementById("sort-options");
 const categoryFilter = document.getElementById("category-filter");
 const statusFilter = document.getElementById("status-filter");
+const deleteAllBtn = document.getElementById("deleteAllBtn");
 
 let todos = [];
 let deletedTodos = [];
@@ -27,7 +28,7 @@ function createNewTodo() {
     priority: 0,
     category: "personal",
     note: "",
-    originalIndex: todos.length
+    originalIndex: todos.length,
   };
 
   // 배열 처음에 새로운 아이템을 추가
@@ -288,7 +289,7 @@ function loadFromLocalStorage() {
     if (!todo.createdAt) {
       todo.createdAt = new Date().toISOString();
     }
-    if (!todo.hasOwnProperty('originalIndex')) {
+    if (!todo.hasOwnProperty("originalIndex")) {
       todo.originalIndex = index;
     }
   });
@@ -321,6 +322,9 @@ function renderTrashBin() {
     deleteBtn.classList.add("material-icons", "remove-btn");
     deleteBtn.innerText = "delete_forever";
     deleteBtn.addEventListener("click", () => {
+      const confirmed = confirm("삭제하시겠습니까?");
+      if (!confirmed) return;
+
       deletedTodos = deletedTodos.filter((t) => t.id !== item.id);
       saveToLocalStorage();
       renderTrashBin();
@@ -336,6 +340,16 @@ function renderTrashBin() {
     trashContainer.appendChild(itemEl);
   }
 }
+
+deleteAllBtn.addEventListener("click", () => {
+  const confirmed = confirm("정말 모든 항목을 삭제하시겠습니까?");
+  if (confirmed) {
+    deletedTodos = [];
+    saveToLocalStorage();
+    renderTrashBin();
+    alert("모든 항목이 삭제되었습니다.");
+  }
+});
 
 function setupProfileUpload() {
   const profilePic = document.getElementById("profilePic");
@@ -483,7 +497,7 @@ function displayTodos() {
   //  완료된 항목을 항상 아래로 + 사용자 정렬 추가
   if (sortOptions.value !== "custom" && statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
-      if (a.complete === b.complete){
+      if (a.complete === b.complete) {
         return a.originalIndex - b.originalIndex;
       }
       return a.complete ? 1 : -1;
