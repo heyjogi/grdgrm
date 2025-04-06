@@ -8,6 +8,8 @@ const statusFilter = document.getElementById("status-filter");
 
 let todos = [];
 let deletedTodos = [];
+let lastFilteredTodos = [];
+let filteredTodos = [];
 
 // 이벤트 리스너 추가 (버튼 클릭 또는 필터 변경 시 실행)
 createBtn.addEventListener("click", createNewTodo);
@@ -140,23 +142,29 @@ function createTodoElement(item) {
     itemEl.style.opacity = "0.7";
   });
 
-  dragBtnEl.addEventListener("dragover", (e) => {
+  itemEl.addEventListener("dragover", (e) => {
     e.preventDefault();
   });
 
   itemEl.addEventListener("drop", (e) => {
     e.preventDefault();
     const draggedId = e.dataTransfer.getData("text/plain");
-    const draggedIndex = todos.findIndex((t) => t.id == draggedId);
-    const targetIndex = todos.findIndex((t) => t.id == item.id);
+    const draggedIndex = filteredTodos.findIndex((t) => t.id == draggedId);
+    const targetIndex = filteredTodos.findIndex((t) => t.id == item.id);
 
     if (
       draggedIndex !== -1 &&
       targetIndex !== -1 &&
       draggedIndex !== targetIndex
     ) {
-      const [draggedItem] = todos.splice(draggedIndex, 1);
-      todos.splice(targetIndex, 0, draggedItem);
+      const [draggedItem] = filteredTodos.splice(draggedIndex, 1);
+      filteredTodos.splice(targetIndex, 0, draggedItem);
+
+      todos = filteredTodos.concat(
+        todos.filter((t) => !filteredTodos.some((ft) => ft.id === t.id))
+      );
+
+      sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
 
       saveToLocalStorage();
       displayTodos();
@@ -206,9 +214,9 @@ function createTodoElement(item) {
   inputEl.addEventListener("keydown", (event) => {
     // input 요소에서 키를 눌렀을 때 이벤트 처리
     if (event.key === "Enter") {
-      // 누른 키가 Enter인 경우
-      inputEl.setAttribute("readonly", "readonly"); // input 요소를 읽기 전용으로 설정
+      inputEl.setAttribute("disable", ""); // input 요소를 읽기 전용으로 설정
       inputEl.blur(); // input 요소에서 포커스 제거
+      saveToLocalStorage(); // 로컬 스토리지에 저장
     }
   });
 
@@ -352,7 +360,6 @@ function setupProfileUpload() {
   });
 }
 
-
 // 휴지통 모달 설정
 function setupTrashModal() {
   const modal = document.getElementById("trashModal");
@@ -435,29 +442,23 @@ function shareTodos() {
   }
 
   const todoData = JSON.stringify(todos, null, 2);
-
-  if (navigator.canShare && navigator.canShare({ text: todoData })) {
-    navigator
-      .share({
-        title: "내 TODO 리스트",
-        text: todoData,
-      })
-      .then(() => alert("TODO 리스트가 공유되었습니다!"))
-      .catch((err) => console.error("공유 실패:", err));
-  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+  //클립보드 복사
+  if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard
       .writeText(todoData)
-      .then(() => alert("TODO 리스트가 클립보드에 복사되었습니다!"))
-      .catch((err) => console.error("클립보드 복사 실패:", err));
+      .then(() => alert("TODO가 클립보드에 복사되었습니다!"))
+      .catch((err) =>
+        console.error("클립보드에 복사하는 데 실패했습니다:", err)
+      );
   } else {
-    alert("공유 기능이 지원되지 않는 환경입니다.");
+    alert("클립보드 복사 기능이 지원되지 않습니다.");
   }
 }
 
 function displayTodos() {
   list.innerHTML = "";
   loadFromLocalStorage();
-  let filteredTodos = [...todos];
+  filteredTodos = [...todos];
   // 상태 필터링 (진행 중, 완료)
   if (statusFilter.value === "completed") {
     filteredTodos = filteredTodos.filter((todo) => todo.complete);
@@ -472,15 +473,15 @@ function displayTodos() {
     );
   }
 
-  // 정렬 (날짜순, 중요도순)
+  // 정렬 (날짜순, 중요도순) + 사용자 정렬 추가
   if (sortOptions.value === "date") {
     filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } else if (sortOptions.value === "priority") {
     filteredTodos.sort((a, b) => b.priority - a.priority);
+  } else if (sortOptions.value === "custom") {
   }
-
-  //  완료된 항목을 항상 아래로
-  if (statusFilter.value === "all") {
+  //  완료된 항목을 항상 아래로 + 사용자 정렬 추가
+  if (sortOptions.value !== "custom" && statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
       if (a.complete === b.complete){
         return a.originalIndex - b.originalIndex;
