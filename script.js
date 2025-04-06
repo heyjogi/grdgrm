@@ -14,7 +14,10 @@ let filteredTodos = [];
 
 // 이벤트 리스너 추가 (버튼 클릭 또는 필터 변경 시 실행)
 createBtn.addEventListener("click", createNewTodo);
-sortOptions.addEventListener("change", displayTodos);
+sortOptions.addEventListener("change", () => {
+  localStorage.setItem("sortOption", sortOptions.value); // 추가: 선택값 저장
+  displayTodos();
+});
 categoryFilter.addEventListener("change", displayTodos);
 statusFilter.addEventListener("change", displayTodos);
 
@@ -520,6 +523,10 @@ function displayTodos() {
 
 window.onload = function () {
   setInitialTheme(localStorage.getItem("theme"));
+  const savedSortOption = localStorage.getItem("sortOption");
+  if (savedSortOption) {
+    sortOptions.value = savedSortOption;
+  }
 };
 function setInitialTheme(themeKey) {
   if (themeKey === "dark") {
