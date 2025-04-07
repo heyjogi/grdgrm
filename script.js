@@ -573,8 +573,12 @@ function updateCompletionPercent() {
 
 new Sortable(list, {
   animation: 150,
-  // handle: ".drag_indicator-btn",
+  handle: ".drag_indicator-btn",
+  onStart: function (evt) {
+    evt.item.style.opacity = "0.7";
+  },
   onEnd: function (evt) {
+    evt.item.style.opacity = "1";
     sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
     localStorage.setItem("sortOption", "custom");
 
