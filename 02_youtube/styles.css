@@ -86,3 +86,40 @@ button {
   margin-right: 24px;
   display: inline-flex;
 }
+
+.chips-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 240px;
+  top: 56px;
+  right: 0;
+  z-index: 99;
+  white-space: nowrap;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.chip {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.chip:hover {
+  background-color: #e0e0e0;
+}
+
+.chip.active {
+  background-color: #0f0f0f;
+  color: white;
+  font-weight: bold;
+}
