@@ -526,7 +526,6 @@ function displayTodos() {
 
 window.onload = function () {
   loadFromLocalStorage();
-  setInitialTheme(localStorage.getItem("theme"));
   const savedSortOption = localStorage.getItem("sortOption");
   if (savedSortOption) {
     sortOptions.value = savedSortOption;
@@ -545,12 +544,11 @@ dropdownBtn.addEventListener("click", () => {
 
 // 테마 선택
 function applytheme(themeName) {
-
   const htmlEl = document.documentElement;
 
   // 중복 방지용 테마 클래스 제거
-  htmlEl.classList.forEach(cls => {
-    if (cls.startsWith('light-') || cls.startsWith('dark-')) {
+  htmlEl.classList.forEach((cls) => {
+    if (cls.startsWith("light-") || cls.startsWith("dark-")) {
       htmlEl.classList.remove(cls);
     }
   });
@@ -559,7 +557,9 @@ function applytheme(themeName) {
   htmlEl.classList.add(themeName);
 
   // 버튼에 테마 색상 적용 표시
-  themeIndicator.className = `drop-btn current-theme-indicator ${getColorClass(themeName)}`;
+  themeIndicator.className = `drop-btn current-theme-indicator ${getColorClass(
+    themeName
+  )}`;
 
   localStorage.setItem("theme", themeName);
 }
@@ -574,7 +574,7 @@ function getColorClass(themeName) {
   if (themeName.includes("dark-purple")) return "dark-purple";
   if (themeName.includes("dark-blue")) return "dark-blue";
   if (themeName.includes("dark-brown")) return "dark-brown";
-  return "";  
+  return "";
 }
 
 //초기 테마
@@ -582,8 +582,8 @@ const savedTheme = localStorage.getItem("theme") || "light-pink";
 applytheme(savedTheme);
 
 //클릭 이벤트
-const themeButtons = document.querySelectorAll('.theme-button');
-themeButtons.forEach(btn => {
+const themeButtons = document.querySelectorAll(".theme-button");
+themeButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const theme = btn.dataset.theme;
     applytheme(theme);
