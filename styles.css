@@ -13,7 +13,7 @@ button {
 
 #trash-btn {
   display: flex;
-  color: #fff;
+  color: var(--remove-btn-color);
   font-size: 24px;
   background: none;
   border: none;
@@ -54,7 +54,6 @@ main {
 .app header button {
   color: var(--button-text);
   font-size: 18px;
-  border-bottom: 2px solid var(--button-border);
   text-transform: uppercase;
 }
 
@@ -64,28 +63,61 @@ main {
   gap: 0.5rem;
 }
 
-.header__theme-button {
-  /* display: flex; */
-  align-items: center;
+.drop-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  background-color: var(--bg-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content {
+  display: none;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color: transparent;
-  width: 1.3rem;
-  height: 1.3rem;
-  position: relative;
-  margin-left: auto;
-  border: none !important;
+  position: absolute;
+  width: 140px;
+  height: 150px;
+  font-size: 15px;
+  color: rgb(56, 56, 56);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 999;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown.open .dropdown-content {
   display: block;
 }
 
-.header__theme-button-sun {
-  display: none !important;
-  color: var(--text-dark);
+.theme-section{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 1px;               
 }
 
-.header__theme-button-moon {
-  display: unset !important;
-  color: var(--text-light);
+.theme-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding: 10px;
+  border: 2px solid rgb(228, 228, 228);
+  cursor: pointer;
 }
+
+.theme-light-pink { background-color: #ff9bb3; }
+.theme-light-purple { background-color: #dbc6f9; }
+.theme-light-blue { background-color: #bfddfb; }
+.theme-light-cream { background-color: #fdf6e3; }
+.theme-dark-pink { background-color: #e88a99; }
+.theme-dark-purple { background-color: #786c92; }
+.theme-dark-blue { background-color: #3a5374; }
+.theme-dark-brown { background-color: #694b3f; }
 
 .item {
   display: flex;
@@ -167,7 +199,7 @@ main {
 }
 
 .modal-content {
-  background: var(--item-bg-color);
+  background: var(--bg-color);
   padding: 2rem;
   border-radius: 1rem;
   width: 90%;
@@ -393,31 +425,68 @@ main {
   opacity: 1;
 }
 
-:root {
-  --bg-color: lightcoral;
-  --text-color: #fff;
+.light-pink {
+  --bg-color: #ffe4eb; 
+  --text-color: #5a1a2c;
 
-  --text-dark: black;
+  --text-dark: #3b0e1d;
   --text-light: #fff;
 
-  --item-bg-color: lightblue;
-  --item-text-color: black;
-  --border-color: #fff;
-  --button-text: #fff;
-  --button-border: #fff;
-  --remove-btn-color: crimson;
+  --item-bg-color:#d5f0ff; 
+  --item-text-color: #5a1a2c;
+  --border-color: #f9bbcc; 
+  --button-text: #5a1a2c;
+  --button-border: #5a1a2c;
+  --remove-btn-color: #d94a6a;
 }
 
-.dark-mode .header__theme-button-sun {
-  display: unset !important;
+.light-purple {
+  --bg-color: #f7f1ff; 
+  --text-color: #2d1b3b;
+
+  --text-dark: #1e0f2e;
+  --text-light: #fff;
+
+  --item-bg-color: #e5d8f2; 
+  --item-text-color: #2d1b3b;
+  --border-color: #cab3de;
+  --button-text: #2d1b3b;
+  --button-border: #2d1b3b;
+  --remove-btn-color: #8b65b9;
 }
 
-.dark-mode .header__theme-button-moon {
-  display: none !important;
+.light-blue {
+  --bg-color: #fff9e5; 
+  --text-color: #1a1a1a;
+
+  --text-dark: #000;
+  --text-light: #fff;
+  
+  --item-bg-color: #c9e2ff;
+  --item-text-color: #1a1a1a;
+  --border-color: #c9e2ff;
+  --button-text: #1a1a1a;
+  --button-border: #1a1a1a;
+  --remove-btn-color: #4985b6;
+  }
+
+.light-cream {
+  --bg-color: #fbf8ea; 
+  --text-color: #4b3e2e;
+
+  --text-dark: #2e261d;
+  --text-light: #fff;
+
+  --item-bg-color: #fdf3c9; 
+  --item-text-color: #4b3e2e;
+  --border-color: #fc8f8a; 
+  --button-text: #4b3e2e;
+  --button-border: #4b3e2e;
+  --remove-btn-color: #ff3b30;
 }
 
-/* Dark Mode 1*/
-.dark-mode {
+/* Dark-mode*/
+.dark-pink {
   --bg-color: #121212;
   --text-color: #e0e0e0;
 
@@ -432,40 +501,7 @@ main {
   --remove-btn-color: #e88a99;
 }
 
-/* Dark Mode 2*/
-/* .dark-mode {
-  --bg-color: #121212; 
-  --text-color: #AAB8C2; 
-
-  --text-dark: #AAB8C2; 
-  --text-light: black; 
-
-  --item-bg-color: #1e3a5f; 
-  --item-text-color: #ffffff; 
-  --border-color: #888; 
-  --button-text: #AAB8C2; 
-  --button-border: #888; 
-  --remove-btn-color: #5fa8ff; 
-} */
-
-/* Dark Mode 3*/
-/* .dark-mode {
-  --bg-color: #2b1d33; 
-  --text-color: #f8c8dc; 
-
-  --text-dark: #fff;   
-  --text-light: black;  
-
-  --item-bg-color: #5a3e6f;     
-  --item-text-color: #ffffff;   
-  --border-color: #c08497;  
-  --button-text: #f8c8dc; 
-  --button-border: #c08497; 
-  --remove-btn-color: #ff5e78; 
-} */
-
-/* Dark Mode 4*/
-/* .dark-mode {
+.dark-purple {
   --bg-color: #2a2538;
   --text-color: #d6d1e4;
 
@@ -478,10 +514,24 @@ main {
   --button-text: #d6d1e4;
   --button-border: #786c92;
   --remove-btn-color: #e88a99;
-} */
+}
 
-/* Dark Mode 5*/
-/* .dark-mode {
+.dark-blue {
+  --bg-color: #121212; 
+  --text-color: #AAB8C2; 
+
+  --text-dark: #AAB8C2; 
+  --text-light: black; 
+
+  --item-bg-color: #1e3a5f; 
+  --item-text-color: #ffffff; 
+  --border-color: #888; 
+  --button-text: #AAB8C2; 
+  --button-border: #888; 
+  --remove-btn-color: #5fa8ff; 
+}
+
+.dark-brown {
   --bg-color: #332924;
   --text-color: #e8d8c4;
 
@@ -494,7 +544,7 @@ main {
   --button-text: #e8d8c4;
   --button-border: #8c7a6b;
   --remove-btn-color: #b08968;
-} */
+}
 
 /* 필터링 섹션 스타일 추가 */
 .filters {

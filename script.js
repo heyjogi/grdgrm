@@ -1,6 +1,7 @@
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
-const toggleThemeBtn = document.querySelector(".header__theme-button");
+const themeIndicator = document.getElementById("current-theme-indicator");
+const swatches = document.querySelectorAll("[data-theme]");
 const todoPercent = document.querySelector(".todo-percent"); // 추가 변수 선언
 const sortOptions = document.getElementById("sort-options");
 const categoryFilter = document.getElementById("category-filter");
@@ -533,22 +534,62 @@ window.onload = function () {
 
   displayTodos();
 };
-function setInitialTheme(themeKey) {
-  if (themeKey === "dark") {
-    document.documentElement.classList.add("dark-mode");
-  } else {
-    document.documentElement.classList.remove("dark-mode");
-  }
+
+// 드롭 다운 기능
+const dropdown = document.querySelector(".dropdown");
+const dropdownBtn = document.querySelector(".drop-btn");
+
+dropdownBtn.addEventListener("click", () => {
+  dropdown.classList.toggle("open");
+});
+
+// 테마 선택
+function applytheme(themeName) {
+
+  const htmlEl = document.documentElement;
+
+  // 중복 방지용 테마 클래스 제거
+  htmlEl.classList.forEach(cls => {
+    if (cls.startsWith('light-') || cls.startsWith('dark-')) {
+      htmlEl.classList.remove(cls);
+    }
+  });
+
+  // 새 테마 클래스 추가
+  htmlEl.classList.add(themeName);
+
+  // 버튼에 테마 색상 적용 표시
+  themeIndicator.className = `drop-btn current-theme-indicator ${getColorClass(themeName)}`;
+
+  localStorage.setItem("theme", themeName);
 }
 
-toggleThemeBtn.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark-mode");
+// 테마 이름에 다른 컬러 클래스 추출
+function getColorClass(themeName) {
+  if (themeName.includes("light-pink")) return "light-pink";
+  if (themeName.includes("light-purple")) return "light-purple";
+  if (themeName.includes("light-blue")) return "light-blue";
+  if (themeName.includes("light-cream")) return "light-cream";
+  if (themeName.includes("dark-pink")) return "dark-pink";
+  if (themeName.includes("dark-purple")) return "dark-purple";
+  if (themeName.includes("dark-blue")) return "dark-blue";
+  if (themeName.includes("dark-brown")) return "dark-brown";
+  return "";  
+}
 
-  if (document.documentElement.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
+//초기 테마
+const savedTheme = localStorage.getItem("theme") || "light-pink";
+applytheme(savedTheme);
+
+//클릭 이벤트
+const themeButtons = document.querySelectorAll('.theme-button');
+themeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const theme = btn.dataset.theme;
+    applytheme(theme);
+
+    dropdown.classList.remove("open");
+  });
 });
 
 // 완료율 계산 및 표시 함수
