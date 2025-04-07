@@ -141,49 +141,49 @@ function createTodoElement(item) {
   });
 
   // 드래그 앤 드롭
-  dragBtnEl.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", item.id);
-    itemEl.classList.add("dragging");
-    itemEl.style.opacity = "0.7";
-  });
+  // dragBtnEl.addEventListener("dragstart", (e) => {
+  //   e.dataTransfer.setData("text/plain", item.id);
+  //   itemEl.classList.add("dragging");
+  //   itemEl.style.opacity = "0.7";
+  // });
 
-  itemEl.addEventListener("dragover", (e) => {
-    e.preventDefault();
-  });
+  // itemEl.addEventListener("dragover", (e) => {
+  //   e.preventDefault();
+  // });
 
-  itemEl.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const draggedId = e.dataTransfer.getData("text/plain");
-    const draggedIndex = filteredTodos.findIndex((t) => t.id == draggedId);
-    const targetIndex = filteredTodos.findIndex((t) => t.id == item.id);
+  // itemEl.addEventListener("drop", (e) => {
+  //   e.preventDefault();
+  //   const draggedId = e.dataTransfer.getData("text/plain");
+  //   const draggedIndex = filteredTodos.findIndex((t) => t.id == draggedId);
+  //   const targetIndex = filteredTodos.findIndex((t) => t.id == item.id);
 
-    if (
-      draggedIndex !== -1 &&
-      targetIndex !== -1 &&
-      draggedIndex !== targetIndex
-    ) {
-      const [draggedItem] = filteredTodos.splice(draggedIndex, 1);
-      filteredTodos.splice(targetIndex, 0, draggedItem);
+  //   if (
+  //     draggedIndex !== -1 &&
+  //     targetIndex !== -1 &&
+  //     draggedIndex !== targetIndex
+  //   ) {
+  //     const [draggedItem] = filteredTodos.splice(draggedIndex, 1);
+  //     filteredTodos.splice(targetIndex, 0, draggedItem);
 
-      todos = filteredTodos.concat(
-        todos.filter((t) => !filteredTodos.some((ft) => ft.id === t.id))
-      );
+  //     todos = filteredTodos.concat(
+  //       todos.filter((t) => !filteredTodos.some((ft) => ft.id === t.id))
+  //     );
 
-      sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
+  //     sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
 
-      saveToLocalStorage();
-      displayTodos();
-    }
+  //     saveToLocalStorage();
+  //     displayTodos();
+  //   }
 
-    itemEl.classList.remove("dragging");
-  });
+  //   itemEl.classList.remove("dragging");
+  // });
 
-  dragBtnEl.addEventListener("dragend", () => {
-    itemEl.classList.remove("dragging");
-    itemEl.style.opacity = "1";
+  // dragBtnEl.addEventListener("dragend", () => {
+  //   itemEl.classList.remove("dragging");
+  //   itemEl.style.opacity = "1";
 
-    saveToLocalStorage();
-  });
+  //   saveToLocalStorage();
+  // });
 
   checkboxEl.addEventListener("change", () => {
     item.complete = checkboxEl.checked;
@@ -501,6 +501,7 @@ function displayTodos() {
     filteredTodos.sort((a, b) => b.priority - a.priority);
   } else if (sortOptions.value === "custom") {
   }
+
   //  완료된 항목을 항상 아래로 + 사용자 정렬 추가
   if (statusFilter.value === "all") {
     filteredTodos.sort((a, b) => {
@@ -523,11 +524,14 @@ function displayTodos() {
 }
 
 window.onload = function () {
+  loadFromLocalStorage();
   setInitialTheme(localStorage.getItem("theme"));
   const savedSortOption = localStorage.getItem("sortOption");
   if (savedSortOption) {
     sortOptions.value = savedSortOption;
   }
+
+  displayTodos();
 };
 function setInitialTheme(themeKey) {
   if (themeKey === "dark") {
@@ -566,5 +570,25 @@ function updateCompletionPercent() {
     percentElement.textContent = `완료율: ${Math.round(percentage)}%`;
   }
 }
+
+new Sortable(list, {
+  animation: 150,
+  // handle: ".drag_indicator-btn",
+  onEnd: function (evt) {
+    sortOptions.value = "custom"; // 사용자 정의 정렬로 설정
+    localStorage.setItem("sortOption", "custom");
+
+    // 드래그가 끝났을 때 호출되는 함수
+    const newOrder = [...list.children].map((item) => {
+      const id = parseInt(item.dataset.id);
+      return todos.find((todo) => todo.id === id);
+    });
+    // 새로운 순서로 todos 배열 업데이트
+
+    todos = newOrder;
+    saveToLocalStorage();
+    displayTodos(); // 새로운 순서로 다시 렌더링
+  },
+});
 
 displayTodos();
