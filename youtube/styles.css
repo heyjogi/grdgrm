@@ -71,11 +71,11 @@ body {
   flex-direction: column;
   gap: 4px;
   position: relative;
-  
+
 }
 
 .meta-header {
-display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
