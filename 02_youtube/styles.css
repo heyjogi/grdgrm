@@ -26,11 +26,6 @@ body {
   background-color: #f9f9f9;
 }
 
-button {
-  border: none;
-  background-color: transparent;
-}
-
 /* 헤더 영역 */
 .header {
   display: flex;
@@ -44,7 +39,7 @@ button {
   left: 0;
   right: 0;
   z-index: 100;
-      }
+}
 /* 사이드바 영역 */
 .container {
   display: flex;
