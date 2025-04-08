@@ -15,6 +15,249 @@ button {
   background-color: transparent;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+/* 헤더 영역 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 10px 16px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+/* 사이드바 영역 */
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: white;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  padding: 12px 0;
+  position: fixed;
+  top: 56px;
+  z-index: 100;
+}
+
+.sidebar-section {
+  padding: 8px 0;
+}
+
+.sidebar-label {
+  padding: 6px 24px;
+  font-size: 13px;
+  color: #606060;
+  font-weight: 500;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar-item {
+  cursor: pointer;
+}
+
+.sidebar-item button {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.sidebar-item:hover button {
+  background-color: #f2f2f2;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-size: 24px;
+}
+
+.profile-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.sidebar-item.active button {
+  background-color: #e5e5e5;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+  display: inline-flex;
+}
+
+.chips-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 240px;
+  top: 56px;
+  right: 0;
+  z-index: 99;
+  white-space: nowrap;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.chip {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.chip:hover {
+  background-color: #e0e0e0;
+}
+
+.chip.active {
+  background-color: #0f0f0f;
+  color: white;
+  font-weight: bold;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.logo img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.search-input {
+  border: none;
+  padding: 8px 10px;
+  width: 400px;
+}
+
+.search-button button {
+  border: none;
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 1px solid #ccc;
+}
+
+.voice-button button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.add-content button,
+.notifications button,
+.profile button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+.profile button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* 메인 컨텐츠 영역 스타일 조정 (헤더 때문에 아래로 밀기) */
+.container {
+  padding-top: 56px; /* 헤더 높이만큼 padding 추가 */
+}
+
+.chips-bar {
+  top: 56px + 56px; /* 헤더 높이 + 칩 바 높이 */
+  left: 240px;
+}
+
+.sidebar {
+  top: 56px;
+}
+
+/* 작은 화면에서의 스타일 조정 (선택 사항) */
+@media (max-width: 768px) {
+  .search-bar {
+    display: none; /* 작은 화면에서는 검색창 숨김 */
+  }
+  .logo span {
+    display: none; /* 작은 화면에서는 로고 텍스트 숨김 */
+  }
+}
+
 /* 메인 비디오 */
 .v-container {
   display: flex;
