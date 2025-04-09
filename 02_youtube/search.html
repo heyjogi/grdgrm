@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://unpkg.com/lucide-static/font/Lucide.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="search.css" />
   </head>
   <body>
     <div class="collapsed-nav">
@@ -76,6 +76,8 @@
     </header>
     <!-- 메인 컨테이너 -->
     <main>
+      <div class="search-query-title"></div>
+      <div class="search-results"></div>
       <!-- 사이드바 -->
       <nav class="sidebar" aria-label="주요 메뉴">
         <ul class="sidebar-section">
@@ -221,6 +223,7 @@
         <button class="chip">20분 초과</button>
       </div>
     </main>
+    <script src="videoData.js"></script>
     <script src="search.js"></script>
   </body>
 </html>
