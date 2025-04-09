@@ -8,18 +8,42 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/Lucide.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lucide-static/font/Lucide.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-    <body>
-      <header class="header">
-        <div class="header-left">
-          <div class="hamburger-menu">
-            <button><span class="material-icons">menu</span></button>
-          </div>
+  <body>
+    <div class="collapsed-nav">
+      <div class="nav-item">
+        <span class="material-icons">home</span>
+        <span>홈</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">smart_display</span>
+        <span>Shorts</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">subscriptions</span>
+        <span>구독</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">person</span>
+        <span>내 페이지</span>
+      </div>
+    </div>
+    <header class="header">
+      <div class="header-left">
+        <div class="hamburger-menu">
+          <button><span class="material-icons">menu</span></button>
+        </div>
         <div class="logo">
           <a href="#">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube 로고" />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+              alt="YouTube 로고"
+            />
             <span>KR</span>
           </a>
         </div>
@@ -31,36 +55,61 @@
         </div>
         <div class="voice-button">
           <button><span class="material-icons">mic</span></button>
-        </div> 
+        </div>
       </div>
       <div class="header-right">
         <div class="add-content">
           <button><span class="material-icons">video_call</span></button>
         </div>
-      <div class="notifications">
-        <button><span class="material-icons">notifications_none</span></button>
+        <div class="notifications">
+          <button>
+            <span class="material-icons">notifications_none</span>
+          </button>
+        </div>
+        <div class="profile">
+          <button>
+            <img src="https://via.placeholder.com/30" alt="프로필 이미지" />
+          </button>
+        </div>
       </div>
-      <div class="profile">
-        <button><img src="https://via.placeholder.com/30" alt="프로필 이미지" /></button>
-      </div>
-    </div>
-  </header>
+    </header>
     <!-- 메인 컨테이너 -->
     <main>
       <div class="v-container">
         <div class="video-container">
           <!-- 비디오 카드 1 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="요리,김치,한식,백종원,레시피"
+            >
               <div class="thumbnail">
-                <img src="https://i.ytimg.com/vi/R6IT_f0XPT8/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://i.ytimg.com/vi/R6IT_f0XPT8/maxresdefault.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=A');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=A');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <div class="video-title">[ENG SUB] 백종원이 알려주는 김치밥의 진수</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <div class="video-title">
+                      [ENG SUB] 백종원이 알려주는 김치밥의 진수
+                    </div>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">백종원의 요리비책</div>
                   <div class="video-stats">조회수 123만회 · 1개월 전</div>
@@ -68,19 +117,40 @@
               </div>
             </article>
           </a>
-        
+
           <!-- 비디오 카드 2 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="브이로그,서울,여행,관광,한국,vlog,korea,seoul"
+            >
               <div class="thumbnail">
-                <img src="https://www.korea.kr/newsWeb/resources/attaches/2023.09/03/KakaoTalk_20230903_192919296_09.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://www.korea.kr/newsWeb/resources/attaches/2023.09/03/KakaoTalk_20230903_192919296_09.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=B');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=B');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <div class="video-title">[VLOG] 서울 한복판에서 하루 살아보기! 🇰🇷</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <div class="video-title">
+                      [VLOG] 서울 한복판에서 하루 살아보기! 🇰🇷
+                    </div>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">민지의 브이로그</div>
                   <div class="video-stats">조회수 98만회 · 3주 전</div>
@@ -88,19 +158,40 @@
               </div>
             </article>
           </a>
-        
+
           <!-- 비디오 카드 3 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="프로그래밍,코딩,자바스크립트,개발,javascript,programming,coding"
+            >
               <div class="thumbnail">
-                <img src="https://cdn-prod.hanbit.co.kr/thumbnails/d4e92715-e676-4639-8938-85917ab50fd6.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://cdn-prod.hanbit.co.kr/thumbnails/d4e92715-e676-4639-8938-85917ab50fd6.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=C');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=C');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <div class="video-title">혼자 공부하는 JavaScript 기초 🧠</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <div class="video-title">
+                      혼자 공부하는 JavaScript 기초 🧠
+                    </div>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">코딩하는 고양이</div>
                   <div class="video-stats">조회수 45만회 · 5일 전</div>
@@ -108,19 +199,40 @@
               </div>
             </article>
           </a>
-        
+
           <!-- 비디오 카드 4 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="테크,리뷰,스마트폰,아이폰,갤럭시,tech,review,smartphone"
+            >
               <div class="thumbnail">
-                <img src="https://i.ytimg.com/vi/2_O_kAJpXxg/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://i.ytimg.com/vi/2_O_kAJpXxg/maxresdefault.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=D');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=D');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <div class="video-title">아이폰15 vs 갤럭시S24 솔직 리뷰 📱</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <div class="video-title">
+                      아이폰15 vs 갤럭시S24 솔직 리뷰 📱
+                    </div>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">테크몽</div>
                   <div class="video-stats">조회수 200만회 · 1주 전</div>
@@ -128,19 +240,38 @@
               </div>
             </article>
           </a>
-        
+
           <!-- 비디오 카드 5 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="맛집,부산,음식,돼지국밥,맛집리뷰,food,busan"
+            >
               <div class="thumbnail">
-                <img src="https://i.ytimg.com/vi/3G2XYuP0Zz4/sddefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://i.ytimg.com/vi/3G2XYuP0Zz4/sddefault.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=E');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=E');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
                     <div class="video-title">부산 돼지국밥 맛집 TOP 5 🍜</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">푸드파이터짱</div>
                   <div class="video-stats">조회수 77만회 · 2주 전</div>
@@ -148,19 +279,40 @@
               </div>
             </article>
           </a>
-        
+
           <!-- 비디오 카드 6 -->
           <a href="#" class="video-link">
-            <article class="video-card">
+            <article
+              class="video-card"
+              data-tags="인테리어,홈데코,셀프인테리어,집꾸미기,interior,homedeco"
+            >
               <div class="thumbnail">
-                <img src="https://images.homify.com/v1440731403/p/photo/image/657937/universe_chest_7.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://m.e-himart.co.kr/contents/content/upload/golfMagazine/20230111/827746/thumbnail_750_magazine_tagging_6627.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=F');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=F');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <div class="video-title">💡 하루 만에 방 꾸미기! 셀프 인테리어 도전기</div>
-                    <button class="kebab-menu-btn"><i class="material-icons">more_vert</i></button>
+                    <div class="video-title">
+                      💡 하루 만에 방 꾸미기! 셀프 인테리어 도전기
+                    </div>
+                    <button class="kebab-menu-btn">
+                      <i class="material-icons">more_vert</i>
+                    </button>
                   </div>
                   <div class="channel-name">홈카페의 모든 것</div>
                   <div class="video-stats">조회수 65만회 · 4일 전</div>
@@ -169,14 +321,14 @@
             </article>
           </a>
         </div>
-        
-        
+
         <h2 class="shorts-logo">
           <svg
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-          > <title>YouTube Shorts</title>
+          >
+            <title>YouTube Shorts</title>
             <path
               fill="currentColor"
               d="m18.931 9.99-1.441-.601 1.717-.913a4.48 4.48 0 0 0 1.874-6.078 4.506 4.506 0 0 0-6.09-1.874L4.792 
@@ -189,9 +341,13 @@
         </h2>
         <div class="shorts-container">
           <!-- 쇼츠 카드1 -->
-          <article class="shorts-card">
+          <article class="shorts-card" data-tags="음식,피자,치즈,소송,음식리뷰">
             <a href="#" class="shorts-link">
-               <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/lPF6RwWyzTw/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLDRFfR5DbA0xTuwz0ixXEZT7-tMrw" alt="피자헛 치즈 크러스트 소송">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/lPF6RwWyzTw/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLDRFfR5DbA0xTuwz0ixXEZT7-tMrw"
+                alt="피자헛 치즈 크러스트 소송"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -206,9 +362,13 @@
             </a>
           </article>
           <!-- 쇼츠 카드2 -->
-          <article class="shorts-card">
+          <article class="shorts-card" data-tags="음식,인도,음식리뷰,유튜버">
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/1asKWWsJdKA/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLCuL7O1sYf10SBPWM2omUbTG2aI9g" alt="인도 음식을 먹은 유튜버의 최후">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/1asKWWsJdKA/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLCuL7O1sYf10SBPWM2omUbTG2aI9g"
+                alt="인도 음식을 먹은 유튜버의 최후"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -223,9 +383,13 @@
             </a>
           </article>
           <!-- 쇼츠 카드3 -->
-          <article class="shorts-card">
+          <article class="shorts-card" data-tags="여행,중국,관광,스릴,공포">
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/CzWoRmk7HiE/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLBA5uOP3SOaFtP1rhGr_TjRs108Wg" alt="중국 공포의 공중다리 #여행">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/CzWoRmk7HiE/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLBA5uOP3SOaFtP1rhGr_TjRs108Wg"
+                alt="중국 공포의 공중다리 #여행"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -240,13 +404,22 @@
             </a>
           </article>
           <!-- 쇼츠 카드4 -->
-          <article class="shorts-card">
+          <article
+            class="shorts-card"
+            data-tags="파키스탄,음식,위생,기름,해외,충격"
+          >
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail"src="https://i.ytimg.com/vi/-3pMaq8Vka8/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLBVil2Tlj46Jw2_-oD1FrT34RFyQw" alt="일부러 검은색이 될 때까지 쓰는 거라는데?">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/-3pMaq8Vka8/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLBVil2Tlj46Jw2_-oD1FrT34RFyQw"
+                alt="일부러 검은색이 될 때까지 쓰는 거라는데?"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
-                    <h3 class="shorts-title">일부러 검은색이 될 때까지 쓰는 거라는데?</h3>
+                    <h3 class="shorts-title">
+                      일부러 검은색이 될 때까지 쓰는 거라는데?
+                    </h3>
                     <button class="kebab-menu-btn">
                       <i class="icon-ellipsis-vertical"></i>
                     </button>
@@ -257,9 +430,13 @@
             </a>
           </article>
           <!-- 쇼츠 카드5 -->
-          <article class="shorts-card">
+          <article class="shorts-card" data-tags="동물,말,의료,안락사">
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/izWBMptqL68/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLC3j2sP2PKGrcmugOUo15YXHpKbuA" alt="골절된 말을 안락사 시키는 이유">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/izWBMptqL68/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLC3j2sP2PKGrcmugOUo15YXHpKbuA"
+                alt="골절된 말을 안락사 시키는 이유"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -274,9 +451,13 @@
             </a>
           </article>
           <!-- 쇼츠 카드6 -->
-          <article class="shorts-card">
+          <article class="shorts-card" data-tags="자연,호수,미스터리">
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/akdd0ny6i8w/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLDa1AXCKtH-iYio8Uio4Kyk8qMyHQ" alt="호수에 이게 대체 왜 있을까?">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/akdd0ny6i8w/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLDa1AXCKtH-iYio8Uio4Kyk8qMyHQ"
+                alt="호수에 이게 대체 왜 있을까?"
+              />
               <div class="shorts-details">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -291,9 +472,16 @@
             </a>
           </article>
           <!-- 쇼츠 카드7 -->
-          <article class="shorts-card">
+          <article
+            class="shorts-card"
+            data-tags="음식,낫토,청국장,한식,일식,비교"
+          >
             <a href="#" class="shorts-link">
-              <img class="shorts-thumbnail" src="https://i.ytimg.com/vi/bxemLsZVlVE/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLA3A6CXlVcy_HcARMNkuWb41P8PfQ" alt="낫토와 청국장의 차이">
+              <img
+                class="shorts-thumbnail"
+                src="https://i.ytimg.com/vi/bxemLsZVlVE/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLA3A6CXlVcy_HcARMNkuWb41P8PfQ"
+                alt="낫토와 청국장의 차이"
+              />
               <div class="shorts-title">
                 <div class="s-meta">
                   <div class="s-meta-header">
@@ -313,16 +501,35 @@
       <div class="v-container">
         <div class="video-container">
           <!-- 비디오 카드1 -->
-          <article class="video-card">
+          <article
+            class="video-card"
+            data-tags="제주도,카페,여행,커피,jeju,cafe,travel"
+          >
             <a href="#" class="video-link">
               <div class="thumbnail">
-                <img src="https://i.ytimg.com/vi/M3nijojdm0o/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://i.ytimg.com/vi/M3nijojdm0o/maxresdefault.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=G');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=G');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <h3 class="video-title">요즘 핫한 제주도 카페 BEST 31 투어 ☕</h3>
+                    <h3 class="video-title">
+                      요즘 핫한 제주도 카페 BEST 31 투어 ☕
+                    </h3>
                     <button class="kebab-menu-btn">
                       <i class="icon-ellipsis-vertical"></i>
                     </button>
@@ -333,18 +540,37 @@
               </div>
             </a>
           </article>
-      
+
           <!-- 비디오 카드2 -->
-          <article class="video-card">
+          <article
+            class="video-card"
+            data-tags="프로그래밍,코딩,리액트,개발,웹개발,react,programming"
+          >
             <a href="#" class="video-link">
               <div class="thumbnail">
-                <img src="https://blog.kakaocdn.net/dn/bdis28/btsm9gthBHm/JxYQa7dOzseMrBnIyMhyH0/img.png" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://blog.kakaocdn.net/dn/bdis28/btsm9gthBHm/JxYQa7dOzseMrBnIyMhyH0/img.png"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=H');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=H');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
-                    <h3 class="video-title">React로 쇼핑몰 만들기 💻 풀 강의</h3>
+                    <h3 class="video-title">
+                      React로 쇼핑몰 만들기 💻 풀 강의
+                    </h3>
                     <button class="kebab-menu-btn">
                       <i class="icon-ellipsis-vertical"></i>
                     </button>
@@ -355,15 +581,32 @@
               </div>
             </a>
           </article>
-      
+
           <!-- 비디오 카드3 -->
-          <article class="video-card">
+          <article
+            class="video-card"
+            data-tags="ASMR,힐링,공부,빗소리,백색소음,study,healing"
+          >
             <a href="#" class="video-link">
               <div class="thumbnail">
-                <img src="https://i.ytimg.com/vi/t_p7vXS9ULs/maxresdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://i.ytimg.com/vi/t_p7vXS9ULs/maxresdefault.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=I');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=I');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
                     <h3 class="video-title">공부할 때 듣기 좋은 빗소리 🌧️</h3>
@@ -377,15 +620,32 @@
               </div>
             </a>
           </article>
-      
+
           <!-- 비디오 카드4 -->
-          <article class="video-card">
+          <article
+            class="video-card"
+            data-tags="전통시장,한국,여행,관광,시장,market,korea,travel"
+          >
             <a href="#" class="video-link">
               <div class="thumbnail">
-                <img src="https://www.vviptravel.com/wp-content/uploads/2019/06/gwangjang-market-seoul.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <img
+                  src="https://www.vviptravel.com/wp-content/uploads/2019/06/gwangjang-market-seoul.jpg"
+                  alt="Video Thumbnail"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
               </div>
               <div class="details">
-                <div class="avatar-container" style="background-image: url('https://via.placeholder.com/36x36.png?text=J');"></div>
+                <div
+                  class="avatar-container"
+                  style="
+                    background-image: url('https://via.placeholder.com/36x36.png?text=J');
+                  "
+                ></div>
                 <div class="meta">
                   <div class="meta-header">
                     <h3 class="video-title">[ENG SUB] 한국 전통시장 투어 🇰🇷</h3>
@@ -400,7 +660,7 @@
             </a>
           </article>
         </div>
-      </div>      
+      </div>
       <!-- 사이드바 -->
       <nav class="sidebar" aria-label="주요 메뉴">
         <ul class="sidebar-section">

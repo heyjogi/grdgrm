@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>검색 결과 - 유튜브 목업 사이트</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lucide-static/font/Lucide.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="collapsed-nav">
+      <div class="nav-item">
+        <span class="material-icons">home</span>
+        <span>홈</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">smart_display</span>
+        <span>Shorts</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">subscriptions</span>
+        <span>구독</span>
+      </div>
+      <div class="nav-item">
+        <span class="material-icons">person</span>
+        <span>내 페이지</span>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="header-left">
+        <div class="hamburger-menu">
+          <button><span class="material-icons">menu</span></button>
+        </div>
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+              alt="YouTube 로고"
+            />
+            <span>KR</span>
+          </a>
+        </div>
+      </div>
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="검색" />
+        <div class="search-button">
+          <button><span class="material-icons">search</span></button>
+        </div>
+        <div class="voice-button">
+          <button><span class="material-icons">mic</span></button>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="add-content">
+          <button><span class="material-icons">video_call</span></button>
+        </div>
+        <div class="notifications">
+          <button>
+            <span class="material-icons">notifications_none</span>
+          </button>
+        </div>
+        <div class="profile">
+          <button>
+            <img src="https://via.placeholder.com/30" alt="프로필 이미지" />
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- 메인 컨테이너 -->
+    <main>
+      <!-- 사이드바 -->
+      <nav class="sidebar" aria-label="주요 메뉴">
+        <ul class="sidebar-section">
+          <li class="sidebar-item active">
+            <button><span class="material-icons">home</span>홈</button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">smart_display</span>Shorts
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">subscriptions</span>구독
+            </button>
+          </li>
+        </ul>
+        <hr />
+        <ul class="sidebar-section">
+          <div class="sidebar-label">내 페이지</div>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">history</span>시청 기록
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">playlist_play</span>재생목록
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">video_library</span>내 동영상
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">schedule</span>나중에 볼 동영상
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">thumb_up</span>좋아요 표시한 동영상
+            </button>
+          </li>
+        </ul>
+        <hr />
+        <ul class="sidebar-section">
+          <div class="sidebar-label">구독</div>
+          <li class="sidebar-item">
+            <button>
+              <img
+                class="profile-img"
+                src="https://yt3.googleusercontent.com/OnY4R0NfMFNMOgoegRnOnK15w5F92LLzcsIeR0N6iILuUlod5LWkZt0Hem2U6TodfLss6T-0Pw=s160-c-k-c0x00ffffff-no-rj"
+                alt="채널"
+              />공격수셰프
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <img
+                class="profile-img"
+                src="https://yt3.googleusercontent.com/KUsRayyFFxnk-gtNKJbBRV7QVLPxikqPCYbOWYUFnTyijeJ5G0z1MQ9v3tWsNb-ybgyogsgu=s160-c-k-c0x00ffffff-no-rj"
+                alt="채널"
+              />고재영
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <img
+                class="profile-img"
+                src="https://yt3.googleusercontent.com/8TAbNOjeVBThSFQOR5yXWh0jiXX08Jmy6nhx90YhvVviaRFIqDCs8_X4FaZBLXIhilHb9V9_mzI=s160-c-k-c0x00ffffff-no-rj"
+                alt="채널"
+              />정했다일기석
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <img
+                class="profile-img"
+                src="https://yt3.googleusercontent.com/B7rJk-i7VIxjOJyb15LVx25JMMhP4BH77E1bTR8WQDCP_wE4fQnBJ3ulM_67houPJU0LojW9zpE=s160-c-k-c0x00ffffff-no-rj"
+                alt="채널"
+              />쿠팡플레이 스포츠
+            </button>
+          </li>
+        </ul>
+        <hr />
+        <ul class="sidebar-section">
+          <div class="sidebar-label">탐색</div>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">whatshot</span>인기 급상승
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">shopping_bag</span>쇼핑
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button><span class="material-icons">music_note</span>음악</button>
+          </li>
+          <li class="sidebar-item">
+            <button><span class="material-icons">movie</span>영화</button>
+          </li>
+          <li class="sidebar-item">
+            <button><span class="material-icons">live_tv</span>실시간</button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">sports_esports</span>게임
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">emoji_events</span>스포츠
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">school</span>학습 프로그램
+            </button>
+          </li>
+          <li class="sidebar-item">
+            <button>
+              <span class="material-icons">podcasts</span>팟캐스트
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- chips wrapper -->
+      <div class="chips-bar">
+        <button class="chip active">전체</button>
+        <button class="chip">동영상</button>
+        <button class="chip">시청하지 않음</button>
+        <button class="chip">감상한 동영상</button>
+        <button class="chip">라이브</button>
+        <button class="chip">최근에 업로드된 동영상</button>
+        <button class="chip">라이브</button>
+        <button class="chip">4분 미만</button>
+        <button class="chip">4~20분</button>
+        <button class="chip">20분 초과</button>
+      </div>
+    </main>
+    <script src="search.js"></script>
+  </body>
+</html>

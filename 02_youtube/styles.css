@@ -638,3 +638,74 @@ body {
   color: white;
   font-weight: bold;
 }
+
+.collapsed-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nav-item span {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 사이드바 축소 디자인  */
+.collapsed-nav {
+  position: fixed;
+  left: 0;
+  top: 71px; /* 상단 헤더 높이만큼 */
+  width: 72px;
+  height: calc(100vh - 56px);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0; /* 패딩 제거 */
+  z-index: 2000; /* 다른 요소들 위에 표시되도록 */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 중앙 정렬 */
+  width: 100%;
+  height: 74px; /* 높이 고정 */
+  cursor: pointer;
+}
+
+.nav-item .material-icons {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.nav-item span:not(.material-icons) {
+  font-size: 10px;
+  color: #0f0f0f;
+}
+
+.nav-item:hover {
+  background-color: #f2f2f2;
+}
