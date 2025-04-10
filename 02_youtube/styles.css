@@ -240,6 +240,101 @@ body {
   font-weight: bold;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.logo img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-region {
+  font-size: 4px;
+  color: #606060;
+  position: relative;
+  top: -6px;
+  margin-left: 2px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.search-input {
+  border: none;
+  padding: 8px 10px;
+  width: 400px;
+}
+
+.search-button button {
+  border: none;
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 1px solid #ccc;
+}
+
+.voice-button button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.add-content button,
+.notifications button,
+.profile button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+.profile button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+
+
 /* 메인 컨텐츠 영역 스타일 조정 (헤더 때문에 아래로 밀기) */
 .container {
   padding-top: 56px; /* 헤더 높이만큼 padding 추가 */
@@ -317,9 +412,18 @@ body {
   margin: 10px;
 }
 
+.avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+
 .avatar-container {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background-color: #065fd4;
   color: white;
@@ -715,6 +819,7 @@ body {
 .nav-item:hover {
   background-color: #f2f2f2;
 }
+
 
 .v-container {
   margin-left: 0px; /* 기본 사이드바 있을 때 여백 */
