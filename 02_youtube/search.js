@@ -93,6 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="meta">
           <div class="meta-header">
             <div class="video-title">${video.title}</div>
+            <button class="kebab-menu-btn">
+              <i class="icon-ellipsis-vertical"></i>
+            </button>
           </div>
           <div class="video-stats">${video.stats}</div></div>
           <div class="channel-info">
@@ -147,6 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="meta">
           <div class="meta-header">
             <div class="shorts-title">${short.title}</div>
+            <button class="kebab-menu-btn">
+              <i class="icon-ellipsis-vertical"></i>
+            </button>
           </div>
           <div class="shorts-stats">${short.views}</div>
         </div>
