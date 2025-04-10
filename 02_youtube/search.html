@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://unpkg.com/lucide-static/font/Lucide.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="search.css" />
   </head>
   <body>
     <div class="collapsed-nav">
@@ -76,6 +76,8 @@
     </header>
     <!-- 메인 컨테이너 -->
     <main>
+      <div class="search-query-title"></div>
+      <div class="search-results"></div>
       <!-- 사이드바 -->
       <nav class="sidebar" aria-label="주요 메뉴">
         <ul class="sidebar-section">
@@ -209,18 +211,33 @@
 
       <!-- chips wrapper -->
       <div class="chips-bar">
-        <button class="chip active">전체</button>
-        <button class="chip">동영상</button>
-        <button class="chip">시청하지 않음</button>
-        <button class="chip">감상한 동영상</button>
-        <button class="chip">라이브</button>
-        <button class="chip">최근에 업로드된 동영상</button>
-        <button class="chip">라이브</button>
-        <button class="chip">4분 미만</button>
-        <button class="chip">4~20분</button>
-        <button class="chip">20분 초과</button>
+        <button class="chip-filter">
+          <div class="filter-text">필터</div>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              enable-background="new 0 0 24 24"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              focusable="false"
+              aria-hidden="true"
+              style="
+                pointer-events: none;
+                display: inherit;
+                width: 100%;
+                height: 100%;
+              "
+            >
+              <path
+                d="M15 17h6v1h-6v-1zm-4 0H3v1h8v2h1v-5h-1v2zm3-9h1V3h-1v2H3v1h11v2zm4-3v1h3V5h-3zM6 14h1V9H6v2H3v1h3v2zm4-2h11v-1H10v1z"
+              ></path>
+            </svg>
+          </div>
+        </button>
       </div>
     </main>
+    <script src="videoData.js"></script>
     <script src="search.js"></script>
   </body>
 </html>
