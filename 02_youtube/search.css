@@ -23,7 +23,7 @@ button {
 }
 
 body {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 /* 헤더 영역 */
@@ -677,4 +677,115 @@ body {
 
 .nav-item:hover {
   background-color: #f2f2f2;
+}
+
+/* 공통 */
+.video-results,
+.shorts-results {
+  margin: 20px;
+}
+
+/* 일반 영상: 유튜브 가로형 카드 */
+.video-results {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.video-card {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.video-card .thumbnail {
+  flex-shrink: 0;
+  width: 360px;
+  height: 202px;
+  background-color: #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-card .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-card .details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.video-card .video-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.video-card .video-stats {
+  font-size: 14px;
+  color: #606060;
+}
+
+.video-card .channel-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Shorts: 유튜브 스타일 세로형 그리드 */
+.shorts-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.shorts-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.shorts-card .thumbnail {
+  width: 180px;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.shorts-card .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shorts-card .details {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.shorts-card .shorts-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.shorts-card .shorts-stats {
+  font-size: 13px;
+  color: #666;
+}
+
+.video-list.collapsed,
+.shorts-list.collapsed {
+  margin-left: -180px;
+  transition: margin-left 0.1s ease;
 }
