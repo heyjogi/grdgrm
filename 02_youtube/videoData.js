@@ -6,8 +6,7 @@ const videoData = {
       thumbnail: "https://i.ytimg.com/vi/R6IT_f0XPT8/maxresdefault.jpg",
       channelName: "백종원의 요리비책",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=A",
-      views: "123만회",
-      uploadDate: "1개월 전",
+      stats: "조회수 123만회 · 1개월 전",
     },
     {
       title: "[VLOG] 서울 한복판에서 하루 살아보기! 🇰🇷",
@@ -16,8 +15,7 @@ const videoData = {
         "https://www.korea.kr/newsWeb/resources/attaches/2023.09/03/KakaoTalk_20230903_192919296_09.jpg",
       channelName: "민지의 브이로그",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=B",
-      views: "98만회",
-      uploadDate: "3주 전",
+      stats: "조회수 98만회 · 3주 전",
     },
     {
       title: "혼자 공부하는 JavaScript 기초 🧠",
@@ -26,8 +24,7 @@ const videoData = {
         "https://cdn-prod.hanbit.co.kr/thumbnails/d4e92715-e676-4639-8938-85917ab50fd6.jpg",
       channelName: "코딩하는 고양이",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=C",
-      views: "45만회",
-      uploadDate: "5일 전",
+      stats: "조회수 45만회 · 5일 전",
     },
     {
       title: "아이폰15 vs 갤럭시S24 솔직 리뷰 📱",
@@ -35,8 +32,7 @@ const videoData = {
       thumbnail: "https://i.ytimg.com/vi/2_O_kAJpXxg/maxresdefault.jpg",
       channelName: "테크몽",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=D",
-      views: "200만회",
-      uploadDate: "1주 전",
+      stats: "조회수 200만회 · 1주 전",
     },
     {
       title: "부산 돼지국밥 맛집 TOP 5 🍜",
@@ -44,8 +40,7 @@ const videoData = {
       thumbnail: "https://i.ytimg.com/vi/3G2XYuP0Zz4/sddefault.jpg",
       channelName: "푸드파이터짱",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=E",
-      views: "77만회",
-      uploadDate: "2주 전",
+      stats: "조회수 77만회 · 2주 전",
     },
     {
       title: "💡 하루 만에 방 꾸미기! 셀프 인테리어 도전기",
@@ -54,8 +49,7 @@ const videoData = {
         "https://images.homify.com/v1440731403/p/photo/image/657937/universe_chest_7.jpg",
       channelName: "홈카페의 모든 것",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=F",
-      views: "65만회",
-      uploadDate: "4일 전",
+      stats: "조회수 65만회 · 4일 전",
     },
     {
       title: "요즘 핫한 제주도 카페 BEST 31 투어 ☕",
@@ -63,8 +57,7 @@ const videoData = {
       thumbnail: "https://i.ytimg.com/vi/M3nijojdm0o/maxresdefault.jpg",
       channelName: "트래블러 일상로그",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=G",
-      views: "362만회",
-      uploadDate: "2달 전",
+      stats: "조회수 362만회 · 2달 전",
     },
     {
       title: "React로 쇼핑몰 만들기 💻 풀 강의",
@@ -73,8 +66,7 @@ const videoData = {
         "https://blog.kakaocdn.net/dn/bdis28/btsm9gthBHm/JxYQa7dOzseMrBnIyMhyH0/img.png",
       channelName: "코딩의신",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=H",
-      views: "120만회",
-      uploadDate: "3개월 전",
+      stats: "조회수 120만회 · 3개월 전",
     },
     {
       title: "공부할 때 듣기 좋은 빗소리 🌧️",
@@ -82,8 +74,7 @@ const videoData = {
       thumbnail: "https://i.ytimg.com/vi/t_p7vXS9ULs/maxresdefault.jpg",
       channelName: "힐링사운드",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=I",
-      views: "56만회",
-      uploadDate: "1주 전",
+      stats: "조회수 56만회 · 1주 전",
     },
     {
       title: "[ENG SUB] 한국 전통시장 투어 🇰🇷",
@@ -92,8 +83,7 @@ const videoData = {
         "https://www.vviptravel.com/wp-content/uploads/2019/06/gwangjang-market-seoul.jpg",
       channelName: "한국여행로그",
       channelAvatar: "https://via.placeholder.com/36x36.png?text=J",
-      views: "89만회",
-      uploadDate: "2주 전",
+      stats: "조회수 89만회 · 2주 전",
     },
   ],
   shorts: [
