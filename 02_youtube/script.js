@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.querySelector(".hamburger-menu button"); // 여기를 수정
   const collapsedNav = document.querySelector(".collapsed-nav");
   const mainSidebar = document.querySelector(".sidebar");
+  const mainContent = document.querySelector(".v-container"); // ← 콘텐츠 영역
 
+  const searchInput = document.querySelector(".search-input");
+  const searchButton = document.querySelector(".search-button button");
   // 초기에는 축소된 네비게이션 숨기기
   collapsedNav.style.display = "none";
 
@@ -12,17 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isCollapsed) {
       collapsedNav.style.display = "flex";
       mainSidebar.style.display = "none";
+      mainContent.classList.add("collapsed");
     } else {
       collapsedNav.style.display = "none";
       mainSidebar.style.display = "block";
+      mainContent.classList.remove("collapsed");
     }
   });
-});
-// 여기까지 축소 네비이게이션
-
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.querySelector(".search-input");
-  const searchButton = document.querySelector(".search-button button");
 
   function performSearch() {
     const query = searchInput.value.trim();
@@ -43,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     performSearch();
   });
 });
+
+// 여기까지 축소 네비이게이션
+
 
 // 쇼츠
 function updateVisibleShortsCards() {
@@ -70,3 +72,4 @@ function updateVisibleShortsCards() {
 
 window.addEventListener("resize", updateVisibleShortsCards);
 window.addEventListener("DOMContentLoaded", updateVisibleShortsCards);
+

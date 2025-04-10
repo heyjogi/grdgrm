@@ -821,3 +821,12 @@ body {
   background-color: #f2f2f2;
 }
 
+
+.v-container {
+  margin-left: 0px; /* 기본 사이드바 있을 때 여백 */
+  transition: margin-left 0.1s ease;
+}
+
+.v-container.collapsed {
+  margin-left: -180px; /* 축소된 네비 있을 때 여백 */
+}
