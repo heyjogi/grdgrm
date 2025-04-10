@@ -43,3 +43,30 @@ document.addEventListener("DOMContentLoaded", () => {
     performSearch();
   });
 });
+
+// 쇼츠
+function updateVisibleShortsCards() {
+  const container = document.querySelector(".shorts-container");
+  const cards = container.querySelectorAll(".shorts-card");
+
+  const containerWidth = container.offsetWidth;
+  const gap = 16;
+  const cardMinWidth = 200;
+
+  const visibleCount = Math.floor(
+    (containerWidth + gap) / (cardMinWidth + gap)
+  );
+  const cardWidth = (containerWidth - gap * (visibleCount - 1)) / visibleCount;
+
+  cards.forEach((card, index) => {
+    if (index < visibleCount) {
+      card.style.display = "block";
+      card.style.width = `${cardWidth}px`;
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+window.addEventListener("resize", updateVisibleShortsCards);
+window.addEventListener("DOMContentLoaded", updateVisibleShortsCards);
