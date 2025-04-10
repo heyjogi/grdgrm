@@ -6,10 +6,6 @@
   font-family: "Roboto", Arial, sans-serif;
 }
 
-body {
-  background-color: #f9f9f9;
-}
-
 button {
   border: none;
   background-color: transparent;
@@ -23,7 +19,7 @@ button {
 }
 
 body {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 /* 헤더 영역 */
@@ -41,6 +37,99 @@ body {
   right: 0;
   z-index: 100;
 }
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.logo img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 40px;
+  border: 1px solid #c6c6c6;
+  border-radius: 40px;
+  overflow: hidden;
+  padding: 0 4px 0 16px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px #eee;
+  height: 40px;
+}
+
+.search-input {
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: 400px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-button button {
+  border: none;
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 1px solid #ccc;
+}
+
+.voice-button button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.add-content button,
+.notifications button,
+.profile button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+.profile button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 /* 사이드바 영역 */
 .container {
   display: flex;
@@ -244,6 +333,7 @@ body {
   border-radius: 50%;
 }
 
+
 /* 메인 컨텐츠 영역 스타일 조정 (헤더 때문에 아래로 밀기) */
 .container {
   padding-top: 56px; /* 헤더 높이만큼 padding 추가 */
@@ -304,7 +394,7 @@ body {
 
 .thumbnail {
   width: 100%;
-  height: 180px;
+  height: 100%;
   aspect-ratio: 16 / 9;
   background-color: #888;
   border-radius: 8px;
@@ -656,4 +746,75 @@ body {
   background-color: #0f0f0f;
   color: white;
   font-weight: bold;
+}
+
+.collapsed-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nav-item span {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 사이드바 축소 디자인  */
+.collapsed-nav {
+  position: fixed;
+  left: 0;
+  top: 71px; /* 상단 헤더 높이만큼 */
+  width: 72px;
+  height: calc(100vh - 56px);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0; /* 패딩 제거 */
+  z-index: 2000; /* 다른 요소들 위에 표시되도록 */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 중앙 정렬 */
+  width: 100%;
+  height: 74px; /* 높이 고정 */
+  cursor: pointer;
+}
+
+.nav-item .material-icons {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.nav-item span:not(.material-icons) {
+  font-size: 10px;
+  color: #0f0f0f;
+}
+
+.nav-item:hover {
+  background-color: #f2f2f2;
 }
