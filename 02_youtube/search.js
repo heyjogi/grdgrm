@@ -117,6 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="meta">
             <div class="meta-header">
               <div class="${className}-title">${video.title}</div>
+              <button class="kebab-menu-btn">
+                <i class="icon-ellipsis-vertical"></i>
+              </button>
             </div>
             <div class="${className}-stats">조회수: ${video.views}</div>
           </div>

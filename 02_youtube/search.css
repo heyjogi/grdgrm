@@ -359,6 +359,25 @@ body {
   color: #606060;
 }
 
+.meta-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.kebab-menu-btn {
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.kebab-menu-btn i {
+  color: #000;
+  font-size: 24px;
+}
+
 .shorts-results {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
