@@ -12,13 +12,14 @@
       rel="stylesheet"
       href="https://unpkg.com/lucide-static/font/Lucide.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="common.css"/>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="collapsed-nav">
       <div class="nav-item">
-        <span class="material-icons">home</span>
-        <span>홈</span>
+          <span class="material-icons">home</span>
+          <span>홈</span>
       </div>
       <div class="nav-item">
         <span class="material-icons">smart_display</span>
@@ -39,7 +40,7 @@
           <button><span class="material-icons">menu</span></button>
         </div>
         <div class="logo">
-          <a href="#">
+          <a href="index.html">
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube 로고" />
             <span class="logo-region">KR</span>
@@ -635,8 +636,10 @@
       <nav class="sidebar" aria-label="주요 메뉴">
         <ul class="sidebar-section">
           <li class="sidebar-item active">
-            <button><span class="material-icons">home</span>홈</button>
-          </li>
+            <a href="index.html">
+              <button><span class="material-icons">home</span>홈</button>
+            </a>
+           </li>
           <li class="sidebar-item">
             <button>
               <span class="material-icons">smart_display</span>Shorts

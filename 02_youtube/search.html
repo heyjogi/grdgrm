@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://unpkg.com/lucide-static/font/Lucide.css"
     />
+    <link rel="stylesheet" href="common.css" />
     <link rel="stylesheet" href="search.css" />
   </head>
   <body>
@@ -33,7 +34,6 @@
         <span>내 페이지</span>
       </div>
     </div>
-
     <header class="header">
       <div class="header-left">
         <div class="hamburger-menu">
@@ -45,7 +45,7 @@
               src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
               alt="YouTube 로고"
             />
-            <span>KR</span>
+            <span class="logo-region">KR</span>
           </a>
         </div>
       </div>
@@ -69,7 +69,10 @@
         </div>
         <div class="profile">
           <button>
-            <img src="https://via.placeholder.com/30" alt="프로필 이미지" />
+            <img
+              src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfODMg/MDAxNjA0MjI4ODc1MDgz.gQ3xcHrLXaZyxcFAoEcdB7tJWuRs7fKgOxQwPvsTsrUg.0OBtKHq2r3smX5guFQtnT7EDwjzksz5Js0wCV4zjfpcg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%EB%B3%B4%EB%9D%BC.jpg?type=w400"
+              alt="프로필 이미지"
+            />
           </button>
         </div>
       </div>
@@ -82,7 +85,9 @@
       <nav class="sidebar" aria-label="주요 메뉴">
         <ul class="sidebar-section">
           <li class="sidebar-item active">
-            <button><span class="material-icons">home</span>홈</button>
+            <a href="index.html">
+              <button><span class="material-icons">home</span>홈</button>
+            </a>
           </li>
           <li class="sidebar-item">
             <button>
@@ -237,7 +242,6 @@
         </button>
       </div>
     </main>
-    <script src="videoData.js"></script>
     <script src="search.js"></script>
   </body>
 </html>
