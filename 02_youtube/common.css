@@ -1,0 +1,276 @@
+/* CSS 스타일링 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+/* 헤더 영역 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 10px 16px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu button {
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.logo img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-region {
+  font-size: 4px;
+  color: #606060;
+  position: relative;
+  top: -6px;
+  margin-left: 2px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  border: 1px solid #c6c6c6;
+  border-radius: 40px;
+  overflow: hidden;
+  padding: 0 4px 0 16px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px #eee;
+  height: 40px;
+}
+
+.search-input {
+  border: none;
+  padding: 8px 10px;
+  background: transparent;
+  width: 400px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-button button {
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 1px solid #ccc;
+}
+
+.voice-button button {
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.add-content button,
+.notifications button,
+.profile button {
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+.profile button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* 사이드바 영역 */
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: white;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  padding: 12px 0;
+  position: fixed;
+  top: 56px;
+  z-index: 100;
+}
+
+.sidebar-section {
+  padding: 8px 0;
+}
+
+.sidebar-label {
+  padding: 6px 24px;
+  font-size: 13px;
+  color: #606060;
+  font-weight: 500;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar-item {
+  cursor: pointer;
+}
+
+.sidebar-item a {
+  text-decoration: none;
+}
+
+.sidebar-item button {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  width: 100%;
+  text-align: left;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.sidebar-item:hover button {
+  background-color: #f2f2f2;
+}
+
+.sidebar-item.active button {
+  background-color: #e5e5e5;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-size: 24px;
+}
+
+.profile-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+  display: inline-flex;
+}
+
+/* 칩 바 */
+.chips-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 240px;
+  top: 56px;
+  right: 0;
+  z-index: 99;
+  white-space: nowrap;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* 사이드바 축소 디자인 */
+.collapsed-nav {
+  position: fixed;
+  left: 0;
+  top: 56px;
+  width: 72px;
+  height: calc(100vh - 56px);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;
+  z-index: 2000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 74px;
+  cursor: pointer;
+}
+
+.nav-item .material-icons {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.nav-item span:not(.material-icons) {
+  font-size: 10px;
+  color: #0f0f0f;
+}
+
+.nav-item:hover {
+  background-color: #f2f2f2;
+}
+
+.v-container {
+  margin-left: 0px;
+  transition: margin-left 0.1s ease;
+}
+
+.v-container.collapsed {
+  margin-left: -180px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .search-bar {
+    display: none;
+  }
+  .logo span {
+    display: none;
+  }
+}
