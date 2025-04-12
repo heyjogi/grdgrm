@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const collapsedNav = document.querySelector(".collapsed-nav");
   const mainSidebar = document.querySelector(".sidebar");
   const mainContent = document.querySelector(".v-container"); // ← 콘텐츠 영역
+  const chipsBar = document.querySelector(".chips-bar");
 
   const searchInput = document.querySelector(".search-input");
   const searchButton = document.querySelector(".search-button button");
@@ -16,10 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
       collapsedNav.style.display = "flex";
       mainSidebar.style.display = "none";
       mainContent.classList.add("collapsed");
+      chipsBar.classList.add("collapsed");
     } else {
       collapsedNav.style.display = "none";
       mainSidebar.style.display = "block";
       mainContent.classList.remove("collapsed");
+      chipsBar.classList.remove("collapsed");
     }
   });
 
@@ -44,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 여기까지 축소 네비이게이션
-
 
 // 쇼츠
 function updateVisibleShortsCards() {
@@ -72,4 +74,3 @@ function updateVisibleShortsCards() {
 
 window.addEventListener("resize", updateVisibleShortsCards);
 window.addEventListener("DOMContentLoaded", updateVisibleShortsCards);
-

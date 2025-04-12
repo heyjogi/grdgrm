@@ -205,7 +205,7 @@ button {
 .chips-bar {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
+  overflow-x: hidden;
   padding: 12px 24px;
   background-color: #ffffff;
   position: fixed;
@@ -263,6 +263,11 @@ button {
 
 .v-container.collapsed {
   margin-left: -180px;
+}
+
+.chips-bar.collapsed {
+  margin-left: -180px;
+  transition: margin-left 0.1s ease;
 }
 
 /* 반응형 디자인 */
