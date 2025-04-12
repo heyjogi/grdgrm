@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".search-input");
   const searchButton = document.querySelector(".search-button button");
   const mainContent = document.querySelector(".v-container"); // ← 콘텐츠 영역
+  const chipsBar = document.querySelector(".chips-bar");
 
   collapsedNav.style.display = "none";
 
@@ -24,7 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mainContent.classList.toggle("collapsed", isCollapsed);
     }
 
-    // ✅ 검색 결과 리스트 위치 조정
+    if (chipsBar) {
+      chipsBar.classList.toggle("collapsed", isCollapsed);
+    }
+
+    //✅ 검색 결과 리스트 위치 조정
     document.querySelectorAll(".video-list, .shorts-list").forEach((list) => {
       list.classList.toggle("collapsed", isCollapsed);
     });
@@ -124,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="${className}-stats">조회수: ${video.views}</div>
           </div>
           <div class="channel-info">
+          <div class="avatar-img"></div>
             <div class="channel-name">${video.channelName}</div>
           </div>
         </div>
@@ -131,8 +137,70 @@ document.addEventListener("DOMContentLoaded", () => {
       list.appendChild(card);
     });
 
-    section.appendChild(list);
-    resultsContainer.appendChild(section);
+    if (className === "shorts") {
+      const logo = document.createElement("h2");
+      logo.className = "shorts-logo";
+      logo.innerHTML = `
+    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>YouTube Shorts</title>
+      <path
+        fill="currentColor"
+        d="m18.931 9.99-1.441-.601 1.717-.913a4.48 4.48 0 0 0 1.874-6.078 4.506 4.506 0 0 0-6.09-1.874L4.792 
+        5.929a4.504 4.504 0 0 0-2.402 4.193 4.521 4.521 0 0 0 2.666 3.904c.036.012 1.442.6 1.442.6l-1.706.901a4.51 
+        4.51 0 0 0-2.369 3.967A4.528 4.528 0 0 0 6.93 24c.725 0 1.437-.174 2.08-.508l10.21-5.406a4.494 4.494 0 0 0 
+        2.39-4.192 4.525 4.525 0 0 0-2.678-3.904ZM9.597 15.19V8.824l6.007 3.184z"
+      />
+    </svg>
+    <span class="shorts-text">Shorts</span>
+  `;
+      section.appendChild(logo);
+
+      const leftBtn = document.createElement("button");
+      leftBtn.className = "shorts-scroll-left";
+      leftBtn.innerHTML = "<";
+      leftBtn.style.display = "none"; // 시작 시 숨김
+
+      const rightBtn = document.createElement("button");
+      rightBtn.className = "shorts-scroll-right";
+      rightBtn.innerHTML = ">"; // 시작 시 보이도록
+      rightBtn.style.display = "block";
+
+      section.appendChild(leftBtn);
+      section.appendChild(list);
+      section.appendChild(rightBtn);
+      resultsContainer.appendChild(section);
+
+      // 스크롤 동작
+      const scrollAmount = 400;
+      rightBtn.addEventListener("click", () => {
+        list.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+
+      leftBtn.addEventListener("click", () => {
+        list.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      // 버튼 표시 로직
+      list.addEventListener("scroll", () => {
+        const maxScrollLeft = list.scrollWidth - list.clientWidth - 5;
+        leftBtn.style.display = list.scrollLeft > 0 ? "block" : "none";
+        rightBtn.style.display =
+          list.scrollLeft < maxScrollLeft ? "block" : "none";
+      });
+
+      // 렌더 후 스크롤 상태 체크
+      requestAnimationFrame(() => {
+        const maxScrollLeft = list.scrollWidth - list.clientWidth - 5;
+        if (maxScrollLeft > 0) {
+          rightBtn.style.display = "block";
+        } else {
+          rightBtn.style.display = "none";
+        }
+      });
+    } else {
+      section.appendChild(list);
+      resultsContainer.appendChild(section);
+    }
   }
 
   //  최종 실행
