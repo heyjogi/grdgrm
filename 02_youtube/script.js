@@ -1,3 +1,89 @@
+// 비디오 데이터를 video.json에서 가져옵니다.
+fetch("./video.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const videoContainer = document.getElementById("video-container");
+    const shortsContainer = document.getElementById("shorts-container");
+    const videoContainer2 = document.getElementById("video-container2");
+
+    const videos = data.videos.slice(0, 8);
+    videos.forEach((video) => {
+      const videoCard = createVideoCard(video);
+      videoContainer.appendChild(videoCard);
+    });
+
+    const shorts = data.shorts;
+    shorts.forEach((short) => {
+      const shortCard = createShortCard(short);
+      shortsContainer.appendChild(shortCard);
+    });
+
+    const videos2 = data.videos.slice(8, 12);
+    videos2.forEach((video) => {
+      const videoCard2 = createVideoCard(video);
+      videoContainer2.appendChild(videoCard2);
+    });
+  })
+  .catch((error) => console.error("Error loading video data:", error));
+
+function createVideoCard(video) {
+  const article = document.createElement("article");
+  article.classList.add("video-card");
+
+  const tags = Array.isArray(video.tags) ? video.tags : [video.tags];
+  article.setAttribute("data-tags", tags.join(","));
+
+  article.innerHTML = `
+    <a href="#" class="video-link">
+      <div class="thumbnail">
+        <img src="${video.thumbnail}" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />
+      </div>
+      <div class="details">
+        <img class="avatar-img" src="${video.avatar}" alt="Channel Icon" />
+        <div class="meta">
+          <div class="meta-header">
+            <h3 class="video-title">${video.title}</h3>
+            <button class="kebab-menu-btn">
+              <i class="icon-ellipsis-vertical"></i>
+            </button>
+          </div>
+          <p class="channel-name">${video.channel}</p>
+          <p class="video-stats">${video.views}</p>
+        </div>
+      </div>
+    </a>
+  `;
+
+  return article;
+}
+
+function createShortCard(short) {
+  const article = document.createElement("article");
+  article.classList.add("shorts-card");
+
+  const tags = Array.isArray(short.tags) ? short.tags : [short.tags];
+  article.setAttribute("data-tags", tags.join(","));
+
+  article.innerHTML = `
+    <a href="#" class="shorts-link">
+      <img class="shorts-thumbnail" src="${short.thumbnail}" alt="${short.title}" />
+      <div class="shorts-details">
+        <div class="s-meta">
+          <div class="s-meta-header">
+            <h3 class="shorts-title">${short.title}</h3>
+            <button class="kebab-menu-btn">
+              <i class="icon-ellipsis-vertical"></i>
+            </button>
+          </div>
+          <p class="video-stats">${short.views}</p>
+        </div>
+      </div>
+    </a>
+  `;
+
+  return article;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.querySelector(".hamburger-menu button"); // 여기를 수정
   const collapsedNav = document.querySelector(".collapsed-nav");
@@ -7,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.querySelector(".search-input");
   const searchButton = document.querySelector(".search-button button");
+
   // 초기에는 축소된 네비게이션 숨기기
   // 모바일 환경 체크 함수
   function isMobile() {
