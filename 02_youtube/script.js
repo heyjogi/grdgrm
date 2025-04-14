@@ -8,8 +8,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".search-input");
   const searchButton = document.querySelector(".search-button button");
   // 초기에는 축소된 네비게이션 숨기기
-  collapsedNav.style.display = "none";
+  // 모바일 환경 체크 함수
+  function isMobile() {
+    return window.innerWidth <= 768; // 모바일 기준 너비
+  }
 
+  // 네비게이션 상태 설정 함수
+  function setNavigationState() {
+    if (isMobile()) {
+      // 모바일일 때
+      collapsedNav.style.display = "flex";
+      mainSidebar.style.display = "none";
+      mainContent.classList.add("collapsed");
+      chipsBar.classList.add("collapsed");
+    } else {
+      // 데스크톱일 때
+      collapsedNav.style.display = "none";
+      mainSidebar.style.display = "block";
+      mainContent.classList.remove("collapsed");
+      chipsBar.classList.remove("collapsed");
+    }
+  }
+
+  // 초기 실행
+  setNavigationState();
+
+  // 화면 크기 변경 시 실행
+  window.addEventListener("resize", setNavigationState);
   menuButton.addEventListener("click", () => {
     const isCollapsed = collapsedNav.style.display === "none";
 
