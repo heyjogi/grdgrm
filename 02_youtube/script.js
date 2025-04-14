@@ -57,8 +57,9 @@ function updateVisibleShortsCards() {
   const gap = 16;
   const cardMinWidth = 200;
 
-  const visibleCount = Math.floor(
-    (containerWidth + gap) / (cardMinWidth + gap)
+  const visibleCount = Math.max(
+    1,
+    Math.floor((containerWidth + gap) / (cardMinWidth + gap))
   );
   const cardWidth = (containerWidth - gap * (visibleCount - 1)) / visibleCount;
 
