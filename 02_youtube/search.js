@@ -7,10 +7,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainContent = document.querySelector(".v-container"); // ← 콘텐츠 영역
   const chipsBar = document.querySelector(".chips-bar");
 
-  collapsedNav.style.display = "none";
-
   // 여기에 전역 변수 추가
   let isSidebarCollapsed = false;
+
+  // 모바일 환경 체크 함수
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  // 네비게이션 상태 설정
+  function setNavigationState() {
+    if (isMobile()) {
+      collapsedNav.style.display = "flex";
+      mainSidebar.style.display = "none";
+      mainContent?.classList.add("collapsed");
+      chipsBar?.classList.add("collapsed");
+
+      document.querySelectorAll(".video-list, .shorts-list").forEach((list) => {
+        list.classList.add("collapsed");
+      });
+
+      isSidebarCollapsed = true;
+    } else {
+      collapsedNav.style.display = "none";
+      mainSidebar.style.display = "block";
+      mainContent?.classList.remove("collapsed");
+      chipsBar?.classList.remove("collapsed");
+
+      document.querySelectorAll(".video-list, .shorts-list").forEach((list) => {
+        list.classList.remove("collapsed");
+      });
+
+      isSidebarCollapsed = false;
+    }
+  }
+
+  // 초기 실행 + 리사이즈 감지
+  setNavigationState();
+  window.addEventListener("resize", setNavigationState);
+
+  collapsedNav.style.display = "none";
 
   menuButton.addEventListener("click", () => {
     const isCollapsed = collapsedNav.style.display === "none";
@@ -48,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   searchButton.addEventListener("click", performSearch);
 
   // 외부 API로 검색 결과 가져오기
-  const API_KEY = ""; // API KEY
+  const API_KEY = "AIzaSyD6YK_1ytwhIspuY-DEIYZopta4DsGz0AA"; // API KEY
   const BASE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
   const BASE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos";
 
