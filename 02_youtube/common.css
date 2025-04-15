@@ -270,12 +270,64 @@ button {
   transition: margin-left 0.1s ease;
 }
 
+.mobile-search-btn {
+  display: none;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-  .search-bar {
-    display: none;
-  }
   .logo span {
     display: none;
+  }
+
+  .header-right {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mobile-search-btn {
+    display: flex !important;
+    padding: 8px;
+    margin-left: 0;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .search-bar {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 56px;
+    border-radius: 0;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s,
+      opacity 0.3s;
+    opacity: 0;
+    padding: 0;
+  }
+  .search-bar.expanded {
+    display: flex !important;
+    width: 368px;
+    opacity: 1;
+    padding: 0 16px;
+    box-shadow: none;
+    margin-left: 72px;
+    border: none;
+    animation: expandSearch 0.5s ease;
+  }
+  .search-bar.expanded .search-input {
+    display: block !important;
+  }
+  .search-input,
+  .voice-button {
+    display: none !important;
   }
 }
