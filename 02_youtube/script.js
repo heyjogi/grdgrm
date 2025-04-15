@@ -190,13 +190,19 @@ function updateVisibleShortsCards() {
 
   const containerWidth = container.offsetWidth;
   const gap = 16;
-  const cardMinWidth = 200;
+  const isMobile = window.innerWidth <= 600;
+  const visibleCount = isMobile
+    ? 2
+    : Math.max(1, Math.floor((containerWidth + gap) / (200 + gap)));
 
-  const visibleCount = Math.max(
-    1,
-    Math.floor((containerWidth + gap) / (cardMinWidth + gap))
-  );
-  const cardWidth = (containerWidth - gap * (visibleCount - 1)) / visibleCount;
+  const totalGap = gap * (visibleCount - 1);
+  const cardWidth = (containerWidth - totalGap) / visibleCount;
+
+  // 카드 컨테이너 스타일 정리
+  container.style.flexWrap = "nowrap";
+  container.style.overflow = "hidden";
+  container.style.justifyContent = isMobile ? "flex-start" : ""; // space-between 제거
+  container.style.gap = `${gap}px`; // gap 직접 지정
 
   cards.forEach((card, index) => {
     if (index < visibleCount) {
