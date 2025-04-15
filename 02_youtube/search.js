@@ -1,3 +1,26 @@
+// 검색창 확장/축소 기능
+document
+  .querySelector(".mobile-search-btn")
+  .addEventListener("click", function () {
+    const searchBar = document.querySelector(".search-bar");
+    searchBar.classList.toggle("expanded");
+
+    if (searchBar.classList.contains("expanded")) {
+      searchBar.querySelector(".search-input").focus();
+    }
+  });
+
+// 외부 클릭 시 검색창 닫기
+document.addEventListener("click", (e) => {
+  const searchBar = document.querySelector(".search-bar");
+  if (
+    !searchBar.contains(e.target) &&
+    !e.target.closest(".mobile-search-btn")
+  ) {
+    searchBar.classList.remove("expanded");
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.querySelector(".hamburger-menu button");
   const collapsedNav = document.querySelector(".collapsed-nav");
