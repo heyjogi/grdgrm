@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Feed</title>
+  <link rel="stylesheet" href="feed.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <!-- LEFT SIDEBAR: Fixed Taskbar -->
+      <aside class="left-menu">
+        <div class="left-menu-content">
+          <div class="left-logo">
+            <img src="instagramlogo.png" alt="Instagram Logo">
+          </div>
+          <nav class="category-menu">
+            <ul>
+              <li><a href="#"><img src="home.png" class="category-icon">홈</a></li>
+              <li><a href="#"><img src="search.png" class="category-icon">검색</a></li>
+              <li><a href="#"><img src="compass.png" class="category-icon">탐색 탭</a></li>
+              <li><a href="#"><img src="reels.png" class="category-icon">릴스</a></li>
+              <li><a href="#"><img src="arrow.png" class="category-icon">메시지</a></li>
+              <li><a href="#"><img src="heart.png" class="category-icon">알림</a></li>
+              <li><a href="#"><img src="make.png" class="category-icon">만들기</a></li>
+              <li><a href="#"><img src="profile.png" class="category-icon">프로필</a></li>
+              <li><a href="#"><img src="more.png" class="category-icon">더보기</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- CENTER SECTION -->
+      <div class="center-feed">
+        <!-- === STORIES SECTION WITH OVERLAY ARROWS === -->
+    <div class="story-wrapper">
+      <div class="story-container">
+        <button class="story-nav left">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="stories-list">
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+          <div class="-story"></div>
+        </div>
+
+        <button class="story-nav right">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+  <div class="feed-wrapper">
+    <section class="feed">
+
+      <!-- Post 1 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user-profile.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">구루미</span>
+              <span class="location">Seoul, Korea</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="결혼.jpg" alt="Slide 1">
+            <img src="결혼3.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span><span></span><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 2,345개</span></div>
+        <div class="post-caption"><span class="username">구르미</span> 날씨 너무 좋다!! ☀️</div>
+        <div class="post-comments"><a href="#">댓글 120개 모두 보기</a></div>
+        <div class="post-time">1시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 2 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user-profile2.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">starling33</span>
+              <span class="location">Busan, Korea</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 1,500개</span></div>
+        <div class="post-caption"><span class="username">starling33</span> Exploring the city vibe!</div>
+        <div class="post-comments"><a href="#">댓글 80개 모두 보기</a></div>
+        <div class="post-time">2시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 3 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user3.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">travel_buddy</span>
+              <span class="location">Jeju Island</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 3,102개</span></div>
+        <div class="post-caption"><span class="username">travel_buddy</span> 제주로 여행 오는거 어때? 🌄🌊</div>
+        <div class="post-comments"><a href="#">댓글 64개 모두 보기</a></div>
+        <div class="post-time">3시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 4 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user4.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">coffee_gurumi</span>
+              <span class="location">Seoul, Hongdae</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span><span></span><span></span><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 947개</span></div>
+        <div class="post-caption"><span class="username">coffee_gurumi</span> Ice Americano가 제일 맛있어~ ☕❤️</div>
+        <div class="post-comments"><a href="#">댓글 29개 모두 보기</a></div>
+        <div class="post-time">4시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 5 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user5.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">fitlife</span>
+              <span class="location">Gangnam, Seoul</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 2,248개</span></div>
+        <div class="post-caption"><span class="username">fitlife</span> No pain, no gain 💪🔥</div>
+        <div class="post-comments"><a href="#">댓글 33개 모두 보기</a></div>
+        <div class="post-time">6시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 6 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user6.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">artsy_me</span>
+              <span class="location">Daegu Art Street</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span><span></span><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 876개</span></div>
+        <div class="post-caption"><span class="username">artsy_me</span> 캔바스 드디어 끝났다 🖌️🎨</div>
+        <div class="post-comments"><a href="#">댓글 15개 모두 보기</a></div>
+        <div class="post-time">8시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+      <!-- Post 7 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <img class="avatar" src="user7.jpg" alt="User Avatar">
+            <div class="user-info">
+              <span class="username">bookworm</span>
+              <span class="location">COEX Library</span>
+            </div>
+          </div>
+          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    
+        <div class="post-image-slider">
+          <div class="slider-track">
+            <img src="post-image1.jpg" alt="Slide 1">
+            <img src="post-image2.jpg" alt="Slide 2">
+            <img src="post-image3.jpg" alt="Slide 3">
+          </div>
+          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+                <div class="post-dots"><span></span></div>
+    
+        <div class="post-actions">
+          <div class="left-actions">
+            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+          </div>
+          <div class="right-actions"><i class="far fa-bookmark"></i></div>
+        </div>
+    
+        <div class="post-likes"><span>좋아요 1,104개</span></div>
+        <div class="post-caption"><span class="username">bookworm</span> Weekend reads 📚</div>
+        <div class="post-comments"><a href="#">댓글 22개 모두 보기</a></div>
+        <div class="post-time">10시간 전</div>
+        <div class="post-add-comment">댓글 달기...</div>
+      </div>
+    
+    </section>
+    
+     
+      <!-- RIGHT SIDEBAR -->
+      <aside class="right-sidebar">
+        <div class="profile-summary">
+          <img src="my-profile.jpg" class="avatar" alt="My Profile">
+          <div class="profile-text">
+            <span class="username">h.cho0511</span>
+            <span class="name">조하림 (Daniel Cho)</span>
+          </div>
+        </div>
+        <div class="suggestions-header">
+          <span>회원님을 위한 추천</span>
+          <a href="#">모두 보기</a>
+        </div>
+        <ul class="suggestions-list">
+          <li>
+            <img src="insta-logo.jpg" class="avatar">
+            <div class="suggest-info">
+              <span class="username">조혜정</span>
+              <span class="note">김익환님 외 12명이 팔로우합니다</span>
+            </div>
+            <a href="#" class="follow-btn">팔로우</a>
+          </li>
+          <li>
+            <img src="user2.jpg" class="avatar">
+            <div class="suggest-info">
+              <span class="username">giryun1</span>
+              <span class="note">gimyeong1님 외 18명이 팔로우</span>
+            </div>
+            <a href="#" class="follow-btn">팔로우</a>
+          </li>
+          <li>
+            <img src="insta-logo.jpg" class="avatar">
+            <div class="suggest-info">
+              <span class="username">최창열</span>
+              <span class="note">한지우님 외 29명이 팔로우합니다</span>
+            </div>
+            <a href="#" class="follow-btn">팔로우</a>
+          </li>
+          <li>
+            <img src="insta-logo.jpg" class="avatar">
+            <div class="suggest-info">
+              <span class="username">한지우</span>
+              <span class="note">구루미님 외 11명이 팔로우합니다</span>
+            </div>
+            <a href="#" class="follow-btn">팔로우</a>
+          </li>
+          <li>
+            <img src="insta-logo.jpg" class="avatar">
+            <div class="suggest-info">
+              <span class="username">구기명</span>
+              <span class="note">goorm2님 외 13명이 팔로우합니다</span>
+            </div>
+            <a href="#" class="follow-btn">팔로우</a>
+          </li>
+        </ul>
+        <footer class="sidebar-footer">
+          <p>&copy; 2025 구르다구르미 프로젝트</p>
+        </footer>
+      </aside>
+    </div>
+  </main>
+
+  <script src="feed.js"></script>
+</body>
+</html>
