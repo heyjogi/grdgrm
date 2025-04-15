@@ -167,13 +167,18 @@ function updateVisibleShortsCards() {
 
   const containerWidth = container.offsetWidth;
   const gap = 16;
-  const cardMinWidth = 200;
+  const isMobile = window.innerWidth <= 600;
+  const visibleCount = isMobile
+    ? 2
+    : Math.max(1, Math.floor((containerWidth + gap) / (200 + gap)));
 
-  const visibleCount = Math.max(
-    1,
-    Math.floor((containerWidth + gap) / (cardMinWidth + gap))
-  );
-  const cardWidth = (containerWidth - gap * (visibleCount - 1)) / visibleCount;
+  // 모바일일 때 카드 너비 계산: 전체 너비 - 총 gap 나눈 값
+  const totalGap = gap * (visibleCount - 1);
+  const cardWidth = (containerWidth - totalGap) / visibleCount;
+
+  container.style.flexWrap = "nowrap";
+  container.style.overflow = "hidden";
+  container.style.justifyContent = isMobile ? "space-between" : "";
 
   cards.forEach((card, index) => {
     if (index < visibleCount) {
