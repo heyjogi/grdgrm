@@ -10,6 +10,26 @@
 </head>
 <body>
   <!-- Main Content -->
+
+  <div class="mobile-header">
+    <div class="header-left">
+      <button class="dropdown-btn">
+        추천
+        <img class="arrow-icon" src="../assets/images/icons/arrow-down.png" alt="드롭다운 아이콘" />
+      </button>
+    </div>
+  
+    <div class="header-center">
+      <div class="search-box">
+        <img src="../assets/images/icons/search.png" alt="검색" />
+        <input type="text" placeholder="검색" />
+      </div>
+    </div>
+  
+    <div class="header-right">
+      <img src="../assets/images/icons/heart.png" alt="좋아요" />
+    </div>
+  </div>
   <main>
     <div class="container">
       <!-- LEFT SIDEBAR: Fixed Taskbar -->
@@ -17,6 +37,7 @@
         <div class="left-menu-content">
           <div class="left-logo">
             <img src="../assets/images/logos/instagramlogo.png" alt="Instagram Logo">
+            <img src="../instargramlogo2.png" alt="Instagram Icon" class="icon-logo">
           </div>
           <nav class="category-menu">
             <ul>
@@ -33,7 +54,7 @@
           </nav>
         </div>
       </aside>
-
+      
       <!-- CENTER SECTION -->
       <div class="center-feed">
         <!-- === STORIES SECTION WITH OVERLAY ARROWS === -->
@@ -231,41 +252,41 @@
     
       <!-- Post 4 -->
       <div class="post">
-        <div class="post-header">
-          <div class="post-user">
-            <img class="avatar" src="user4.jpg" alt="User Avatar">
-            <div class="user-info">
-              <span class="username">coffee_gurumi</span>
-              <span class="location">Seoul, Hongdae</span>
-            </div>
-          </div>
-          <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
-        </div>
-    
-        <div class="post-image-slider">
-          <div class="slider-track">
-            <img src="post-image1.jpg" alt="Slide 1">
-            <img src="post-image2.jpg" alt="Slide 2">
-            <img src="post-image3.jpg" alt="Slide 3">
-          </div>
-          <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
-          <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
-        </div>
-                <div class="post-dots"><span></span><span></span><span></span><span></span></div>
-    
-        <div class="post-actions">
-          <div class="left-actions">
-            <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-          </div>
-          <div class="right-actions"><i class="far fa-bookmark"></i></div>
-        </div>
-    
-        <div class="post-likes"><span>좋아요 947개</span></div>
-        <div class="post-caption"><span class="username">coffee_gurumi</span> Ice Americano가 제일 맛있어~ ☕❤️</div>
-        <div class="post-comments"><a href="#">댓글 29개 모두 보기</a></div>
-        <div class="post-time">4시간 전</div>
-        <div class="post-add-comment">댓글 달기...</div>
+  <div class="post-header">
+    <div class="post-user">
+      <img class="avatar" src="user4.jpg" alt="User Avatar">
+      <div class="user-info">
+        <span class="username">coffee_gurumi</span>
+        <span class="location">Seoul, Hongdae</span>
       </div>
+    </div>
+    <div class="post-more"><i class="fas fa-ellipsis-h"></i></div>
+  </div>
+
+  <div class="post-image-slider">
+    <div class="slider-track">
+      <img src="coffee1.jpg" alt="Slide 1">
+      <img src="coffee2.jpg" alt="Slide 2">
+      <img src="coffee3.jpg" alt="Slide 3">
+    </div>
+    <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-btn right"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="post-dots"><span></span><span></span><span></span></div>
+
+  <div class="post-actions">
+    <div class="left-actions">
+      <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+    </div>
+    <div class="right-actions"><i class="far fa-bookmark"></i></div>
+  </div>
+
+  <div class="post-likes"><span>좋아요 1,204개</span></div>
+  <div class="post-caption"><span class="username">coffee_gurumi</span> 홍대 카페 감성 최고! ☕🍰</div>
+  <div class="post-comments"><a href="#">댓글 45개 모두 보기</a></div>
+  <div class="post-time">4시간 전</div>
+  <div class="post-add-comment">댓글 달기...</div>
+</div>
     
       <!-- Post 5 -->
       <div class="post">
@@ -445,7 +466,15 @@
       </aside>
     </div>
   </main>
-
+  <!-- 모바일 전용 하단 네비게이션 -->
+  <nav class="mobile-nav">
+    <a href="#"><img src="home.png" class="category-icon" alt="홈 아이콘"><span class="menu-text"></span></a>
+    <a href="#"><img src="compass.png" class="category-icon" alt="탐색 아이콘"><span class="menu-text"></span></a>
+    <a href="#"><img src="reels.png" class="category-icon" alt="릴스 아이콘"><span class="menu-text"></span></a>
+    <a href="#"><img src="make.png" class="category-icon" alt="만들기 아이콘"><span class="menu-text"></span></a>
+    <a href="#"><img src="arrow.png" class="category-icon" alt="화살표 아이콘"><span class="menu-text"></span></a>
+    <a href="#"><img src="profile.png" class="category-icon" alt="프로필 아이콘"><span class="menu-text"></span></a>
+  </nav>
   <script src="../js/feed.js"></script>
 </body>
 </html>
