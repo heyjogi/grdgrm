@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Overall container for the login page */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    margin: 0 auto;
+}
+
+/* Left side: Image container */
+.image-box {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-box img {
+    width: auto;
+    max-width: 70%;  /* Adjust image size as needed */
+    height: auto;
+    margin-left: 40px;  /* Shifts the image to the right */
+}
+
+/* Right side: Form container */
+.form-box {
+    width: 35%;
+    background: none;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Top-align content */
+    margin-top: -150px;  /* Shift the form upward */
+}
+
+/* Login form area (fixed width and shifted left) */
+.login-box {
+    width: 100%;
+    max-width: 320px;  /* Increased container width for longer input display */
+    margin: 0 auto;
+    text-align: center;
+    transform: translateX(-40px);  /* Shifts login form to the left */
+    padding-bottom: 20px;
+}
+
+/* Logo container for Instagram logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo-container img {
+    max-width: 180px;  /* Enlarged logo */
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+/* Common styling for input fields and the login button */
+.login-box input,
+.login-box button {
+    width: 100%;              /* Full width of the fixed container (320px) */
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Styling for input fields */
+.login-box input {
+    margin: 5px 0;            /* Slim spacing between input fields */
+    border: 1px solid #dbdbdb;
+    background-color: #efefef;
+    color: #262626;
+}
+.login-box input::placeholder {
+    color: #8e8e8e;
+}
+
+/* Styling for the login button */
+.login-box button {
+    margin-top: 20px;         /* Space above the button */
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+.login-box button:hover {
+    background-color: #3180d7;
+}
+
+/* Download section styling */
+.download-container {
+    margin-top: 80px;         /* Increased top margin so it sits much lower than the login button */
+    padding-bottom: 60px;       /* Extra padding at bottom to create gap */
+    text-align: center;
+}
+.download-container p {
+    font-size: 14px;
+    color: #8e8e8e;
+    margin-bottom: 10px;
+}
+.download-buttons a {
+    display: inline-block;
+    margin: 0 5px;
+}
+.download-buttons img {
+    height: 40px;   /* Adjust the store badge height as needed */
+    width: auto;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    .image-box,
+    .form-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .image-box img {
+        max-width: 100%;
+        margin-left: 0; /* Remove offset on mobile */
+    }
+}
