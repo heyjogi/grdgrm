@@ -1,0 +1,72 @@
+.story-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.story-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.story-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 10;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.story-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.story-image-wrapper img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+}
+
+.story-username-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.story-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.story-username-text {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* 숨김 상태 */
+.hidden {
+  display: none;
+}

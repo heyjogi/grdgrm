@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instagram Feed</title>
   <link rel="stylesheet" href="../css/feed.css">
+  <link rel="stylesheet" href="../css/storyViewer.css">
   <link rel="icon" href="../assets/images/logos/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -200,6 +201,21 @@
       </aside>
     </div>
   </main>
+  <!-- 📸 스토리 전체 보기 뷰어 -->
+  <div id="story-viewer" class="story-viewer hidden">
+    <div class="story-overlay"></div>
+    <div class="story-content">
+      <button class="story-close">&times;</button>
+      <div class="story-image-wrapper">
+        <img src="" alt="스토리 이미지" class="story-image" />
+      </div>
+      <div class="story-username-bar">
+        <img class="story-avatar" src="" alt="프로필" />
+        <span class="story-username-text"></span>
+      </div>
+    </div>
+  </div>
+
   <!-- 모바일 전용 하단 네비게이션 -->
   <nav class="mobile-nav">
     <a href="#"><img src="home.png" class="category-icon" alt="홈 아이콘"><span class="menu-text"></span></a>
@@ -210,5 +226,6 @@
     <a href="#"><img src="profile.png" class="category-icon" alt="프로필 아이콘"><span class="menu-text"></span></a>
   </nav>
   <script src="../js/feed.js"></script>
+  <script src="../js/storyViewer.js" defer></script>
 </body>
 </html>
