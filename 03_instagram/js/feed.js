@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: 1,
       userInfo: {
-        avatar:"../assets/images/profile/프로필1.jpg",
+        avatar: "../assets/images/profile/프로필1.jpg",
         username: "구르미",
         location: "Seoul, Korea",
       },
@@ -69,126 +69,124 @@ document.addEventListener("DOMContentLoaded", () => {
       caption: "날씨 너무 좋다!! ☀️",
       commentsCount: 120,
       time: "1시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 2,
       userInfo: {
-        avatar:"../assets/images/profile/프로필2.jpg",
+        avatar: "../assets/images/profile/프로필2.jpg",
         username: "starling33",
         location: "Busan, Korea",
       },
-      slideImg: [
-        "../assets/images/posts/부산.jpg"
-      ],
+      slideImg: ["../assets/images/posts/부산.jpg"],
       likes: 1500,
       caption: "Exploring the city vibe!",
       commentsCount: 80,
       time: "2시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 3,
       userInfo: {
-        avatar:"../assets/images/profile/프로필3.jpg",
+        avatar: "../assets/images/profile/프로필3.jpg",
         username: "travel_buddy",
         location: "Jeju Island",
       },
       slideImg: [
         "../assets/images/posts/제주.jpg",
         "../assets/images/posts/제주1.jpg",
-        "../assets/images/posts/제주2.jpg"
+        "../assets/images/posts/제주2.jpg",
       ],
       likes: 3102,
       caption: "제주로 여행 오는거 어때? 🌄🌊",
       commentsCount: 64,
       time: "3시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 4,
       userInfo: {
-        avatar:"../assets/images/profile/프로필4.jpg",
+        avatar: "../assets/images/profile/프로필4.jpg",
         username: "coffee_gurumi",
         location: "Seoul, Hongdae",
       },
       slideImg: [
         "../assets/images/posts/카페1.jpg",
         "../assets/images/posts/카페2.jpg",
-        "../assets/images/posts/카페3.jpg"
+        "../assets/images/posts/카페3.jpg",
       ],
       likes: 1204,
       caption: "홍대 카페 감성 최고! ☕🍰",
       commentsCount: 45,
       time: "4시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 5,
       userInfo: {
-        avatar:"../assets/images/profile/프로필5.jpg",
+        avatar: "../assets/images/profile/프로필5.jpg",
         username: "fitlife",
         location: "Gangnam, Seoul",
       },
       slideImg: [
         "../assets/images/posts/운동2.jpg",
         "../assets/images/posts/운동3.jpg",
-        "../assets/images/posts/운동1.jpg"
+        "../assets/images/posts/운동1.jpg",
       ],
       likes: 2245,
       caption: " No pain, no gain 💪🔥",
       commentsCount: 3,
       time: "6시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 6,
       userInfo: {
-        avatar:"../assets/images/profile/프로필6.jpg",
+        avatar: "../assets/images/profile/프로필6.jpg",
         username: "artsy_me",
         location: "Daegu Art Street",
       },
       slideImg: [
         "../assets/images/posts/그림1.jpg",
-        "../assets/images/posts/그림2.jpg"
+        "../assets/images/posts/그림2.jpg",
       ],
       likes: 876,
       caption: "캔바스 드디어 끝났다 🖌️🎨",
       commentsCount: 15,
       time: "8시간 전",
-      comments: []    //[{user: "", text:""}]
+      comments: [], //[{user: "", text:""}]
     },
 
     {
       id: 7,
       userInfo: {
-        avatar:"../assets/images/profile/프로필7.jpg",
+        avatar: "../assets/images/profile/프로필7.jpg",
         username: "bookworm",
         location: "COEX Library",
       },
       slideImg: [
         "../assets/images/posts/독서3.jpg",
-        "../assets/images/posts/독서2.jpg"
+        "../assets/images/posts/독서2.jpg",
       ],
       likes: 1104,
       caption: "Weekend reads 📚",
       commentsCount: 22,
       time: "10시간 전",
-      comments: []    //[{user: "", text:""}]
-    }
-  ]
+      comments: [], //[{user: "", text:""}]
+    },
+  ];
 
   // 피드 반복 렌더링
   const feedContainer = document.querySelector(".feed");
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const postEl = document.createElement("div");
     postEl.classList.add("post");
-    postEl.setAttribute("id", `post-${post.id}`)
+    postEl.setAttribute("id", `post-${post.id}`);
 
     postEl.innerHTML = `
       <div class="post-header">
@@ -204,7 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
       <div class="post-image-slider">
         <div class="slider-track">
-        ${post.slideImg.map((img, index) => `<img src="${img}" alt="Slide ${index + 1}">`).join("")}
+        ${post.slideImg
+          .map((img, index) => `<img src="${img}" alt="Slide ${index + 1}">`)
+          .join("")}
         </div>
         
         <button class="slider-btn left"><i class="fas fa-chevron-left"></i></button>
@@ -212,7 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         </div>
 
-      <div class="post-dots">${post.slideImg.map(() => `<span></span>`).join("")}</div>
+      <div class="post-dots">${post.slideImg
+        .map(() => `<span></span>`)
+        .join("")}</div>
 
       <div class="post-actions">
           <div class="left-actions">
@@ -222,15 +224,16 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     
         <div class="post-likes"><span>좋아요 ${post.likes.toLocaleString()}개</span></div>
-        <div class="post-caption"><span class="username">${post.userInfo.username}</span>${post.caption}</div>
+        <div class="post-caption"><span class="username">${
+          post.userInfo.username
+        }</span>${post.caption}</div>
         <div class="post-comments"><a href="#">댓글 ${post.commentsCount.toLocaleString()}개 모두 보기</a></div>
         <div class="post-time">${post.time}</div>
         <div class="post-add-comment">댓글 달기...</div>
         `;
 
-        feedContainer.append(postEl);
+    feedContainer.append(postEl);
   });
-
 
   // 🔹 피드 이미지 슬라이더 + dot indicator
   document.querySelectorAll(".post-image-slider").forEach((slider) => {
@@ -265,11 +268,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // like 버튼 기능
     document.querySelectorAll(".post").forEach((post) => {
       const likeIcon = post.querySelector(".left-actions .fa-heart");
       const likesText = post.querySelector(".post-likes span");
+      const saveIcon = post.querySelector(".right-actions .fa-bookmark");
 
+      // like 버튼 기능
       likeIcon.addEventListener("click", () => {
         const isLiked = likeIcon.classList.toggle("fas");
         likeIcon.classList.toggle("far", !isLiked);
@@ -280,6 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let count = parseInt(text);
         count = isLiked ? count + 1 : count - 1;
         likesText.textContent = `좋아요 ${count.toLocaleString()}개`;
+      });
+
+      // save 버튼 기능
+      saveIcon.addEventListener("click", () => {
+        const isSaved = saveIcon.classList.toggle("fas");
+        saveIcon.classList.toggle("far", !isSaved);
       });
     });
 
