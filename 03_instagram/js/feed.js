@@ -85,6 +85,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // like 버튼 기능
+    document.querySelectorAll(".post").forEach((post) => {
+      const likeIcon = post.querySelector(".left-actions .fa-heart");
+      const likesText = post.querySelector(".post-likes span");
+
+      likeIcon.addEventListener("click", () => {
+        const isLiked = likeIcon.classList.toggle("fas");
+        likeIcon.classList.toggle("far", !isLiked);
+        likeIcon.style.color = isLiked ? "red" : "#333";
+
+        // like 카운트
+        let text = likesText.textContent.replace(/[^\d]/g, ""); // 숫자만 추출
+        let count = parseInt(text);
+        count = isLiked ? count + 1 : count - 1;
+        likesText.textContent = `좋아요 ${count.toLocaleString()}개`;
+      });
+    });
+
     window.addEventListener("resize", updateSlide);
 
     updateSlide(); // 초기 상태
