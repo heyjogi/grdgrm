@@ -1,3 +1,5 @@
+import { createModal } from "./modal.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   // 🔹 STORIES 슬라이더 버튼 & 표시 토글
   const storiesList = document.querySelector(".stories-list");
@@ -173,11 +175,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // comment 버튼 기능 구현
+  function initModalButtons(posts) {
+    document.querySelectorAll(".post").forEach((postEl, index) => {
+      const commentIcon = postEl.querySelector(".fa-comment");
+      if (!commentIcon) return;
+
+      commentIcon.addEventListener("click", () => {
+        const postData = posts[index];
+        createModal(postData);
+      });
+    });
+  }
+
   // post 데이터 불러오기
   fetch("../assets/data/post.json")
     .then((res) => res.json())
     .then((data) => {
       renderPosts(data);
+      initModalButtons(data);
       initButtons();
     })
     .catch((err) => console.error("Error loading post data.", err));
