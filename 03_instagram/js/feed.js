@@ -52,143 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔹 Post 데이터 구조
-  const posts = [
-    {
-      id: 1,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필1.jpg",
-        username: "구르미",
-        location: "Seoul, Korea",
-      },
-      slideImg: [
-        "../assets/images/posts/결혼.jpg",
-        "../assets/images/posts/결혼3.jpg",
-      ],
-      likes: 2345,
-      caption: "날씨 너무 좋다!! ☀️",
-      commentsCount: 120,
-      time: "1시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 2,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필2.jpg",
-        username: "starling33",
-        location: "Busan, Korea",
-      },
-      slideImg: ["../assets/images/posts/부산.jpg"],
-      likes: 1500,
-      caption: "Exploring the city vibe!",
-      commentsCount: 80,
-      time: "2시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 3,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필3.jpg",
-        username: "travel_buddy",
-        location: "Jeju Island",
-      },
-      slideImg: [
-        "../assets/images/posts/제주.jpg",
-        "../assets/images/posts/제주1.jpg",
-        "../assets/images/posts/제주2.jpg",
-      ],
-      likes: 3102,
-      caption: "제주로 여행 오는거 어때? 🌄🌊",
-      commentsCount: 64,
-      time: "3시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 4,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필4.jpg",
-        username: "coffee_gurumi",
-        location: "Seoul, Hongdae",
-      },
-      slideImg: [
-        "../assets/images/posts/카페1.jpg",
-        "../assets/images/posts/카페2.jpg",
-        "../assets/images/posts/카페3.jpg",
-      ],
-      likes: 1204,
-      caption: "홍대 카페 감성 최고! ☕🍰",
-      commentsCount: 45,
-      time: "4시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 5,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필5.jpg",
-        username: "fitlife",
-        location: "Gangnam, Seoul",
-      },
-      slideImg: [
-        "../assets/images/posts/운동2.jpg",
-        "../assets/images/posts/운동3.jpg",
-        "../assets/images/posts/운동1.jpg",
-      ],
-      likes: 2245,
-      caption: " No pain, no gain 💪🔥",
-      commentsCount: 3,
-      time: "6시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 6,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필6.jpg",
-        username: "artsy_me",
-        location: "Daegu Art Street",
-      },
-      slideImg: [
-        "../assets/images/posts/그림1.jpg",
-        "../assets/images/posts/그림2.jpg",
-      ],
-      likes: 876,
-      caption: "캔바스 드디어 끝났다 🖌️🎨",
-      commentsCount: 15,
-      time: "8시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-
-    {
-      id: 7,
-      userInfo: {
-        avatar: "../assets/images/profile/프로필7.jpg",
-        username: "bookworm",
-        location: "COEX Library",
-      },
-      slideImg: [
-        "../assets/images/posts/독서3.jpg",
-        "../assets/images/posts/독서2.jpg",
-      ],
-      likes: 1104,
-      caption: "Weekend reads 📚",
-      commentsCount: 22,
-      time: "10시간 전",
-      comments: [], //[{user: "", text:""}]
-    },
-  ];
-
-  // 피드 반복 렌더링
   const feedContainer = document.querySelector(".feed");
-  posts.forEach((post) => {
-    const postEl = document.createElement("div");
-    postEl.classList.add("post");
-    postEl.setAttribute("id", `post-${post.id}`);
 
-    postEl.innerHTML = `
+  function renderPosts(posts) {
+    posts.forEach((post) => {
+      const postEl = document.createElement("div");
+      postEl.classList.add("post");
+      postEl.setAttribute("id", `post-${post.id}`);
+
+      postEl.innerHTML = `
       <div class="post-header">
         <div class="post-user">
           <img class="avatar" src="${post.userInfo.avatar}" alt="User Avatar">
@@ -232,8 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="post-add-comment">댓글 달기...</div>
         `;
 
-    feedContainer.append(postEl);
-  });
+      feedContainer.append(postEl);
+    });
+  }
 
   // 🔹 피드 이미지 슬라이더 + dot indicator
   document.querySelectorAll(".post-image-slider").forEach((slider) => {
@@ -268,6 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    window.addEventListener("resize", updateSlide);
+
+    updateSlide(); // 초기 상태
+  });
+
+  function initButtons() {
     document.querySelectorAll(".post").forEach((post) => {
       const likeIcon = post.querySelector(".left-actions .fa-heart");
       const likesText = post.querySelector(".post-likes span");
@@ -292,9 +171,14 @@ document.addEventListener("DOMContentLoaded", () => {
         saveIcon.classList.toggle("far", !isSaved);
       });
     });
+  }
 
-    window.addEventListener("resize", updateSlide);
-
-    updateSlide(); // 초기 상태
-  });
+  // post 데이터 불러오기
+  fetch("../assets/data/post.json")
+    .then((res) => res.json())
+    .then((data) => {
+      renderPosts(data);
+      initButtons();
+    })
+    .catch((err) => console.error("Error loading post data.", err));
 });
