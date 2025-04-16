@@ -1,0 +1,124 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "user": {
+        "username": "yoojae.suk",
+        "avatar": "https://cdn.mindgil.com/news/photo/202201/73470_12193_834.png"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.mindgil.com/news/photo/202201/73470_12193_834.png",
+          "duration": 5000,
+          "caption": "새로운 프로젝트 시작! 🎬"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user": {
+        "username": "hyeri_0609",
+        "avatar": "https://cdn.newsin.co.kr/news/photo/202009/81491_71747_385.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.newsin.co.kr/news/photo/202009/81491_71747_385.jpg",
+          "duration": 5000,
+          "caption": "오늘의 일상 ✨"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user": {
+        "username": "gurumi.travel",
+        "avatar": "https://img.freepik.com/premium-vector/travel-company-logo_18099-1527.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.freepik.com/premium-vector/travel-company-logo_18099-1527.jpg",
+          "duration": 5000,
+          "caption": "새로운 여행지 추천!"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "user": {
+        "username": "m.klei3",
+        "avatar": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+          "duration": 5000,
+          "caption": "일상 스케치 📸"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "user": {
+        "username": "robertdowneyjr",
+        "avatar": "https://www.hollywoodreporter.com/wp-content/uploads/2023/11/GettyImages-803015182-H-2023.jpg?w=1296&h=730&crop=1"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://www.hollywoodreporter.com/wp-content/uploads/2023/11/GettyImages-803015182-H-2023.jpg?w=1296&h=730&crop=1",
+          "duration": 5000,
+          "caption": "On set today 🎭"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "user": {
+        "username": "roma.emo",
+        "avatar": "https://img.hankyung.com/photo/202112/01.28455803.1.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.hankyung.com/photo/202112/01.28455803.1.jpg",
+          "duration": 5000,
+          "caption": "로마에서의 하루 🌞"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "user": {
+        "username": "christy.leo29",
+        "avatar": "https://img.freepik.com/free-photo/lifestyle-people-emotions-casual-concept-confident-nice-smiling-asian-woman-cross-arms-chest-confident-ready-help-listening-coworkers-taking-part-conversation_1258-59335.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.freepik.com/free-photo/lifestyle-people-emotions-casual-concept-confident-nice-smiling-asian-woman-cross-arms-chest-confident-ready-help-listening-coworkers-taking-part-conversation_1258-59335.jpg",
+          "duration": 5000,
+          "caption": "오늘의 스마일 😊"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "user": {
+        "username": "boyoung0212_official",
+        "avatar": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/05/1893390626_20230503155222_9195618912.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/05/1893390626_20230503155222_9195618912.jpg",
+          "duration": 5000,
+          "caption": "새로운 프로젝트 준비중 📝"
+        }
+      ]
+    }
+  ]
+}
