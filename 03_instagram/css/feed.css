@@ -492,11 +492,15 @@ body {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 2;
+}
+
+.post-image-slider:hover .slider-btn {
+  display: block;
 }
 
 .slider-btn.left {
