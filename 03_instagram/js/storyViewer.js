@@ -56,11 +56,11 @@ class StoryViewer {
       if (this.isPaused) {
         this.resumeTimer();
         this.isPaused = false;
-        this.pauseBtn.textContent = "⏸"; // 다시 일시정지 아이콘
+        this.pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
       } else {
         this.pauseTimer();
         this.isPaused = true;
-        this.pauseBtn.textContent = "▶"; // 재생 아이콘
+        this.pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
       }
     });
   }

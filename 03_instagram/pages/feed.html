@@ -202,34 +202,24 @@
       </aside>
     </div>
   </main>
-  <!-- 📸 스토리 전체 보기 뷰어 -->
-  <!-- <div id="story-viewer" class="story-viewer hidden">
-    <div class="story-overlay"></div>
-    <div class="story-content">
-      <button class="story-close">&times;</button>
-      <div class="story-image-wrapper">
-        <img src="" alt="스토리 이미지" class="story-image" />
-      </div>
-      <div class="story-username-bar">
-        <img class="story-avatar" src="" alt="프로필" />
-        <span class="story-username-text"></span>
-      </div>
-    </div>
-  </div> -->
+
+  <!-- 스토리 뷰어 -->
   <div id="story-viewer" class="hidden">
     <div class="story-overlay"></div>
     <div class="story-content">
-      <button class="story-close">&times;</button>
-      <button class="story-pause" title="일시정지">⏸</button>
+      <div class="story-gradient-top"></div>
       <div class="story-progress"></div>
-      <div class="story-media"></div>
       <div class="story-username-bar">
         <img class="story-avatar" src="" alt="avatar" />
         <span class="story-username-text"></span>
       </div>
+      <div class="story-controls">
+        <button class="story-pause"><i class="fas fa-pause"></i></button>
+        <button class="story-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="story-media"></div>
     </div>
   </div>
-
 
   <!-- 모바일 전용 하단 네비게이션 -->
   <nav class="mobile-nav">
