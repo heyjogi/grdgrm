@@ -1,0 +1,204 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.post-modal {
+  display: flex;
+  background: #fff;
+  width: 90%;
+  max-width: 950px;
+  max-height: 90vh;
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.post-modal-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 1000;
+}
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 100;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-left {
+  flex: 1 1 60%;
+  min-width: 0;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.post-modal .slider-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.post-modal .slider-track img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* ✅ 1:1 정사각형 비율 유지 */
+  object-fit: contain; /* ✅ 이미지가 꽉 차게 */
+  flex-shrink: 0;
+  display: block;
+}
+
+.post-modal .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+.post-modallider-btn.left {
+  left: 10px;
+}
+.post-modal .slider-btn.right {
+  right: 10px;
+}
+
+.modal-dots {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+.modal-dots span {
+  display: inline-block;
+  margin: 0 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+.modal-dots span.active {
+  background: #fff;
+}
+
+.modal-right {
+  flex: 1 1 40%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 12px;
+}
+.post-modal .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.post-modal .user-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.post-modal .username {
+  font-weight: bold;
+}
+.post-modal .location {
+  font-size: 12px;
+  color: #888;
+}
+.post-modal .post-more {
+  cursor: pointer;
+}
+
+.modal-caption {
+  margin: 16px 0 8px;
+}
+.modal-caption strong {
+  margin-right: 6px;
+}
+.modal-likes {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.modal-time {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.modal-actions i {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.modal-add-comment {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  color: #888;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .post-modal {
+    flex-direction: column;
+  }
+  .modal-left {
+    flex: none;
+    width: 100%;
+    max-height: 300px;
+  }
+}
