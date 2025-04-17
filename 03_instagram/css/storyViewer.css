@@ -193,3 +193,33 @@
   transform: scale(1.2);
   opacity: 0.85;
 }
+
+.story-like {
+  position: relative;
+}
+
+.story-like i {
+  font-size: 22px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  transform: scale(1);
+}
+
+/* 좋아요 눌렀을 때 효과 */
+.story-like.liked i {
+  color: #ff4d6d;
+  transform: scale(0.9);
+  animation: heart-bounce 0.3s ease;
+}
+
+/* 튕기는 애니메이션 */
+@keyframes heart-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

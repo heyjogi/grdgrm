@@ -11,6 +11,7 @@ class StoryViewer {
     this.username = this.viewer.querySelector(".story-username-text");
     this.isPaused = false;
     this.pauseBtn = this.viewer.querySelector(".story-pause");
+    this.likeButton = this.viewer.querySelector(".story-like");
     this.init();
   }
 
@@ -63,6 +64,12 @@ class StoryViewer {
         this.pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
       }
     });
+
+    this.likeButton.addEventListener("click", () => {
+      const story = this.stories[this.currentStoryIndex];
+      story.liked = !story.liked;
+      this.updateLikeButton();
+    });
   }
 
   showStory(index) {
@@ -93,8 +100,7 @@ class StoryViewer {
 
     // 프로그레스 바 업데이트
     this.updateProgress();
-
-    // 타이머 시작
+    this.updateLikeButton();
     this.startTimer();
   }
 
@@ -180,6 +186,21 @@ class StoryViewer {
   closeViewer() {
     this.viewer.classList.add("hidden");
     if (this.timer) clearTimeout(this.timer);
+  }
+
+  updateLikeButton() {
+    const story = this.stories[this.currentStoryIndex];
+    const icon = this.likeButton.querySelector("i");
+
+    if (story.liked) {
+      this.likeButton.classList.add("liked");
+      icon.classList.remove("far");
+      icon.classList.add("fas");
+    } else {
+      this.likeButton.classList.remove("liked");
+      icon.classList.remove("fas");
+      icon.classList.add("far");
+    }
   }
 }
 
