@@ -17,12 +17,10 @@ class StoryViewer {
 
   async init() {
     try {
-      // story_data.json 불러오기
       const response = await fetch("../data/story_data.json");
       const data = await response.json();
       this.stories = data.stories;
 
-      // 스토리 아이템 클릭 이벤트 설정
       this.setupEventListeners();
     } catch (error) {
       console.error("스토리 데이터를 불러오는데 실패했습니다:", error);
@@ -30,18 +28,15 @@ class StoryViewer {
   }
 
   setupEventListeners() {
-    // 스토리 아이템 클릭 이벤트
     const storyItems = document.querySelectorAll(".story-item");
     storyItems.forEach((item, index) => {
       item.addEventListener("click", () => this.showStory(index));
     });
 
-    // 닫기 버튼
     this.viewer
       .querySelector(".story-close")
       .addEventListener("click", () => this.closeViewer());
 
-    // 이전/다음 스토리 네비게이션
     this.mediaContainer.addEventListener("click", (e) => {
       const rect = this.mediaContainer.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -98,7 +93,6 @@ class StoryViewer {
       this.mediaContainer.innerHTML += `<div class="story-caption">${item.caption}</div>`;
     }
 
-    // 프로그레스 바 업데이트
     this.updateProgress();
     this.updateLikeButton();
     this.startTimer();
@@ -154,10 +148,8 @@ class StoryViewer {
     const story = this.stories[this.currentStoryIndex];
 
     if (this.currentItemIndex < story.items.length - 1) {
-      // 다음 아이템으로
       this.currentItemIndex++;
     } else if (this.currentStoryIndex < this.stories.length - 1) {
-      // 다음 스토리로
       this.currentStoryIndex++;
       this.currentItemIndex = 0;
     } else {
@@ -171,10 +163,8 @@ class StoryViewer {
 
   prevStory() {
     if (this.currentItemIndex > 0) {
-      // 이전 아이템으로
       this.currentItemIndex--;
     } else if (this.currentStoryIndex > 0) {
-      // 이전 스토리로
       this.currentStoryIndex--;
       const story = this.stories[this.currentStoryIndex];
       this.currentItemIndex = story.items.length - 1;
