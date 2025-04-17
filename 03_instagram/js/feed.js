@@ -111,42 +111,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 🔹 피드 이미지 슬라이더 + dot indicator
-  document.querySelectorAll(".post-image-slider").forEach((slider) => {
-    const track = slider.querySelector(".slider-track");
-    const imgs = slider.querySelectorAll("img");
-    const btnLeft = slider.querySelector(".slider-btn.left");
-    const btnRight = slider.querySelector(".slider-btn.right");
-    const dots = slider.parentElement.querySelectorAll(".post-dots span");
-    let currentIndex = 0;
+  function initSliders() {
+    document.querySelectorAll(".post-image-slider").forEach((slider) => {
+      const track = slider.querySelector(".slider-track");
+      const imgs = slider.querySelectorAll("img");
+      const btnLeft = slider.querySelector(".slider-btn.left");
+      const btnRight = slider.querySelector(".slider-btn.right");
+      const dots = slider.parentElement.querySelectorAll(".post-dots span");
+      let currentIndex = 0;
 
-    const updateSlide = () => {
-      const offset = -currentIndex * slider.offsetWidth;
-      track.style.transform = `translateX(${offset}px)`;
+      const updateSlide = () => {
+        const offset = -currentIndex * slider.offsetWidth;
+        track.style.transform = `translateX(${offset}px)`;
 
-      // 🔸 Dot indicator 업데이트
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentIndex);
+        // 🔸 Dot indicator 업데이트
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentIndex);
+        });
+      };
+
+      btnLeft.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlide();
+        }
       });
-    };
 
-    btnLeft.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlide();
-      }
+      btnRight.addEventListener("click", () => {
+        if (currentIndex < imgs.length - 1) {
+          currentIndex++;
+          updateSlide();
+        }
+      });
+
+      window.addEventListener("resize", updateSlide);
+
+      updateSlide(); // 초기 상태
     });
-
-    btnRight.addEventListener("click", () => {
-      if (currentIndex < imgs.length - 1) {
-        currentIndex++;
-        updateSlide();
-      }
-    });
-
-    window.addEventListener("resize", updateSlide);
-
-    updateSlide(); // 초기 상태
-  });
+  }
 
   function initButtons() {
     document.querySelectorAll(".post").forEach((post) => {
@@ -193,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.json())
     .then((data) => {
       renderPosts(data);
+      initSliders();
       initModalButtons(data);
       initButtons();
     })
