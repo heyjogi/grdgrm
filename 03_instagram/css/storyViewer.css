@@ -34,36 +34,13 @@
   z-index: 1;
 }
 
-/* .story-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #fff;
-  font-size: 30px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.story-pause {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: #fff;
-  font-size: 18px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-} */
 .story-controls {
   position: absolute;
   top: 20px;
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   z-index: 3;
 }
 
@@ -130,6 +107,7 @@
   height: 32px;
   border-radius: 50%;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 .story-username-text {
@@ -190,4 +168,28 @@
   to {
     width: 100%;
   }
+}
+
+.story-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.story-actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.story-actions button:hover {
+  transform: scale(1.2);
+  opacity: 0.85;
 }
