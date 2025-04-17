@@ -119,6 +119,123 @@
           "caption": "새로운 프로젝트 준비중 📝"
         }
       ]
+    },
+    {
+      "id": 9,
+      "user": {
+        "username": "benzamin",
+        "avatar": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0="
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=",
+          "duration": 5000,
+          "caption": "자연 속에서의 힐링 🌿"
+        },
+        {
+          "type": "image",
+          "url": "https://cdn.pixabay.com/photo/2021/01/25/21/24/walk-5949110_1280.jpg",
+          "duration": 5000,
+          "caption": "고요한 산책길 🚶‍♂️"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "user": {
+        "username": "alice.lemon",
+        "avatar": "https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg",
+          "duration": 5000,
+          "caption": "노을지는 캠퍼스 🌇"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "user": {
+        "username": "gongyoo7010",
+        "avatar": "https://image.cine21.com/resize/cine21/person/2019/1030/11_35_56__5db8f70c422b9[X252,310].jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://image.cine21.com/resize/cine21/person/2019/1030/11_35_56__5db8f70c422b9[X252,310].jpg",
+          "duration": 5000,
+          "caption": "촬영장 비하인드 ✨"
+        },
+        {
+          "type": "video",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "duration": 8000,
+          "caption": "촬영 현장 비하인드 🎬"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "user": {
+        "username": "therock",
+        "avatar": "https://cdn.britannica.com/36/147936-050-8E84B614/Dwayne-Johnson.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.britannica.com/36/147936-050-8E84B614/Dwayne-Johnson.jpg",
+          "duration": 5000,
+          "caption": "헬스장에서 한 컷 💪"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "user": {
+        "username": "elizab1960",
+        "avatar": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
+          "duration": 5000,
+          "caption": "가을 분위기 🍁"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "user": {
+        "username": "chloegmoretz",
+        "avatar": "https://tiermaker.com/images/templates/most-attractive-female-celebrities-859895/8598951614718615.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://tiermaker.com/images/templates/most-attractive-female-celebrities-859895/8598951614718615.jpg",
+          "duration": 5000,
+          "caption": "미소가 아름다운 순간 🌟"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "user": {
+        "username": "sam.duez",
+        "avatar": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+          "duration": 5000,
+          "caption": "사진 한 장의 힘 📷"
+        }
+      ]
     }
   ]
 }

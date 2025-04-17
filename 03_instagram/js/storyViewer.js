@@ -9,7 +9,8 @@ class StoryViewer {
     this.progressContainer = this.viewer.querySelector(".story-progress");
     this.avatar = this.viewer.querySelector(".story-avatar");
     this.username = this.viewer.querySelector(".story-username-text");
-
+    this.isPaused = false;
+    this.pauseBtn = this.viewer.querySelector(".story-pause");
     this.init();
   }
 
@@ -51,11 +52,17 @@ class StoryViewer {
       }
     });
 
-    // 마우스 호버 시 일시정지
-    this.mediaContainer.addEventListener("mouseenter", () => this.pauseTimer());
-    this.mediaContainer.addEventListener("mouseleave", () =>
-      this.resumeTimer()
-    );
+    this.pauseBtn.addEventListener("click", () => {
+      if (this.isPaused) {
+        this.resumeTimer();
+        this.isPaused = false;
+        this.pauseBtn.textContent = "⏸"; // 다시 일시정지 아이콘
+      } else {
+        this.pauseTimer();
+        this.isPaused = true;
+        this.pauseBtn.textContent = "▶"; // 재생 아이콘
+      }
+    });
   }
 
   showStory(index) {
@@ -74,7 +81,12 @@ class StoryViewer {
     this.username.textContent = story.user.username;
 
     // 미디어 콘텐츠 업데이트
-    this.mediaContainer.innerHTML = `<img src="${item.url}" alt="Story">`;
+    if (item.type === "image") {
+      this.mediaContainer.innerHTML = `<img src="${item.url}" alt="Story">`;
+    } else if (item.type === "video") {
+      this.mediaContainer.innerHTML = `<video src="${item.url}" autoplay muted playsinline></video>`;
+    }
+
     if (item.caption) {
       this.mediaContainer.innerHTML += `<div class="story-caption">${item.caption}</div>`;
     }
@@ -98,6 +110,9 @@ class StoryViewer {
         progressBar.classList.add("completed");
       } else if (index === this.currentItemIndex) {
         progressBar.classList.add("active");
+        if (this.isPaused) {
+          progressBar.classList.add("paused");
+        }
       }
 
       this.progressContainer.appendChild(progressBar);
@@ -115,9 +130,17 @@ class StoryViewer {
 
   pauseTimer() {
     if (this.timer) clearTimeout(this.timer);
+    const activeBar = this.progressContainer.querySelector(
+      ".progress-bar.active"
+    );
+    if (activeBar) activeBar.classList.add("paused");
   }
 
   resumeTimer() {
+    const activeBar = this.progressContainer.querySelector(
+      ".progress-bar.active"
+    );
+    if (activeBar) activeBar.classList.remove("paused");
     this.startTimer();
   }
 
