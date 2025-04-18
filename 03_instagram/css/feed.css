@@ -78,6 +78,7 @@ body {
   max-width: 1200px;
   margin: 0 auto; /* 가운데 정렬 */
   position: relative;
+  gap: 32px;
 }
 
 /* === CENTER FEED === */
@@ -94,18 +95,23 @@ body {
 /* === RIGHT SIDEBAR === */
 .right-sidebar {
   width: 320px;
-  position: fixed;
-  right: calc((100vw - 1200px) / 2 + -80px); /* 수정된 부분 */
-  top: 0;
+  position: absolute;
+  top: 0px;
+  left: calc(470px + 240px + 32px);
   padding: 20px;
-  margin-top: 80px;
   font-size: 14px;
   color: #262626;
+  right: calc((100vw - 1200px) / 2 + -80px);
+  height: auto;
+  max-height: calc(100vh - 40px);
+  margin-top: 0;
+  overflow-y: auto;
 }
 
 .profile-summary {
   display: flex;
   align-items: center;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .profile-summary .avatar {
