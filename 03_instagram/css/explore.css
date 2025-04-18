@@ -1,0 +1,220 @@
+.explore-container {
+  display: flex;
+  gap: 0; /* gap 줄이기 */
+  width: 100%;
+}
+
+.explore-main {
+  padding: 45px 20px;
+  width: 100%;
+  background-color: #ffffff;
+  margin-left: 200px; /* 사이드바와의 간격 추가 */
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%; /* calc 제거하고 100%로 변경 */
+  max-width: 940px; /* 데스크톱에서의 최대 너비 */
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.grid-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #ffffff;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  vertical-align: middle;
+}
+
+/* 세로로 긴 카드 */
+.grid-item.big-row {
+  grid-row: span 2;
+  aspect-ratio: 1/2;
+}
+
+.post-type-icon {
+  position: absolute;
+  top: 8px; /* 상단 여백 줄임 */
+  right: 8px; /* 우측 여백 줄임 */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px; /* 패딩 줄임 */
+}
+
+.post-type-icon img[src="../assets/images/icons/video-icon.png"] {
+  position: absolute;
+  top: -10px; /* 필요한 만큼 조정 */
+  right: -10px; /* 필요한 만큼 조정 */
+  width: 46px; /* 원하는 크기로 조절 */
+  height: 46px; /* 원하는 크기로 조절 */
+}
+/* SVG 아이콘의 크기도 조정 */
+.post-type-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* 이미지 로딩 트랜지션 */
+.grid-item img {
+  transition: opacity 0.3s ease;
+}
+
+/* 기존 코드에 transition 추가 */
+.grid-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #ffffff;
+  overflow: hidden; /* 이미지가 컨테이너를 벗어나지 않도록 */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+.stat {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.stat img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 반응형 처리 */
+@media (max-width: 1024px) {
+  .explore-main {
+    padding: 45px 0; /* 좌우 패딩 제거 */
+  }
+
+  .explore-grid {
+    width: 100%;
+    max-width: none; /* 최대 너비 제한 해제 */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .explore-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .center-feed {
+    left: 240px;
+  }
+}
+
+/* 미디어쿼리 내부 수정 */
+@media screen and (max-width: 1150px) {
+  .left-menu {
+    width: 72px;
+  }
+
+  .explore-main {
+    margin-left: 72px; /* 축소된 사이드바 너비만큼 */
+  }
+
+  .left-menu .left-logo img.text-logo {
+    display: none;
+  }
+
+  .left-menu .left-logo img.icon-logo {
+    display: block;
+    width: 24px;
+    margin: 0 auto;
+  }
+
+  .left-menu .category-menu li a .menu-text {
+    display: none;
+  }
+
+  .left-menu .category-menu li a {
+    justify-content: center;
+  }
+
+  .left-menu .category-menu li a .category-icon {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    padding-left: 72px;
+    padding-right: 10px;
+  }
+
+  .center-feed {
+    left: 72px;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .container {
+    padding-left: 0;
+  }
+
+  .center-feed {
+    left: 0;
+  }
+  /* 추가: 사이드 메뉴 숨기기 */
+  .left-menu {
+    display: none;
+  }
+
+  .explore-main {
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .explore-grid {
+    max-width: 100%;
+    gap: 2px;
+    width: 100%;
+  }
+
+  .grid-item {
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
