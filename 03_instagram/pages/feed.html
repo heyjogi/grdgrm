@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instagram Feed</title>
   <link rel="stylesheet" href="../css/feed.css">
+  <link rel="stylesheet" href="../css/storyViewer.css">
   <link rel="stylesheet" href="../css/modal.css">
   <link rel="icon" href="../assets/images/logos/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -201,6 +202,29 @@
       </aside>
     </div>
   </main>
+
+  <!-- 스토리 뷰어 -->
+  <div id="story-viewer" class="hidden">
+    <div class="story-overlay"></div>
+    <div class="story-content">
+      <div class="story-gradient-top"></div>
+      <div class="story-progress"></div>
+      <div class="story-username-bar">
+        <img class="story-avatar" src="" alt="avatar" />
+        <span class="story-username-text"></span>
+      </div>
+      <div class="story-controls">
+        <button class="story-pause"><i class="fas fa-pause"></i></button>
+        <button class="story-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="story-media"></div>
+      <div class="story-actions">
+        <button class="story-like" title="좋아요"><i class="far fa-heart"></i></button>
+        <button class="story-share" title="공유"><i class="far fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
   <!-- 모바일 전용 하단 네비게이션 -->
   <nav class="mobile-nav">
     <a href="#"><img src="../assets/images/icons/home.png" class="category-icon" alt="홈 아이콘"><span class="menu-text"></span></a>
@@ -210,6 +234,7 @@
     <a href="#"><img src="../assets/images/icons/arrow.png" class="category-icon" alt="화살표 아이콘"><span class="menu-text"></span></a>
     <a href="#"><img src="../assets/images/icons/profile.png" class="category-icon" alt="프로필 아이콘"><span class="menu-text"></span></a>
   </nav>
- <script type="module" src="../js/feed.js"></script>
+  <script type="module" src="../js/feed.js"></script>
+  <script src="../js/storyViewer.js" defer></script>
 </body>
 </html>

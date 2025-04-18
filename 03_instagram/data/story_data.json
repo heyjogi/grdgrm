@@ -1,0 +1,241 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "user": {
+        "username": "yoojae.suk",
+        "avatar": "https://cdn.mindgil.com/news/photo/202201/73470_12193_834.png"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.mindgil.com/news/photo/202201/73470_12193_834.png",
+          "duration": 5000,
+          "caption": "새로운 프로젝트 시작! 🎬"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user": {
+        "username": "hyeri_0609",
+        "avatar": "https://cdn.newsin.co.kr/news/photo/202009/81491_71747_385.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.newsin.co.kr/news/photo/202009/81491_71747_385.jpg",
+          "duration": 5000,
+          "caption": "오늘의 일상 ✨"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user": {
+        "username": "gurumi.travel",
+        "avatar": "https://img.freepik.com/premium-vector/travel-company-logo_18099-1527.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.freepik.com/premium-vector/travel-company-logo_18099-1527.jpg",
+          "duration": 5000,
+          "caption": "새로운 여행지 추천!"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "user": {
+        "username": "m.klei3",
+        "avatar": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+          "duration": 5000,
+          "caption": "일상 스케치 📸"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "user": {
+        "username": "robertdowneyjr",
+        "avatar": "https://www.hollywoodreporter.com/wp-content/uploads/2023/11/GettyImages-803015182-H-2023.jpg?w=1296&h=730&crop=1"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://www.hollywoodreporter.com/wp-content/uploads/2023/11/GettyImages-803015182-H-2023.jpg?w=1296&h=730&crop=1",
+          "duration": 5000,
+          "caption": "On set today 🎭"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "user": {
+        "username": "roma.emo",
+        "avatar": "https://img.hankyung.com/photo/202112/01.28455803.1.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.hankyung.com/photo/202112/01.28455803.1.jpg",
+          "duration": 5000,
+          "caption": "로마에서의 하루 🌞"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "user": {
+        "username": "christy.leo29",
+        "avatar": "https://img.freepik.com/free-photo/lifestyle-people-emotions-casual-concept-confident-nice-smiling-asian-woman-cross-arms-chest-confident-ready-help-listening-coworkers-taking-part-conversation_1258-59335.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://img.freepik.com/free-photo/lifestyle-people-emotions-casual-concept-confident-nice-smiling-asian-woman-cross-arms-chest-confident-ready-help-listening-coworkers-taking-part-conversation_1258-59335.jpg",
+          "duration": 5000,
+          "caption": "오늘의 스마일 😊"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "user": {
+        "username": "boyoung0212_official",
+        "avatar": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/05/1893390626_20230503155222_9195618912.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/05/1893390626_20230503155222_9195618912.jpg",
+          "duration": 5000,
+          "caption": "새로운 프로젝트 준비중 📝"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "user": {
+        "username": "benzamin",
+        "avatar": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0="
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=",
+          "duration": 5000,
+          "caption": "자연 속에서의 힐링 🌿"
+        },
+        {
+          "type": "image",
+          "url": "https://picsum.photos/id/28/4928/3264",
+          "duration": 5000,
+          "caption": "고요한 산책길 🚶‍♂️"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "user": {
+        "username": "alice.lemon",
+        "avatar": "https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg",
+          "duration": 5000,
+          "caption": "노을지는 캠퍼스 🌇"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "user": {
+        "username": "gongyoo7010",
+        "avatar": "https://image.cine21.com/resize/cine21/person/2019/1030/11_35_56__5db8f70c422b9[X252,310].jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://image.cine21.com/resize/cine21/person/2019/1030/11_35_56__5db8f70c422b9[X252,310].jpg",
+          "duration": 5000,
+          "caption": "촬영장 비하인드 ✨"
+        },
+        {
+          "type": "video",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "duration": 8000,
+          "caption": "촬영 현장 비하인드 🎬"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "user": {
+        "username": "therock",
+        "avatar": "https://cdn.britannica.com/36/147936-050-8E84B614/Dwayne-Johnson.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://cdn.britannica.com/36/147936-050-8E84B614/Dwayne-Johnson.jpg",
+          "duration": 5000,
+          "caption": "헬스장에서 한 컷 💪"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "user": {
+        "username": "elizab1960",
+        "avatar": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
+          "duration": 5000,
+          "caption": "가을 분위기 🍁"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "user": {
+        "username": "chloegmoretz",
+        "avatar": "https://tiermaker.com/images/templates/most-attractive-female-celebrities-859895/8598951614718615.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://tiermaker.com/images/templates/most-attractive-female-celebrities-859895/8598951614718615.jpg",
+          "duration": 5000,
+          "caption": "미소가 아름다운 순간 🌟"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "user": {
+        "username": "sam.duez",
+        "avatar": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "url": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+          "duration": 5000,
+          "caption": "사진 한 장의 힘 📷"
+        }
+      ]
+    }
+  ]
+}

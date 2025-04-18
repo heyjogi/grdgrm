@@ -1,0 +1,273 @@
+/* ✅ storyViewer.css */
+
+#story-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#story-viewer.hidden {
+  display: none;
+}
+
+.story-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.story-content {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 700px;
+  background: #000;
+  z-index: 1;
+}
+
+.story-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 3;
+}
+
+.story-controls button {
+  color: #fff;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.story-controls button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.story-media {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.story-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+  z-index: 1;
+}
+
+.story-username-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.story-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.story-username-text {
+  font-weight: 600;
+}
+
+.story-progress {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 4px;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.progress-bar.completed {
+  background: #fff;
+}
+
+.progress-bar.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  animation: progress 5s linear forwards;
+  animation-play-state: running;
+}
+
+.progress-bar.active.paused::after {
+  animation-play-state: paused;
+}
+
+.story-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.story-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.story-actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.story-actions button:hover {
+  transform: scale(1.2);
+  opacity: 0.85;
+}
+
+.story-like {
+  position: relative;
+}
+
+.story-like i {
+  font-size: 22px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  transform: scale(1);
+}
+
+/* 좋아요 눌렀을 때 효과 */
+.story-like.liked i {
+  color: #ff4d6d;
+  transform: scale(0.9);
+  animation: heart-bounce 0.3s ease;
+}
+
+/* 튕기는 애니메이션 */
+@keyframes heart-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .story-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+    padding-bottom: 60px;
+  }
+
+  .story-avatar {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+  }
+
+  .story-username-text {
+    font-size: 14px;
+  }
+
+  .story-controls button,
+  .story-actions button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .story-actions button i {
+    font-size: 22px;
+  }
+
+  .story-caption {
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  .story-actions {
+    bottom: 70px;
+  }
+
+  .story-progress {
+    top: 8px;
+    padding: 0 12px;
+  }
+
+  .progress-bar {
+    height: 1.5px;
+  }
+}
