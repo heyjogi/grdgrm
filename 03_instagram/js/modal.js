@@ -1,3 +1,5 @@
+import { initButtons } from "./feed.js";
+
 export function createModal(postModal) {
   const modalBackground = document.createElement("div");
   modalBackground.classList.add("modal-background");
@@ -42,7 +44,7 @@ export function createModal(postModal) {
                 <div class="modal-caption"><strong>${
                   postModal.userInfo.username
                 }</strong>${postModal.caption}</div>
-                <div class="modal-likes"><span>좋아요 ${postModal.likes.toLocaleString()}개</span></div>
+                <div class="post-likes"><span>좋아요 ${postModal.likes.toLocaleString()}개</span></div>
                 <div class="modal-time">${postModal.time}</div>
             </div>
             <div class="modal-actions">
@@ -67,4 +69,6 @@ export function createModal(postModal) {
   modalBackground.addEventListener("click", (e) => {
     if (e.target === modalBackground) modalBackground.remove();
   });
+
+  initButtons(modal, postModal);
 }
