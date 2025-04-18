@@ -1,5 +1,37 @@
 import { createModal } from "./modal.js";
+// 검색창
+document.addEventListener("DOMContentLoaded", () => {
+  const searchLink = document.querySelector(
+    ".left-menu .category-menu li:nth-child(2) a"
+  );
+  const sidebar = document.querySelector(".left-menu");
+  const searchPanel = document.getElementById("searchPanel");
 
+  // 초기 상태에서 검색 패널 숨기기
+  searchPanel.classList.add("hidden");
+
+  //  검색 상태를 추적하는 변수 추가
+  let isSearchOpen = false;
+
+  //  검색 버튼 클릭 시 토글 기능 구현
+  searchLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!isSearchOpen) {
+      // 검색창 열기
+      sidebar.classList.add("shrink");
+      searchPanel.classList.remove("hidden");
+      searchPanel.style.display = "flex";
+      isSearchOpen = true;
+    } else {
+      // 검색창 닫기
+      sidebar.classList.remove("shrink");
+      searchPanel.classList.add("hidden");
+      searchPanel.style.display = "none";
+      isSearchOpen = false;
+    }
+  });
+});
 document.addEventListener("DOMContentLoaded", () => {
   // 🔹 STORIES 슬라이더 버튼 & 표시 토글
   const storiesList = document.querySelector(".stories-list");
