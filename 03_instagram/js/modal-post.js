@@ -1,4 +1,5 @@
 import { initButtons } from "./feed.js";
+import { initShareModal } from "./modal-share.js";
 
 export function createModal(postModal) {
   const modalBackground = document.createElement("div");
@@ -98,6 +99,21 @@ export function createModal(postModal) {
       }
     });
   }
+  const shareIcon = modal.querySelector(".fa-paper-plane");
+  shareIcon.style.cursor = "pointer";
+  shareIcon.addEventListener("click", () => {
+    // 1) 이미 생성된 모달이 있나 검사
+    let shareModalEl = document.querySelector(".share-modal");
+
+    if (!shareModalEl) {
+      // 없으면 생성
+      initShareModal();
+      shareModalEl = document.querySelector(".share-modal");
+    }
+
+    // 2) 숨김 클래스 제거해서 보여 주기
+    shareModalEl.classList.remove("hidden");
+  });
 
   initButtons(modal, postModal);
 }
