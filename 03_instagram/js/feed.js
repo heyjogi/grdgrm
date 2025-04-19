@@ -1,4 +1,37 @@
 import { createModal } from "./modal.js";
+// 검색창
+document.addEventListener("DOMContentLoaded", () => {
+  const searchLink = document.querySelector(
+    ".left-menu .category-menu li:nth-child(2) a"
+  );
+  const sidebar = document.querySelector(".left-menu");
+  const searchPanel = document.getElementById("searchPanel");
+
+  // 초기 상태에서 검색 패널 숨기기
+  searchPanel.classList.add("hidden");
+
+  //  검색 상태를 추적하는 변수 추가
+  let isSearchOpen = false;
+
+  //  검색 버튼 클릭 시 토글 기능 구현
+  searchLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!isSearchOpen) {
+      // 검색창 열기
+      sidebar.classList.add("shrink");
+      searchPanel.classList.remove("hidden");
+      searchPanel.style.display = "flex";
+      isSearchOpen = true;
+    } else {
+      // 검색창 닫기
+      sidebar.classList.remove("shrink");
+      searchPanel.classList.add("hidden");
+      searchPanel.style.display = "none";
+      isSearchOpen = false;
+    }
+  });
+});
 
 export function initButtons(postEl, postData) {
   const likeIcon = postEl.querySelector(".left-actions .fa-heart");
@@ -146,6 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnRight = slider.querySelector(".slider-btn.right");
       const dots = slider.parentElement.querySelectorAll(".post-dots span");
       let currentIndex = 0;
+
+      // 이미지가 한 장일 때는 버튼과 닷 인디케이터 숨기기
+      if (imgs.length <= 1) {
+        btnLeft.style.display = "none";
+        btnRight.style.display = "none";
+        slider.parentElement.querySelector(".post-dots").style.display = "none";
+        return; // 더 이상의 실행을 멈춤
+      }
 
       const updateSlide = () => {
         const offset = -currentIndex * slider.offsetWidth;

@@ -1,3 +1,36 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const searchLink = document.querySelector(
+    ".left-menu .category-menu li:nth-child(2) a"
+  );
+  const sidebar = document.querySelector(".left-menu");
+  const searchPanel = document.getElementById("searchPanel");
+
+  // 초기 상태에서 검색 패널 숨기기
+  searchPanel.classList.add("hidden");
+
+  //  검색 상태를 추적하는 변수 추가
+  let isSearchOpen = false;
+
+  //  검색 버튼 클릭 시 토글 기능 구현
+  searchLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!isSearchOpen) {
+      // 검색창 열기
+      sidebar.classList.add("shrink");
+      searchPanel.classList.remove("hidden");
+      searchPanel.style.display = "flex";
+      isSearchOpen = true;
+    } else {
+      // 검색창 닫기
+      sidebar.classList.remove("shrink");
+      searchPanel.classList.add("hidden");
+      searchPanel.style.display = "none";
+      isSearchOpen = false;
+    }
+  });
+});
+
 const exploreGrid = document.querySelector(".explore-grid");
 
 // SVG 아이콘 정의
@@ -45,6 +78,12 @@ fetch("../assets/data/explore.json")
         947
       `;
 
+      // 요소들을 조립
+      overlay.appendChild(likesStat);
+      overlay.appendChild(commentsStat);
+      div.appendChild(img);
+      div.appendChild(overlay);
+
       // 타입 아이콘 추가
       if (item.type !== "image") {
         const iconContainer = document.createElement("div");
@@ -52,12 +91,30 @@ fetch("../assets/data/explore.json")
         iconContainer.innerHTML = icons[item.type];
         div.appendChild(iconContainer);
       }
-
-      // 요소들을 조립
-      overlay.appendChild(likesStat);
-      overlay.appendChild(commentsStat);
-      div.appendChild(img);
-      div.appendChild(overlay);
       exploreGrid.appendChild(div);
     });
+
+    // ✅ filler 정렬 보정 기능 추가
+    const columns =
+      getComputedStyle(exploreGrid).gridTemplateColumns.split(" ").length;
+    let totalSpans = 0;
+
+    items.forEach((item) => {
+      if (item.classList.contains("big-both")) {
+        totalSpans += 4;
+      } else if (item.classList.contains("big-row")) {
+        totalSpans += 2;
+      } else {
+        totalSpans += 1;
+      }
+    });
+
+    const remainder = totalSpans % columns;
+    if (remainder !== 0) {
+      const filler = document.createElement("div");
+      filler.className = "grid-item filler";
+      filler.style.aspectRatio = "1 / 1";
+      filler.style.visibility = "hidden";
+      exploreGrid.appendChild(filler);
+    }
   });

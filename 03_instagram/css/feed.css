@@ -78,6 +78,7 @@ body {
   max-width: 1200px;
   margin: 0 auto; /* 가운데 정렬 */
   position: relative;
+  gap: 32px;
 }
 
 /* === CENTER FEED === */
@@ -94,18 +95,23 @@ body {
 /* === RIGHT SIDEBAR === */
 .right-sidebar {
   width: 320px;
-  position: fixed;
-  right: calc((100vw - 1200px) / 2 + -80px); /* 수정된 부분 */
-  top: 0;
+  position: absolute;
+  top: 0px;
+  left: calc(470px + 240px + 32px);
   padding: 20px;
-  margin-top: 80px;
   font-size: 14px;
   color: #262626;
+  right: calc((100vw - 1200px) / 2 + -80px);
+  height: auto;
+  max-height: calc(100vh - 40px);
+  margin-top: 0;
+  overflow-y: auto;
 }
 
 .profile-summary {
   display: flex;
   align-items: center;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .profile-summary .avatar {
@@ -707,4 +713,107 @@ body {
   .container {
     padding-top: 70px; /* 헤더 높이만큼 여유 */
   }
+}
+
+/* 검색창 */
+.left-menu.shrink {
+  width: 72px;
+}
+
+.left-menu.shrink .left-logo .text-logo {
+  display: none;
+}
+
+.left-menu.shrink .left-logo .icon-logo {
+  display: block;
+  width: 24px;
+  margin: 0 auto;
+}
+
+.left-menu.shrink .category-menu li a .menu-text {
+  display: none;
+}
+
+.left-menu.shrink .category-menu li a {
+  justify-content: center;
+}
+
+.left-menu.shrink .category-menu li a .category-icon {
+  margin-right: 0;
+}
+
+/* 축소 시 메인 컨텐츠 영역 조정 */
+.left-menu.shrink + .explore-main {
+  margin-left: 72px;
+}
+/* 검색 패널 초기 상태 */
+.search-panel.hidden {
+  display: none;
+}
+/* 검색창 스타일 */
+.search-panel {
+  width: 400px;
+  padding: 24px 16px;
+  background: #fff;
+  border-radius: 0 16px 16px 0; /* 오른쪽 모서리만 둥글게 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed; /* 위치 고정 */
+  left: 72px; /* 축소된 사이드바 너비에 맞춤 */
+  top: 0; /* 상단에 맞춤 */
+  height: 100vh; /* 전체 높이 */
+  z-index: 100; /* 다른 요소들 위에 표시 */
+}
+
+.search-panel h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  background-color: #efefef;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+
+.recent-searches {
+  border-top: 1px solid #dbdbdb;
+  padding-top: 12px;
+}
+
+.recent-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.no-history {
+  font-size: 14px;
+  color: #8e8e8e;
+  text-align: center;
+  margin-top: 60px;
 }
