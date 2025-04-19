@@ -1,0 +1,38 @@
+[
+  {
+    "username": "조혜정",
+    "name": "heyjogi",
+    "image": "../assets/images/profile/프로필8.jpg",
+    "desc": ""
+  },
+  {
+    "username": "최창열",
+    "name": "Changyeol1",
+    "image": "../assets/images/profile/프로필10.jpg",
+    "desc": ""
+  },
+  {
+    "username": "구기명",
+    "name": "gimyeong1",
+    "image": "../assets/images/profile/프로필8.jpg",
+    "desc": ""
+  },
+  {
+    "username": "한지우",
+    "name": "jiwoo1",
+    "image": "../assets/images/profile/프로필11.jpg",
+    "desc": ""
+  },
+  {
+    "username": "구기륜",
+    "name": "giryun1",
+    "image": "../assets/images/profile/프로필12.jpg",
+    "desc": ""
+  },
+  {
+    "username": "김익환",
+    "name": "Freddy-ik",
+    "image": "../assets/images/profile/프로필6.jpg",
+    "desc": ""
+  }
+]
