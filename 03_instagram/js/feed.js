@@ -32,6 +32,72 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+//  팀원 검색 기능 추가
+const searchInput = document.querySelector("#searchInput");
+const searchResult = document.querySelector(".search-result");
+const recentSearches = document.querySelector(".recent-searches");
+const clearBtn = document.querySelector(".clear-btn");
+
+let teamMembers = [];
+
+fetch("../assets/data/team.json")
+  .then((res) => res.json())
+  .then((data) => {
+    teamMembers = data;
+    searchResult.innerHTML = ""; // 검색 결과는 처음에 비워둠
+  });
+
+searchInput.addEventListener("input", (e) => {
+  const keyword = e.target.value.toLowerCase();
+
+  // 검색어 유무에 따라 최근 검색 항목 섹션 토글
+  if (keyword === "") {
+    recentSearches.style.display = "block"; // 검색어가 없으면 최근 검색 항목 표시
+    searchResult.innerHTML = "";
+  } else {
+    recentSearches.style.display = "none"; // 검색어가 있으면 최근 검색 항목 숨김
+
+    const filtered = teamMembers.filter(
+      (member) =>
+        member.name.toLowerCase().includes(keyword) ||
+        member.username.toLowerCase().includes(keyword)
+    );
+
+    renderSearchResults(filtered);
+  }
+});
+
+function renderSearchResults(list) {
+  searchResult.innerHTML = "";
+
+  list.forEach((member) => {
+    const item = document.createElement("div");
+    item.classList.add("search-item");
+    item.innerHTML = `
+      <img src="${member.image}" alt="${member.name}" class="profile-img" />
+      <div class="profile-info">
+        <div class="username">${member.username}</div>
+        <div class="name">${member.name}</div>
+        ${
+          member.desc
+            ? `<div class="desc">${member.desc}</div>`
+            : `<div class="desc"> </div>`
+        }
+      </div>
+    `;
+    searchResult.appendChild(item);
+  });
+  // X 버튼 클릭 시 검색어 지우기
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = ""; // 입력 텍스트 초기화
+    searchInput.focus(); // 검색창에 포커스 유지
+
+    // 검색 결과 초기화 및 최근 검색 항목 표시
+    searchResult.innerHTML = "";
+    recentSearches.style.display = "block";
+  });
+}
+// 여기까지 검색
 document.addEventListener("DOMContentLoaded", () => {
   // 🔹 STORIES 슬라이더 버튼 & 표시 토글
   const storiesList = document.querySelector(".stories-list");
@@ -151,14 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnRight = slider.querySelector(".slider-btn.right");
       const dots = slider.parentElement.querySelectorAll(".post-dots span");
       let currentIndex = 0;
-
-      // 이미지가 한 장일 때는 버튼과 닷 인디케이터 숨기기
-      if (imgs.length <= 1) {
-        btnLeft.style.display = "none";
-        btnRight.style.display = "none";
-        slider.parentElement.querySelector(".post-dots").style.display = "none";
-        return; // 더 이상의 실행을 멈춤
-      }
 
       const updateSlide = () => {
         const offset = -currentIndex * slider.offsetWidth;
