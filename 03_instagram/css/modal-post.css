@@ -67,7 +67,7 @@
 .post-modal .slider-track img {
   width: 100%;
   aspect-ratio: 1 / 1; /* ✅ 1:1 정사각형 비율 유지 */
-  object-fit: contain; /* ✅ 이미지가 꽉 차게 */
+  object-fit: cover;
   flex-shrink: 0;
   display: block;
 }
@@ -156,6 +156,7 @@
 .post-modal .post-likes {
   font-weight: bold;
   margin-bottom: 8px;
+  padding-left: 0;
 }
 .modal-time {
   font-size: 12px;
@@ -179,6 +180,42 @@
   border-top: 1px solid #eee;
   color: #888;
   font-size: 14px;
+}
+
+.modal-add-comment {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #dbdbdb;
+  padding: 12px 16px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.modal-add-comment .comment-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #262626;
+}
+
+.modal-add-comment .comment-input::placeholder {
+  color: #999;
+}
+
+.modal-add-comment .post-btn {
+  font-weight: 600;
+  color: #0095f6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  opacity: 0.5;
+}
+
+.modal-add-comment .post-btn.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 @keyframes fadeIn {

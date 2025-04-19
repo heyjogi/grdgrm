@@ -53,7 +53,9 @@ export function createModal(postModal) {
                 </div>
                 <div class="right-actions"><i class="far fa-bookmark"></i></div>
             </div>
-            <div class="modal-add-comment">댓글 달기...</div>
+            <div class="modal-add-comment">
+              <input type="text" class="comment-input" placeholder="댓글 달기..." />
+              <button class="post-btn">게시</button></div>
         </div>
         `;
 
@@ -69,6 +71,33 @@ export function createModal(postModal) {
   modalBackground.addEventListener("click", (e) => {
     if (e.target === modalBackground) modalBackground.remove();
   });
+
+  const commentIcon = modal.querySelector(".fa-comment");
+  const commentBox = modal.querySelector(".modal-add-comment");
+  const commentInput = modal.querySelector(".comment-input");
+  const postBtn = modal.querySelector(".post-btn");
+
+  if (commentIcon && commentInput) {
+    commentIcon.addEventListener("click", () => {
+      commentInput.focus();
+    });
+  }
+
+  if (commentBox && commentInput) {
+    commentBox.addEventListener("click", () => {
+      commentInput.focus();
+    });
+  }
+
+  if (commentInput && postBtn) {
+    commentInput.addEventListener("input", () => {
+      if (commentInput.value.trim()) {
+        postBtn.classList.add("active");
+      } else {
+        postBtn.classList.remove("active");
+      }
+    });
+  }
 
   initButtons(modal, postModal);
 }

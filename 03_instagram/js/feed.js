@@ -1,4 +1,6 @@
-import { createModal } from "./modal.js";
+import { createModal } from "./modal-post.js";
+import { initShareModal } from "./modal-share.js";
+
 // 검색창
 document.addEventListener("DOMContentLoaded", () => {
   const searchLink = document.querySelector(
@@ -238,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderPosts(data);
       initSliders();
       initModalButtons(data);
+      initShareModal();
     })
     .catch((err) => console.error("Error loading post data.", err));
 });
