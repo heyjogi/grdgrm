@@ -157,4 +157,10 @@ export function createModal(postModal) {
 
   initButtons(modal, postModal);
   initSliders(modal);
+
+  // 모바일 스타일 처리
+  if (window.innerWidth <= 768) {
+    modal.classList.add("mobile-modal");
+    modalBackground.classList.add("mobile-background");
+  }
 }
