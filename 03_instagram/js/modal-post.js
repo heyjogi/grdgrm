@@ -115,5 +115,46 @@ export function createModal(postModal) {
     shareModalEl.classList.remove("hidden");
   });
 
+  // 슬라이더 초기화 함수 정의
+  function initSliders(modal) {
+    const slider = modal.querySelector(".modal-image-slider");
+    if (!slider) return;
+
+    const sliderTrack = slider.querySelector(".slider-track");
+    const slides = Array.from(sliderTrack.querySelectorAll("img"));
+    const prevBtn = slider.querySelector(".slider-btn.left");
+    const nextBtn = slider.querySelector(".slider-btn.right");
+    const dots = Array.from(slider.querySelectorAll(".modal-dots span"));
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+      sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot) => dot.classList.remove("active"));
+      dots[currentIndex].classList.add("active");
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlider();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        currentIndex = index;
+        updateSlider();
+      });
+    });
+
+    updateSlider(); // 초기 설정
+  }
+
   initButtons(modal, postModal);
+  initSliders(modal);
 }
