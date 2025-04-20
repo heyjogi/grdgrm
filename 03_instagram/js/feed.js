@@ -314,6 +314,16 @@ function initObserver() {
       const dots = slider.parentElement.querySelectorAll(".post-dots span");
       let currentIndex = 0;
 
+
+      // 이미지가 한 장일 때는 버튼과 닷 인디케이터 숨기기
+      if (imgs.length <= 1) {
+        btnLeft.style.display = "none";
+        btnRight.style.display = "none";
+        slider.parentElement.querySelector(".post-dots").style.display = "none";
+        return; // 더 이상의 실행을 멈춤
+      }
+
+
       const updateSlide = () => {
         const offset = -currentIndex * slider.offsetWidth;
         track.style.transform = `translateX(${offset}px)`;
