@@ -291,6 +291,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.querySelectorAll(".follow-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isFollowing = btn.classList.toggle("following");
+
+      if (isFollowing) {
+        btn.textContent = "팔로잉";
+        btn.style.backgroundColor = "#0078f5";
+        btn.style.color = "#fff";
+        btn.style.borderRadius = "4px";
+        btn.style.padding = "2px 8px 2px 8px";
+      } else {
+        btn.textContent = "팔로우";
+        btn.style.backgroundColor = "transparent";
+        btn.style.color = "#0095f6";
+      }
+    });
+  });
+
   // 로그아웃 패널
   const moreIcon = document.getElementById("moreButton");
   const logoutPanel = document.getElementById("logoutPanel");
