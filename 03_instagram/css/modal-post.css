@@ -60,6 +60,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .post-modal .slider-track {
   display: flex;
   transition: transform 0.3s ease;
@@ -67,27 +68,48 @@
 .post-modal .slider-track img {
   width: 100%;
   aspect-ratio: 1 / 1; /* ✅ 1:1 정사각형 비율 유지 */
-  object-fit: contain; /* ✅ 이미지가 꽉 차게 */
+  object-fit: cover;
   flex-shrink: 0;
   display: block;
+  z-index: 0;
 }
 
 .post-modal .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
-  padding: 8px 12px;
   font-size: 18px;
-  cursor: pointer;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.7;
 }
-.post-modallider-btn.left {
+
+.post-modal .slider-btn:hover {
+  opacity: 1;
+}
+.post-modal .slider-btn.left {
   left: 10px;
 }
 .post-modal .slider-btn.right {
+  right: 10px;
+}
+
+.modal-image-slider:hover .slider-btn {
+  display: block;
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+.slider-btn.right {
   right: 10px;
 }
 
@@ -153,9 +175,10 @@
 .modal-caption strong {
   margin-right: 6px;
 }
-.modal-likes {
+.post-modal .post-likes {
   font-weight: bold;
   margin-bottom: 8px;
+  padding-left: 0;
 }
 .modal-time {
   font-size: 12px;
@@ -181,6 +204,42 @@
   font-size: 14px;
 }
 
+.modal-add-comment {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #dbdbdb;
+  padding: 12px 16px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.modal-add-comment .comment-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #262626;
+}
+
+.modal-add-comment .comment-input::placeholder {
+  color: #999;
+}
+
+.modal-add-comment .post-btn {
+  font-weight: 600;
+  color: #0095f6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  opacity: 0.5;
+}
+
+.modal-add-comment .post-btn.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -193,12 +252,62 @@
 }
 
 @media (max-width: 768px) {
-  .post-modal {
-    flex-direction: column;
-  }
-  .modal-left {
-    flex: none;
+  .modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 300px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .post-modal {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slide-up 0.35s ease-out forwards;
+  }
+
+  .modal-left {
+    display: none;
+  }
+
+  .modal-right {
+    width: 100%;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .post-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 10;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }
