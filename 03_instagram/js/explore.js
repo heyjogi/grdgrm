@@ -1,4 +1,4 @@
-import { createModal } from "./modal.js";
+import { createModal } from "./modal-post.js";
 document.addEventListener("DOMContentLoaded", () => {
   const searchLink = document.querySelector(
     ".left-menu .category-menu li:nth-child(2) a"
