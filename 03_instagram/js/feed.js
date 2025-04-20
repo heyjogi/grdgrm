@@ -87,6 +87,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const feedContainer = document.querySelector(".feed");
+  const endTrigger = document.querySelector(".end");
+
+  let posts = [];
+  let postIndex = 0;
+  const initialCount=3;
+  const additionalCount = 2;
 
   function renderPosts(posts) {
     posts.forEach((post) => {
@@ -109,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="post-image-slider">
         <div class="slider-track">
         ${post.slideImg
-          .map((img, index) => `<img src="${img}" alt="Slide ${index + 1}">`)
+          .map((img, index) => `<img src="${img}" alt="Slide ${index + 1}" onerror = "handleImageError(this, '${img}')">`)
           .join("")}
         </div>
         
@@ -140,7 +146,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
       feedContainer.append(postEl);
     });
+
+    feedContainer.append(endTrigger);
   }
+
+//무한 스크롤: 초기 3개 -> 2개 -> 2개 순으로 로드 (+중복 렌더링 방지)
+let isLoading = false;
+
+function initObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && postIndex < posts.length && !isLoading) {
+        isLoading = true;
+
+        const nextPosts = posts.slice(postIndex, postIndex + additionalCount);
+        renderPosts(nextPosts);
+        postIndex += additionalCount;
+
+        setTimeout(() => {
+          isLoading = false;
+        }, 1500); // 로딩 효과를 위한 지연 시간 (무한 스크롤 느낌 연출용)
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(endTrigger);
+}
 
   // 🔹 피드 이미지 슬라이더 + dot indicator
   function initSliders() {
@@ -234,7 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("../assets/data/post.json")
     .then((res) => res.json())
     .then((data) => {
-      renderPosts(data);
+      posts = data;
+      renderPosts(posts.slice(postIndex, postIndex + initialCount));
+      postIndex += initialCount;
+      initObserver();
       initSliders();
       initModalButtons(data);
       initButtons();
