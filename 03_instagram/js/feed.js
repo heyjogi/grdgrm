@@ -1,4 +1,32 @@
-import { createModal } from "./modal.js";
+import { createModal } from "./modal-post.js";
+import { initShareModal } from "./modal-share.js";
+
+
+export function initButtons(postEl, postData) {
+  const likeIcon = postEl.querySelector(".left-actions .fa-heart");
+  const likesText = postEl.querySelector(".post-likes span");
+  const saveIcon = postEl.querySelector(".right-actions .fa-bookmark");
+
+  let likeCount = postData.likes;
+  let isLiked = false;
+
+  likeIcon?.addEventListener("click", () => {
+    isLiked = !isLiked;
+
+    likeIcon.classList.toggle("fas", isLiked);
+    likeIcon.classList.toggle("far", !isLiked);
+    likeIcon.style.color = isLiked ? "red" : "#333";
+
+    likeCount += isLiked ? 1 : -1;
+    likesText.textContent = `좋아요 ${likeCount.toLocaleString()}개`;
+  });
+
+  saveIcon?.addEventListener("click", () => {
+    const isSaved = saveIcon.classList.toggle("fas");
+    saveIcon.classList.toggle("far", !isSaved);
+  });
+}
+
 // 검색창
 document.addEventListener("DOMContentLoaded", () => {
   const searchLink = document.querySelector(
@@ -32,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 //  팀원 검색 기능 추가
 const searchInput = document.querySelector("#searchInput");
 const searchResult = document.querySelector(".search-result");
@@ -97,7 +126,8 @@ function renderSearchResults(list) {
     recentSearches.style.display = "block";
   });
 }
-// 여기까지 검색
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // 🔹 STORIES 슬라이더 버튼 & 표시 토글
   const storiesList = document.querySelector(".stories-list");
@@ -205,6 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
       feedContainer.append(postEl);
+
+      initButtons(postEl, post);
     });
   }
 
@@ -248,33 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function initButtons() {
-    document.querySelectorAll(".post").forEach((post) => {
-      const likeIcon = post.querySelector(".left-actions .fa-heart");
-      const likesText = post.querySelector(".post-likes span");
-      const saveIcon = post.querySelector(".right-actions .fa-bookmark");
-
-      // like 버튼 기능
-      likeIcon.addEventListener("click", () => {
-        const isLiked = likeIcon.classList.toggle("fas");
-        likeIcon.classList.toggle("far", !isLiked);
-        likeIcon.style.color = isLiked ? "red" : "#333";
-
-        // like 카운트
-        let text = likesText.textContent.replace(/[^\d]/g, ""); // 숫자만 추출
-        let count = parseInt(text);
-        count = isLiked ? count + 1 : count - 1;
-        likesText.textContent = `좋아요 ${count.toLocaleString()}개`;
-      });
-
-      // save 버튼 기능
-      saveIcon.addEventListener("click", () => {
-        const isSaved = saveIcon.classList.toggle("fas");
-        saveIcon.classList.toggle("far", !isSaved);
-      });
-    });
-  }
-
   // comment 버튼 기능 구현
   function initModalButtons(posts) {
     document.querySelectorAll(".post").forEach((postEl, index) => {
@@ -295,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderPosts(data);
       initSliders();
       initModalButtons(data);
-      initButtons();
+      initShareModal();
     })
     .catch((err) => console.error("Error loading post data.", err));
 });
