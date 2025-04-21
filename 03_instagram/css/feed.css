@@ -28,6 +28,10 @@ body {
   flex-direction: column;
 }
 
+.left-menu-content {
+  position: relative;
+}
+
 /* Instagram Logo 섹션 */
 .left-menu .left-logo img.text-logo {
   max-width: 110px;
@@ -67,9 +71,67 @@ body {
   margin-right: 12px;
 }
 
-/* "더보기" pushed to bottom */
-.left-menu-bottom {
+.more-menu-fixed {
   margin-top: auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.more-menu-fixed a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #262626;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.more-menu-fixed .category-icon {
+  width: 38px;
+  margin-right: 12px;
+}
+
+/* 로그아웃 패널 */
+.logout-panel {
+  display: none;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logout-panel ul {
+  list-style: none;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.logout-panel li {
+  padding: 10px 0;
+}
+
+.logout-panel a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  display: block;
+}
+
+/* active 클래스가 있을 때 로그아웃 패널 보이기 */
+.logout-panel.active {
+  display: block;
+}
+
+#moreButton:hover + #logoutPanel {
+  display: block;
+}
+
+#logoutPanel a:hover {
+  color: #0078f5;
 }
 
 /* Updated Main Content Container */
@@ -197,7 +259,13 @@ body {
   font-size: 13px;
   color: #0095f6;
   text-decoration: none;
+  padding: 2px 8px 2px 8px;
 }
+
+.follow-btn:hover {
+  color: #081e7c;
+}
+
 .sidebar-footer {
   margin-top: 40px;
   font-size: 11px;
@@ -232,16 +300,30 @@ body {
     margin: 0 auto;
   }
 
-  .left-menu .category-menu li a .menu-text {
+  .left-menu .category-menu li a .menu-text,
+  .more-menu-fixed .menu-text {
     display: none;
   }
 
-  .left-menu .category-menu li a {
+  .left-menu .category-menu li a,
+  .more-menu-fixed a {
     justify-content: center;
   }
 
-  .left-menu .category-menu li a .category-icon {
+  .left-menu .category-menu li a .category-icon,
+  .more-menu-fixed .category-icon {
     margin-right: 0;
+  }
+
+  #moreButton {
+    position: relative;
+  }
+
+  .logout-panel {
+    top: 50%;
+    left: 100%;
+    transform: translateY(110%);
+    width: 180px;
   }
 }
 
@@ -253,6 +335,11 @@ body {
 
   .center-feed {
     left: 72px;
+  }
+
+  .logout-panel {
+    width: 160px;
+    font-size: 13px;
   }
 }
 
@@ -267,6 +354,16 @@ body {
   /* 추가: 사이드 메뉴 숨기기 */
   .left-menu {
     display: none;
+  }
+
+  .logout-panel {
+    top: 0;
+    left: 110%;
+    transform: translateY(0);
+    position: absolute;
+    width: 180px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
   }
 }
 

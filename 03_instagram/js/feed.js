@@ -1,7 +1,6 @@
 import { createModal } from "./modal-post.js";
 import { initShareModal } from "./modal-share.js";
 
-
 export function initButtons(postEl, postData) {
   const likeIcon = postEl.querySelector(".left-actions .fa-heart");
   const likesText = postEl.querySelector(".post-likes span");
@@ -126,7 +125,6 @@ function renderSearchResults(list) {
     recentSearches.style.display = "block";
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   // 🔹 STORIES 슬라이더 버튼 & 표시 토글
@@ -366,6 +364,50 @@ function initObserver() {
       });
     });
   }
+
+  document.querySelectorAll(".follow-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isFollowing = btn.classList.toggle("following");
+
+      if (isFollowing) {
+        btn.textContent = "팔로잉";
+        btn.style.backgroundColor = "#0078f5";
+        btn.style.color = "#fff";
+        btn.style.borderRadius = "4px";
+        btn.style.padding = "2px 8px 2px 8px";
+      } else {
+        btn.textContent = "팔로우";
+        btn.style.backgroundColor = "transparent";
+        btn.style.color = "#0095f6";
+      }
+    });
+  });
+
+  // 로그아웃 패널
+  const moreIcon = document.getElementById("moreButton");
+  const logoutPanel = document.getElementById("logoutPanel");
+  const logoutBtn = document.getElementById("logout-btn");
+
+  if (moreIcon && logoutPanel) {
+    moreIcon.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("clicked");
+      logoutPanel.classList.toggle("active");
+    });
+
+    // 로그아웃 패널 외부 클릭 시 패널 닫기
+    document.addEventListener("click", (e) => {
+      if (!moreIcon.contains(e.target) && !logoutPanel.contains(e.target)) {
+        logoutPanel.classList.remove("active"); // 패널 닫기
+      }
+    });
+  }
+
+  // 로그아웃 버튼 클릭 시 로그인 페이지로 이동
+  logoutBtn?.addEventListener("click", () => {
+    window.location.href = "../pages/login.html";
+  });
 
   // post 데이터 불러오기
   fetch("../assets/data/post.json")
