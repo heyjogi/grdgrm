@@ -12,6 +12,8 @@ class StoryViewer {
     this.isPaused = false;
     this.pauseBtn = this.viewer.querySelector(".story-pause");
     this.likeButton = this.viewer.querySelector(".story-like");
+    this.previewPrev = this.viewer.querySelector(".story-preview.prev");
+    this.previewNext = this.viewer.querySelector(".story-preview.next");
     this.init();
   }
 
@@ -95,6 +97,7 @@ class StoryViewer {
 
     this.updateProgress();
     this.updateLikeButton();
+    this.updatePreviews();
     this.startTimer();
   }
 
@@ -191,6 +194,43 @@ class StoryViewer {
       icon.classList.remove("fas");
       icon.classList.add("far");
     }
+  }
+
+  updatePreviews() {
+    const prevItem = this.getAdjacentItem(-1);
+    const nextItem = this.getAdjacentItem(+1);
+
+    if (prevItem) {
+      this.previewPrev.style.backgroundImage = `url('${prevItem.url}')`;
+      this.previewPrev.style.display = "block";
+    } else {
+      this.previewPrev.style.display = "none";
+    }
+
+    if (nextItem) {
+      this.previewNext.style.backgroundImage = `url('${nextItem.url}')`;
+      this.previewNext.style.display = "block";
+    } else {
+      this.previewNext.style.display = "none";
+    }
+  }
+
+  getAdjacentItem(step) {
+    let sIdx = this.currentStoryIndex;
+    let iIdx = this.currentItemIndex + step;
+
+    if (iIdx < 0) {
+      // 이전 아이템 없으면 이전 스토리의 마지막
+      sIdx--;
+      if (sIdx < 0) return null;
+      iIdx = this.stories[sIdx].items.length - 1;
+    } else if (iIdx >= this.stories[sIdx].items.length) {
+      // 다음 스토리로 넘어가야 할 때
+      sIdx++;
+      if (sIdx >= this.stories.length) return null;
+      iIdx = 0;
+    }
+    return this.stories[sIdx].items[iIdx];
   }
 }
 
