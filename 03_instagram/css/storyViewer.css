@@ -307,3 +307,38 @@
     right: 8px;
   }
 }
+
+.story-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, opacity 0.2s;
+}
+.story-arrow:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+.story-arrow.prev {
+  left: 12px;
+}
+.story-arrow.next {
+  right: 12px;
+}
+@media (max-width: 768px) {
+  .story-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+}
