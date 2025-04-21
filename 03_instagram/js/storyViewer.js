@@ -14,6 +14,8 @@ class StoryViewer {
     this.likeButton = this.viewer.querySelector(".story-like");
     this.previewPrev = this.viewer.querySelector(".story-preview.prev");
     this.previewNext = this.viewer.querySelector(".story-preview.next");
+    this.arrowPrev = this.viewer.querySelector(".story-arrow.prev");
+    this.arrowNext = this.viewer.querySelector(".story-arrow.next");
     this.init();
   }
 
@@ -66,6 +68,16 @@ class StoryViewer {
       const story = this.stories[this.currentStoryIndex];
       story.liked = !story.liked;
       this.updateLikeButton();
+    });
+
+    this.arrowPrev.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.prevStory();
+    });
+
+    this.arrowNext.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.nextStory();
     });
   }
 
