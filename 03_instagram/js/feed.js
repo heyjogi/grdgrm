@@ -183,6 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const feedContainer = document.querySelector(".feed");
+  const endTrigger = document.querySelector(".end");
+
+  let posts = [];
+  let postIndex = 0;
+  const initialCount=3;
+  const additionalCount = 2;
 
   function renderPosts(posts) {
     posts.forEach((post) => {
@@ -205,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="post-image-slider">
         <div class="slider-track">
         ${post.slideImg
-          .map((img, index) => `<img src="${img}" alt="Slide ${index + 1}">`)
+          .map((img, index) => `<img src="${img}" alt="Slide ${index + 1}" onerror = "handleImageError(this,  '${img}')">`)
           .join("")}
         </div>
         
@@ -238,7 +244,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initButtons(postEl, post);
     });
+
+    feedContainer.append(endTrigger);
+  };
+
+  // 🔹 무한 스크롤: 초기 3개 -> 2개 -> 2개 순으로 로드 (+중복 렌더링 방지)
+let isLoading = false;
+
+function initObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && postIndex < posts.length && !isLoading) {
+        isLoading = true;
+
+        const nextPosts = posts.slice(postIndex, postIndex + additionalCount);
+        renderPosts(nextPosts);
+        postIndex += additionalCount;
+
+        setTimeout(() => {
+          isLoading = false;
+        }, 1500); // 로딩 효과를 위한 지연 시간 (무한 스크롤 느낌 연출용)
+      };
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(endTrigger);
+}
+
+  // 🔹 이미지 오류 화면 
+  window.handleImageError = function(imgEl) {
+    const wrapper = imgEl.parentElement?.parentElement;
+
+    if (wrapper) {
+      wrapper.innerHTML = `
+      <div class="image-error">
+        <button class="retry-btn">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+        <p>이미지를 로드할 수 없음. 다시 시도하려면 누르세요.</p>
+      </div>
+      `;
+
+    const parent = imgEl.parentElement;
+    parent.replaceChild(fallbackDiv, imgEl);
+
+    // 🔹 retry-btn 이벤트
+    const retryBtn = wrapper.querySelector(".retry-btn");
+    retryBtn?.addEventListener("click", () => {
+      const retryImg = document.createElement("img");
+      retryImg.src = imgEl.src;
+      retryImg.alt = imgEl.alt;
+      retryImg.onerror = () => handleImageError(retryImg);
+
+      //다시 슬라이더에 원래 이미지로 교체
+      if (parent) {
+        parent.replaceChild(retryImg, fallbackDiv);
+      }
+    });
   }
+};
 
   // 🔹 피드 이미지 슬라이더 + dot indicator
   function initSliders() {
@@ -249,6 +313,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnRight = slider.querySelector(".slider-btn.right");
       const dots = slider.parentElement.querySelectorAll(".post-dots span");
       let currentIndex = 0;
+
+
+      // 이미지가 한 장일 때는 버튼과 닷 인디케이터 숨기기
+      if (imgs.length <= 1) {
+        btnLeft.style.display = "none";
+        btnRight.style.display = "none";
+        slider.parentElement.querySelector(".post-dots").style.display = "none";
+        return; // 더 이상의 실행을 멈춤
+      }
+
 
       const updateSlide = () => {
         const offset = -currentIndex * slider.offsetWidth;
@@ -297,7 +371,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("../assets/data/post.json")
     .then((res) => res.json())
     .then((data) => {
-      renderPosts(data);
+      posts = data;
+      renderPosts(posts.slice(postIndex, postIndex + initialCount));
+      postIndex += initialCount;
+      initObserver();
       initSliders();
       initModalButtons(data);
       initShareModal();

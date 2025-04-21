@@ -92,6 +92,31 @@ body {
   width: 470px;
 }
 
+.image-error {
+  width: 470px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.retry-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 /* === RIGHT SIDEBAR === */
 .right-sidebar {
   width: 320px;
