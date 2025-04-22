@@ -16,6 +16,7 @@ class StoryViewer {
     this.previewNext = this.viewer.querySelector(".story-preview.next");
     this.arrowPrev = this.viewer.querySelector(".story-arrow.prev");
     this.arrowNext = this.viewer.querySelector(".story-arrow.next");
+    this.contentEl = this.viewer.querySelector(".story-content");
     this.init();
   }
 
@@ -79,6 +80,8 @@ class StoryViewer {
       e.stopPropagation();
       this.nextStory();
     });
+
+    window.addEventListener("resize", () => this.updateArrowPosition());
   }
 
   showStory(index) {
@@ -86,6 +89,7 @@ class StoryViewer {
     this.currentItemIndex = 0;
     this.viewer.classList.remove("hidden");
     this.updateStoryContent();
+    this.updateArrowPosition();
   }
 
   updateStoryContent() {
@@ -110,6 +114,7 @@ class StoryViewer {
     this.updateProgress();
     this.updateLikeButton();
     this.updatePreviews();
+    this.updateArrowPosition();
     this.startTimer();
   }
 
@@ -243,6 +248,21 @@ class StoryViewer {
       iIdx = 0;
     }
     return this.stories[sIdx].items[iIdx];
+  }
+
+  updateArrowPosition() {
+    const rect = this.contentEl.getBoundingClientRect();
+    const gap = 12; // 카드와 화살표 사이 여백(px)
+    const vMid = rect.top + rect.height / 2;
+
+    /* 왼쪽 화살표 */
+    this.arrowPrev.style.left =
+      rect.left - this.arrowPrev.offsetWidth - gap + "px";
+    this.arrowPrev.style.top = vMid - this.arrowPrev.offsetHeight / 2 + "px";
+
+    /* 오른쪽 화살표 */
+    this.arrowNext.style.left = rect.right + gap + "px";
+    this.arrowNext.style.top = vMid - this.arrowNext.offsetHeight / 2 + "px";
   }
 }
 
